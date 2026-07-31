@@ -22,6 +22,7 @@
     "rarity": null,
     "rarity_color": null,
     "jumps": null,
+    "jumps_dtype": null,
     "ware_scale": null
   },
   {
@@ -113,7 +114,8 @@
     "layer": null,
     "rarity": 5,
     "rarity_color": null,
-    "jumps": "[33]"
+    "jumps": "[33]",
+    "jumps_dtype": null
   },
   {
     "id": 1005,
@@ -254,7 +256,10 @@
     "layer": null,
     "rarity": null,
     "rarity_color": null,
-    "jumps": "[42]"
+    "jumps": "[42]",
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": 2026040201
   },
   {
     "id": 1017,
@@ -278,7 +283,10 @@
     "layer": null,
     "rarity": null,
     "rarity_color": null,
-    "jumps": "[43]"
+    "jumps": "[43]",
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": 2026030202
   },
   {
     "id": 1018,
@@ -302,7 +310,10 @@
     "layer": null,
     "rarity": 3,
     "rarity_color": "B09DED",
-    "jumps": "[48]"
+    "jumps": "[48]",
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": 2026060101
   },
   {
     "id": 1019,
@@ -351,6 +362,84 @@
     "rarity": null,
     "rarity_color": null,
     "jumps": "[47]"
+  },
+  {
+    "id": 1021,
+    "type": 19,
+    "name": "助威粽叶",
+    "interaction_type": null,
+    "sells": null,
+    "sell_cond": "活动结束后:2026061902",
+    "cond_sells": "1001:100",
+    "level": null,
+    "target_id": null,
+    "asset_name": null,
+    "icon_res": "gui/texture/icon/icon_duanwu/spriteFrame",
+    "max_count": 9999,
+    "max_own": 9999999999999,
+    "duration": null,
+    "can_use": null,
+    "desc": "活动特殊货币，可用于参与粽香大比拼活动助威，活动结束后可出售为金币。",
+    "effectDesc": "助威粽叶",
+    "trait_id ": null,
+    "layer": null,
+    "rarity": null,
+    "rarity_color": null,
+    "jumps": "[56]",
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": 2026061902
+  },
+  {
+    "id": 1022,
+    "type": 24,
+    "name": "游记积分",
+    "interaction_type": null,
+    "sells": null,
+    "sell_cond": null,
+    "cond_sells": null,
+    "level": null,
+    "target_id": null,
+    "asset_name": null,
+    "icon_res": "gui/texture/icon/icon_saijiExp/spriteFrame",
+    "max_count": 9999,
+    "max_own": 9999999999999,
+    "duration": null,
+    "can_use": null,
+    "desc": null,
+    "effectDesc": null,
+    "trait_id ": null,
+    "layer": null,
+    "rarity": 3,
+    "rarity_color": "B09DED",
+    "jumps": "[21]"
+  },
+  {
+    "id": 1023,
+    "type": 19,
+    "name": "星砂",
+    "interaction_type": null,
+    "sells": null,
+    "sell_cond": "活动结束后:2026072701",
+    "cond_sells": "1001:2000",
+    "level": null,
+    "target_id": null,
+    "asset_name": null,
+    "icon_res": "gui/texture/icon/icon_S2_stardust/spriteFrame",
+    "max_count": 99999,
+    "max_own": 9999999999999,
+    "duration": null,
+    "can_use": null,
+    "desc": "活动特殊货币，通过千星游记产出，可前往星砂商店兑换奖励，活动结束后可出售为金币。",
+    "effectDesc": "星砂",
+    "trait_id ": null,
+    "layer": null,
+    "rarity": 3,
+    "rarity_color": "B09DED",
+    "jumps": "[59]",
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 1101,
@@ -459,7 +548,9 @@
     "rarity": 4,
     "rarity_color": "D1A21E",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 2120,
@@ -483,8 +574,10 @@
     "layer": null,
     "rarity": 4,
     "rarity_color": "D1A21E",
-    "jumps": null,
-    "ware_scale": null
+    "jumps": "[34]",
+    "jumps_dtype": 1,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 2130,
@@ -509,7 +602,9 @@
     "rarity": 3,
     "rarity_color": "B09DED",
     "jumps": "[13]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 2131,
@@ -534,7 +629,9 @@
     "rarity": 3,
     "rarity_color": "B09DED",
     "jumps": "[13]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 2140,
@@ -559,7 +656,9 @@
     "rarity": 4,
     "rarity_color": "D1A21E",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 2141,
@@ -584,7 +683,9 @@
     "rarity": 4,
     "rarity_color": "D1A21E",
     "jumps": "[50]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 2150,
@@ -609,7 +710,9 @@
     "rarity": 3,
     "rarity_color": "B09DED",
     "jumps": "[44]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 2151,
@@ -634,7 +737,9 @@
     "rarity": 3,
     "rarity_color": "B09DED",
     "jumps": "[49]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 2152,
@@ -659,7 +764,144 @@
     "rarity": 3,
     "rarity_color": "B09DED",
     "jumps": "[51]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
+  },
+  {
+    "id": 2153,
+    "type": 10,
+    "name": "甜粽子头像框",
+    "interaction_type": null,
+    "sells": null,
+    "sell_cond": null,
+    "cond_sells": null,
+    "level": null,
+    "target_id": 2153,
+    "asset_name": null,
+    "icon_res": "gui/texture/avatarDetail/img_avatar_duanwu_1/spriteFrame",
+    "max_count": 99,
+    "max_own": 99,
+    "duration": null,
+    "can_use": null,
+    "desc": "粽香大比拼活动获取，使用后获得头像框。",
+    "effectDesc": "粽香大比拼活动获取，使用后获得头像框。",
+    "trait_id ": null,
+    "layer": null,
+    "rarity": 3,
+    "rarity_color": "B09DED",
+    "jumps": "[56]",
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
+  },
+  {
+    "id": 2154,
+    "type": 10,
+    "name": "咸粽子头像框",
+    "interaction_type": null,
+    "sells": null,
+    "sell_cond": null,
+    "cond_sells": null,
+    "level": null,
+    "target_id": 2154,
+    "asset_name": null,
+    "icon_res": "gui/texture/avatarDetail/img_avatar_duanwu_2/spriteFrame",
+    "max_count": 99,
+    "max_own": 99,
+    "duration": null,
+    "can_use": null,
+    "desc": "粽香大比拼活动获取，使用后获得头像框。",
+    "effectDesc": "粽香大比拼活动获取，使用后获得头像框。",
+    "trait_id ": null,
+    "layer": null,
+    "rarity": 3,
+    "rarity_color": "B09DED",
+    "jumps": "[56]",
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
+  },
+  {
+    "id": 2155,
+    "type": 10,
+    "name": "足球狂欢头像框",
+    "interaction_type": null,
+    "sells": null,
+    "sell_cond": null,
+    "cond_sells": null,
+    "level": null,
+    "target_id": 2155,
+    "asset_name": null,
+    "icon_res": "gui/texture/avatarDetail/img_avatar_worldCup_1/spriteFrame",
+    "max_count": 99,
+    "max_own": 99,
+    "duration": null,
+    "can_use": null,
+    "desc": "足球狂欢季活动获取，使用后获得头像框。",
+    "effectDesc": "足球狂欢季活动获取，使用后获得头像框。",
+    "trait_id ": null,
+    "layer": null,
+    "rarity": 3,
+    "rarity_color": "D1A21E",
+    "jumps": "[58]",
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
+  },
+  {
+    "id": 2156,
+    "type": 10,
+    "name": "萤火星房头像框",
+    "interaction_type": null,
+    "sells": null,
+    "sell_cond": null,
+    "cond_sells": null,
+    "level": null,
+    "target_id": 2156,
+    "asset_name": null,
+    "icon_res": "gui/texture/avatarDetail/img_avatar_S2_1/spriteFrame",
+    "max_count": 99,
+    "max_own": 99,
+    "duration": null,
+    "can_use": null,
+    "desc": "千星游记系列活动获取，使用后获得头像框。",
+    "effectDesc": "千星游记系列活动获取，使用后获得头像框。",
+    "trait_id ": null,
+    "layer": null,
+    "rarity": 3,
+    "rarity_color": "B09DED",
+    "jumps": "[61]",
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
+  },
+  {
+    "id": 2157,
+    "type": 10,
+    "name": "月光营地头像框",
+    "interaction_type": null,
+    "sells": null,
+    "sell_cond": null,
+    "cond_sells": null,
+    "level": null,
+    "target_id": 2157,
+    "asset_name": null,
+    "icon_res": "gui/texture/avatarDetail/img_avatar_S2_2/spriteFrame",
+    "max_count": 99,
+    "max_own": 99,
+    "duration": null,
+    "can_use": null,
+    "desc": "千星游记系列活动获取，使用后获得头像框。",
+    "effectDesc": "千星游记系列活动获取，使用后获得头像框。",
+    "trait_id ": null,
+    "layer": null,
+    "rarity": 3,
+    "rarity_color": "B09DED",
+    "jumps": "[61]",
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 3001,
@@ -684,7 +926,9 @@
     "rarity": null,
     "rarity_color": null,
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 3002,
@@ -709,7 +953,9 @@
     "rarity": null,
     "rarity_color": null,
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 4001,
@@ -734,7 +980,9 @@
     "rarity": null,
     "rarity_color": null,
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 10001,
@@ -759,6 +1007,7 @@
     "rarity": null,
     "rarity_color": null,
     "jumps": null,
+    "jumps_dtype": null,
     "ware_scale": null
   },
   {
@@ -936,7 +1185,9 @@
     "rarity": null,
     "rarity_color": null,
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 10016,
@@ -961,12 +1212,14 @@
     "rarity": null,
     "rarity_color": null,
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 10017,
     "type": 4,
-    "name": "放置使坏草道具",
+    "name": "放置使坏足球道具",
     "interaction_type": "addbadgrasssocialItem",
     "sells": null,
     "sell_cond": null,
@@ -979,19 +1232,21 @@
     "max_own": 1,
     "duration": null,
     "can_use": null,
-    "desc": "放置使坏草道具",
-    "effectDesc": "放置使坏草道具",
+    "desc": "放置使坏足球道具",
+    "effectDesc": "放置使坏足球道具",
     "trait_id ": null,
     "layer": null,
     "rarity": null,
     "rarity_color": null,
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 10018,
     "type": 4,
-    "name": "清除使坏草道具",
+    "name": "清除使坏足球道具",
     "interaction_type": "erasebadgrasssocialItem",
     "sells": null,
     "sell_cond": null,
@@ -1004,14 +1259,16 @@
     "max_own": 1,
     "duration": null,
     "can_use": null,
-    "desc": "清除使坏草道具",
-    "effectDesc": "清除使坏草道具",
+    "desc": "清除使坏足球道具",
+    "effectDesc": "清除使坏足球道具",
     "trait_id ": null,
     "layer": null,
     "rarity": null,
     "rarity_color": null,
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 10019,
@@ -1055,7 +1312,9 @@
     "rarity": 2,
     "rarity_color": null,
     "jumps": "[31]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 80002,
@@ -1080,7 +1339,9 @@
     "rarity": 2,
     "rarity_color": null,
     "jumps": "[31]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 80003,
@@ -1105,7 +1366,9 @@
     "rarity": 2,
     "rarity_color": null,
     "jumps": "[31]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 80004,
@@ -1130,7 +1393,9 @@
     "rarity": 2,
     "rarity_color": null,
     "jumps": "[31]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 80011,
@@ -1155,7 +1420,9 @@
     "rarity": 3,
     "rarity_color": null,
     "jumps": "[31]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 80012,
@@ -1180,7 +1447,9 @@
     "rarity": 3,
     "rarity_color": null,
     "jumps": "[31]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 80013,
@@ -1205,7 +1474,9 @@
     "rarity": 3,
     "rarity_color": null,
     "jumps": "[31]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 80014,
@@ -1230,7 +1501,9 @@
     "rarity": 3,
     "rarity_color": null,
     "jumps": "[31]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 90001,
@@ -1277,7 +1550,8 @@
     "layer": null,
     "rarity": 2,
     "rarity_color": "A8C1F4",
-    "jumps": "[12]"
+    "jumps": "[12]",
+    "jumps_dtype": null
   },
   {
     "id": 90003,
@@ -1301,7 +1575,8 @@
     "layer": null,
     "rarity": 3,
     "rarity_color": "B09DED",
-    "jumps": "[12]"
+    "jumps": "[12]",
+    "jumps_dtype": null
   },
   {
     "id": 90004,
@@ -1325,7 +1600,8 @@
     "layer": null,
     "rarity": 2,
     "rarity_color": "A8C1F4",
-    "jumps": null
+    "jumps": null,
+    "jumps_dtype": null
   },
   {
     "id": 90005,
@@ -1349,7 +1625,8 @@
     "layer": null,
     "rarity": 3,
     "rarity_color": "B09DED",
-    "jumps": null
+    "jumps": null,
+    "jumps_dtype": null
   },
   {
     "id": 90006,
@@ -1373,7 +1650,8 @@
     "layer": null,
     "rarity": 4,
     "rarity_color": "D1A21E",
-    "jumps": null
+    "jumps": null,
+    "jumps_dtype": null
   },
   {
     "id": 90011,
@@ -1397,7 +1675,8 @@
     "layer": null,
     "rarity": 3,
     "rarity_color": "B09DED",
-    "jumps": "[12]"
+    "jumps": "[12]",
+    "jumps_dtype": null
   },
   {
     "id": 90021,
@@ -1421,7 +1700,8 @@
     "layer": null,
     "rarity": 4,
     "rarity_color": "D1A21E",
-    "jumps": "[31]"
+    "jumps": "[31]",
+    "jumps_dtype": null
   },
   {
     "id": 100001,
@@ -1484,7 +1764,9 @@
     "rarity": 2,
     "rarity_color": "A8C1F4",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 100004,
@@ -1509,7 +1791,9 @@
     "rarity": null,
     "rarity_color": null,
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 100005,
@@ -1534,7 +1818,9 @@
     "rarity": null,
     "rarity_color": null,
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 100006,
@@ -1559,7 +1845,9 @@
     "rarity": null,
     "rarity_color": null,
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 100007,
@@ -1584,7 +1872,9 @@
     "rarity": null,
     "rarity_color": null,
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 100008,
@@ -1723,7 +2013,9 @@
     "rarity": 2,
     "rarity_color": null,
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 100111,
@@ -1938,7 +2230,9 @@
     "rarity": null,
     "rarity_color": null,
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 101202,
@@ -1963,7 +2257,9 @@
     "rarity": null,
     "rarity_color": null,
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 101203,
@@ -1988,7 +2284,9 @@
     "rarity": null,
     "rarity_color": null,
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 101204,
@@ -2013,7 +2311,9 @@
     "rarity": null,
     "rarity_color": null,
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 101205,
@@ -2038,7 +2338,9 @@
     "rarity": null,
     "rarity_color": null,
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 101206,
@@ -2063,7 +2365,9 @@
     "rarity": null,
     "rarity_color": null,
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 101251,
@@ -2088,7 +2392,90 @@
     "rarity": 3,
     "rarity_color": "B09DED",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
+  },
+  {
+    "id": 101252,
+    "type": 11,
+    "name": "获胜口味结算礼包",
+    "interaction_type": null,
+    "sells": null,
+    "sell_cond": null,
+    "cond_sells": null,
+    "level": 1,
+    "target_id": null,
+    "asset_name": null,
+    "icon_res": "gui/texture/icon/pack_duanwu/spriteFrame",
+    "max_count": 1,
+    "max_own": 1,
+    "duration": null,
+    "can_use": 1,
+    "desc": "粽香大比拼活动结算礼包，打开后，可获得化肥礼包*20、金豆豆*200、点券*300",
+    "effectDesc": "粽香大比拼活动礼包",
+    "trait_id ": null,
+    "layer": null,
+    "rarity": 4,
+    "rarity_color": "D1A21E",
+    "jumps": null,
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
+  },
+  {
+    "id": 101253,
+    "type": 11,
+    "name": "甜粽子礼包",
+    "interaction_type": null,
+    "sells": null,
+    "sell_cond": null,
+    "cond_sells": null,
+    "level": 1,
+    "target_id": null,
+    "asset_name": null,
+    "icon_res": "gui/texture/icon/pack_duanwu/spriteFrame",
+    "max_count": 1,
+    "max_own": 1,
+    "duration": null,
+    "can_use": 1,
+    "desc": "粽香大比拼活动结算礼包，打开后，可获得化肥礼包*20、金豆豆*200、点券*300",
+    "effectDesc": "粽香大比拼活动礼包",
+    "trait_id ": null,
+    "layer": null,
+    "rarity": 4,
+    "rarity_color": "D1A21E",
+    "jumps": null,
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
+  },
+  {
+    "id": 101254,
+    "type": 11,
+    "name": "咸粽子礼包",
+    "interaction_type": null,
+    "sells": null,
+    "sell_cond": null,
+    "cond_sells": null,
+    "level": 1,
+    "target_id": null,
+    "asset_name": null,
+    "icon_res": "gui/texture/icon/pack_duanwu/spriteFrame",
+    "max_count": 1,
+    "max_own": 1,
+    "duration": null,
+    "can_use": 1,
+    "desc": "粽香大比拼活动结算礼包，打开后，可获得化肥礼包*20、金豆豆*200、点券*300",
+    "effectDesc": "粽香大比拼活动礼包",
+    "trait_id ": null,
+    "layer": null,
+    "rarity": 4,
+    "rarity_color": "D1A21E",
+    "jumps": null,
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 101301,
@@ -2113,7 +2500,9 @@
     "rarity": 3,
     "rarity_color": "B09DED",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 101302,
@@ -2126,7 +2515,7 @@
     "level": 1,
     "target_id": null,
     "asset_name": null,
-    "icon_res": "gui/texture/icon/pack_svip/spriteFrame",
+    "icon_res": "gui/texture/icon/pack_svip_SeasonLimited/spriteFrame",
     "max_count": 999,
     "max_own": 999,
     "duration": null,
@@ -2138,7 +2527,252 @@
     "rarity": 3,
     "rarity_color": "B09DED",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
+  },
+  {
+    "id": 101303,
+    "type": 11,
+    "name": "SVIP装扮礼包",
+    "interaction_type": null,
+    "sells": null,
+    "sell_cond": null,
+    "cond_sells": null,
+    "level": 1,
+    "target_id": null,
+    "asset_name": null,
+    "icon_res": "gui/texture/icon/pack_svip_SceneDecorPack/spriteFrame",
+    "max_count": 999,
+    "max_own": 999,
+    "duration": null,
+    "can_use": 1,
+    "desc": "金穗至尊场景装扮套装（SVIP 特权限定）<br/>\nSVIP 用户可免费领取，领取自动激活全套 7 件金穗至尊场景装饰。",
+    "effectDesc": "金穗至尊场景装扮套装",
+    "trait_id ": null,
+    "layer": null,
+    "rarity": 4,
+    "rarity_color": "D1A21E",
+    "jumps": null,
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
+  },
+  {
+    "id": 101310,
+    "type": 11,
+    "name": "拉新礼盒",
+    "interaction_type": null,
+    "sells": null,
+    "sell_cond": null,
+    "cond_sells": null,
+    "level": 1,
+    "target_id": null,
+    "asset_name": null,
+    "icon_res": "gui/texture/icon/pack_InviteRedPocket_2/spriteFrame",
+    "max_count": 999,
+    "max_own": 999,
+    "duration": null,
+    "can_use": 1,
+    "desc": "开启后，可获得以下道具：发财红包种子*1、有机化肥（8小时）*1",
+    "effectDesc": "拉新礼盒",
+    "trait_id ": null,
+    "layer": null,
+    "rarity": 3,
+    "rarity_color": "B09DED",
+    "jumps": null,
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
+  },
+  {
+    "id": 101311,
+    "type": 11,
+    "name": "拉新福袋",
+    "interaction_type": null,
+    "sells": null,
+    "sell_cond": null,
+    "cond_sells": null,
+    "level": 1,
+    "target_id": null,
+    "asset_name": null,
+    "icon_res": "gui/texture/icon/pack_InviteRedPocket_1/spriteFrame",
+    "max_count": 999,
+    "max_own": 999,
+    "duration": null,
+    "can_use": 1,
+    "desc": "开启后，可获得以下道具：<color=#D1A21E>福运红包*1</color>、发财红包种子*1、有机化肥（8小时）*1<br/><b>【注意】</b>福运红包开启后可获得现金奖励，现金红包总量有限，先到先得！",
+    "effectDesc": "拉新福袋",
+    "trait_id ": null,
+    "layer": null,
+    "rarity": 4,
+    "rarity_color": "D1A21E",
+    "jumps": null,
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
+  },
+  {
+    "id": 101315,
+    "type": 11,
+    "name": "成长礼盒",
+    "interaction_type": null,
+    "sells": null,
+    "sell_cond": null,
+    "cond_sells": null,
+    "level": 1,
+    "target_id": null,
+    "asset_name": null,
+    "icon_res": "gui/texture/icon/pack_InviteRedPocket_3/spriteFrame",
+    "max_count": 999,
+    "max_own": 999,
+    "duration": null,
+    "can_use": 1,
+    "desc": "开启后，可获得以下道具：发财红包种子*1、有机化肥（8小时）*1",
+    "effectDesc": "成长礼盒",
+    "trait_id ": null,
+    "layer": null,
+    "rarity": 3,
+    "rarity_color": "B09DED",
+    "jumps": null,
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
+  },
+  {
+    "id": 101316,
+    "type": 11,
+    "name": "成长福袋",
+    "interaction_type": null,
+    "sells": null,
+    "sell_cond": null,
+    "cond_sells": null,
+    "level": null,
+    "target_id": null,
+    "asset_name": null,
+    "icon_res": "gui/texture/icon/pack_InviteRedPocket_1/spriteFrame",
+    "max_count": 999,
+    "max_own": 999,
+    "duration": null,
+    "can_use": 1,
+    "desc": "开启后，可获得以下道具：<color=#D1A21E>福运红包*1</color>、发财红包种子*1、有机化肥（8小时）*1<br/><b>【注意】</b>福运红包开启后可获得现金奖励，现金红包总量有限，先到先得！",
+    "effectDesc": "成长福袋",
+    "trait_id ": null,
+    "layer": null,
+    "rarity": 4,
+    "rarity_color": "D1A21E",
+    "jumps": null,
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
+  },
+  {
+    "id": 101321,
+    "type": 11,
+    "name": "新人福袋",
+    "interaction_type": null,
+    "sells": null,
+    "sell_cond": null,
+    "cond_sells": null,
+    "level": 1,
+    "target_id": null,
+    "asset_name": null,
+    "icon_res": "gui/texture/icon/pack_InviteRedPocket_4/spriteFrame",
+    "max_count": 999,
+    "max_own": 999,
+    "duration": null,
+    "can_use": 1,
+    "desc": "开启后，可获得以下道具：<color=#D1A21E>福运红包*1</color>、点券*50<br/><b>【注意】</b>福运红包开启后可获得现金奖励，现金红包总量有限，先到先得！",
+    "effectDesc": "新人福袋",
+    "trait_id ": null,
+    "layer": null,
+    "rarity": 4,
+    "rarity_color": "D1A21E",
+    "jumps": null,
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
+  },
+  {
+    "id": 101323,
+    "type": 11,
+    "name": "足球狂欢礼包",
+    "interaction_type": null,
+    "sells": null,
+    "sell_cond": null,
+    "cond_sells": null,
+    "level": 1,
+    "target_id": null,
+    "asset_name": null,
+    "icon_res": "gui/texture/icon/pack_roco/spriteFrame",
+    "max_count": 999,
+    "max_own": 999,
+    "duration": null,
+    "can_use": 1,
+    "desc": "打开后会的奖励道具必定出金豆豆",
+    "effectDesc": "足球狂欢随机礼包",
+    "trait_id ": null,
+    "layer": null,
+    "rarity": 3,
+    "rarity_color": "B09DED",
+    "jumps": null,
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
+  },
+  {
+    "id": 101330,
+    "type": 11,
+    "name": "拉新礼盒",
+    "interaction_type": null,
+    "sells": null,
+    "sell_cond": null,
+    "cond_sells": null,
+    "level": null,
+    "target_id": null,
+    "asset_name": null,
+    "icon_res": "gui/texture/icon/pack_InviteRedPocket_2/spriteFrame",
+    "max_count": 999,
+    "max_own": 999,
+    "duration": null,
+    "can_use": 1,
+    "desc": "开启后，可获得以下道具：发财红包种子*2、有机化肥（8小时）*1",
+    "effectDesc": "拉新礼盒",
+    "trait_id ": null,
+    "layer": null,
+    "rarity": 3,
+    "rarity_color": "B09DED",
+    "jumps": null,
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
+  },
+  {
+    "id": 101331,
+    "type": 11,
+    "name": "成长礼盒",
+    "interaction_type": null,
+    "sells": null,
+    "sell_cond": null,
+    "cond_sells": null,
+    "level": null,
+    "target_id": null,
+    "asset_name": null,
+    "icon_res": "gui/texture/icon/pack_InviteRedPocket_3/spriteFrame",
+    "max_count": 999,
+    "max_own": 999,
+    "duration": null,
+    "can_use": 1,
+    "desc": "开启后，可获得以下道具：发财红包种子*2、有机化肥（8小时）*1",
+    "effectDesc": "成长礼盒",
+    "trait_id ": null,
+    "layer": null,
+    "rarity": 3,
+    "rarity_color": "B09DED",
+    "jumps": null,
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 101351,
@@ -2163,7 +2797,36 @@
     "rarity": 4,
     "rarity_color": "D1A21E",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
+  },
+  {
+    "id": 101400,
+    "type": 27,
+    "name": "福运红包",
+    "interaction_type": null,
+    "sells": null,
+    "sell_cond": "道具过期后:expire_time",
+    "cond_sells": "1001:1000",
+    "level": 1,
+    "target_id": null,
+    "asset_name": null,
+    "icon_res": "gui/texture/icon/icon_wxRedPocket2/spriteFrame",
+    "max_count": 1,
+    "max_own": 999,
+    "duration": null,
+    "can_use": 1,
+    "desc": "开启后，随机获得一定金额的现金奖励。",
+    "effectDesc": "福运红包",
+    "trait_id ": null,
+    "layer": null,
+    "rarity": 4,
+    "rarity_color": "D1A21E",
+    "jumps": null,
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 101401,
@@ -2188,7 +2851,171 @@
     "rarity": 3,
     "rarity_color": "B09DED",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
+  },
+  {
+    "id": 101402,
+    "type": 25,
+    "name": "微信蓝包测试礼包2",
+    "interaction_type": null,
+    "sells": null,
+    "sell_cond": null,
+    "cond_sells": null,
+    "level": 1,
+    "target_id": null,
+    "asset_name": null,
+    "icon_res": "gui/texture/icon/pack_svip/spriteFrame",
+    "max_count": 1,
+    "max_own": 999,
+    "duration": null,
+    "can_use": 1,
+    "desc": "微信蓝包测试礼包",
+    "effectDesc": "微信蓝包测试礼包",
+    "trait_id ": null,
+    "layer": null,
+    "rarity": 3,
+    "rarity_color": "B09DED",
+    "jumps": null,
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
+  },
+  {
+    "id": 101403,
+    "type": 27,
+    "name": "测试红包",
+    "interaction_type": null,
+    "sells": null,
+    "sell_cond": "道具过期后:expire_time",
+    "cond_sells": "1001:1000",
+    "level": 1,
+    "target_id": null,
+    "asset_name": null,
+    "icon_res": "gui/texture/icon/pack_svip/spriteFrame",
+    "max_count": 1,
+    "max_own": 999,
+    "duration": null,
+    "can_use": 1,
+    "desc": "恭喜发财",
+    "effectDesc": "红包拿来",
+    "trait_id ": null,
+    "layer": null,
+    "rarity": 3,
+    "rarity_color": "B09DED",
+    "jumps": null,
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
+  },
+  {
+    "id": 101501,
+    "type": 11,
+    "name": "奇异瓜测试礼包",
+    "interaction_type": null,
+    "sells": null,
+    "sell_cond": null,
+    "cond_sells": null,
+    "level": 1,
+    "target_id": null,
+    "asset_name": null,
+    "icon_res": "gui/texture/icon/pack_roco/spriteFrame",
+    "max_count": 999,
+    "max_own": 999,
+    "duration": null,
+    "can_use": 1,
+    "desc": "好友互助时，触发护主犬技能获得的礼包；\n打开后，可随机获得以下道具：同气连枝头像框*1、金豆豆*5、金豆豆*10、金币*10000、化肥（1小时）*1、有机化肥（1小时）*1、1天狗粮*1",
+    "effectDesc": "同气连枝随机礼包",
+    "trait_id ": null,
+    "layer": null,
+    "rarity": 4,
+    "rarity_color": "D1A21E",
+    "jumps": null,
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
+  },
+  {
+    "id": 101601,
+    "type": 11,
+    "name": "故友重逢礼包",
+    "interaction_type": null,
+    "sells": null,
+    "sell_cond": null,
+    "cond_sells": null,
+    "level": 1,
+    "target_id": null,
+    "asset_name": null,
+    "icon_res": "gui/texture/icon/pack_friendrecall_friend/spriteFrame",
+    "max_count": 999,
+    "max_own": 999,
+    "duration": null,
+    "can_use": 1,
+    "desc": "故友重逢活动礼包，打开后，可随机获得以下道具：金豆豆*5、金豆豆*10、金币*10000、化肥（1小时）*1、有机化肥（1小时）*1",
+    "effectDesc": "故友重逢礼包",
+    "trait_id ": null,
+    "layer": null,
+    "rarity": 3,
+    "rarity_color": "B09DED",
+    "jumps": null,
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
+  },
+  {
+    "id": 101602,
+    "type": 11,
+    "name": "回归专属礼包",
+    "interaction_type": null,
+    "sells": null,
+    "sell_cond": null,
+    "cond_sells": null,
+    "level": 1,
+    "target_id": null,
+    "asset_name": null,
+    "icon_res": "gui/texture/icon/pack_friendrecall_gift/spriteFrame",
+    "max_count": 999,
+    "max_own": 999,
+    "duration": null,
+    "can_use": 1,
+    "desc": "打开后，可获得600点券、200个化肥（1小时）、200个有机化肥（1小时）。",
+    "effectDesc": "回归专属礼包",
+    "trait_id ": null,
+    "layer": null,
+    "rarity": 3,
+    "rarity_color": "B09DED",
+    "jumps": null,
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
+  },
+  {
+    "id": 101603,
+    "type": 11,
+    "name": "召回成功礼包",
+    "interaction_type": null,
+    "sells": null,
+    "sell_cond": null,
+    "cond_sells": null,
+    "level": 1,
+    "target_id": null,
+    "asset_name": null,
+    "icon_res": "gui/texture/icon/pack_friendrecall_recalled/spriteFrame",
+    "max_count": 999,
+    "max_own": 999,
+    "duration": null,
+    "can_use": 1,
+    "desc": "打开后，可获得200点券。",
+    "effectDesc": "每成功召回1名好友即可领取",
+    "trait_id ": null,
+    "layer": null,
+    "rarity": 3,
+    "rarity_color": "B09DED",
+    "jumps": null,
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 29999,
@@ -2213,7 +3040,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 29998,
@@ -2238,7 +3067,9 @@
     "rarity": 1,
     "rarity_color": "D1A21E",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20002,
@@ -2263,7 +3094,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": "[11]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20003,
@@ -2288,7 +3121,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": "[11]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20059,
@@ -2313,7 +3148,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": "[11]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20065,
@@ -2338,7 +3175,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": "[11]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20064,
@@ -2363,7 +3202,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": "[11]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20060,
@@ -2388,7 +3229,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": "[11]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20061,
@@ -2413,7 +3256,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": "[11]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20004,
@@ -2438,7 +3283,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": "[11]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20066,
@@ -2463,7 +3310,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": "[11]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20005,
@@ -2488,7 +3337,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": "[11]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20071,
@@ -2513,7 +3364,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": "[11]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20096,
@@ -2538,7 +3391,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": "[11]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20099,
@@ -2563,7 +3418,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": "[11]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20006,
@@ -2588,7 +3445,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": "[11]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20051,
@@ -2613,7 +3472,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": "[11]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20120,
@@ -2638,7 +3499,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": "[11]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20259,
@@ -2663,7 +3526,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": "[11]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20007,
@@ -2688,7 +3553,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": "[11]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20098,
@@ -2713,7 +3580,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": "[11]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20305,
@@ -2738,7 +3607,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": "[11]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20105,
@@ -2763,7 +3634,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": "[11]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20008,
@@ -2788,7 +3661,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": "[11]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20037,
@@ -2813,7 +3688,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": "[11]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20041,
@@ -2838,7 +3715,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": "[11]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20161,
@@ -2863,7 +3742,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": "[11]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20110,
@@ -2888,7 +3769,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": "[11]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20143,
@@ -2913,7 +3796,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": "[11]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20147,
@@ -2938,7 +3823,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": "[11]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20162,
@@ -2963,7 +3850,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": "[11]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20009,
@@ -2988,7 +3877,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": "[11]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20097,
@@ -3013,7 +3904,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": "[11]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20306,
@@ -3038,7 +3931,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": "[11]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20103,
@@ -3063,7 +3958,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": "[11]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20010,
@@ -3088,7 +3985,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": "[11]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20308,
@@ -3113,7 +4012,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": "[11]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20091,
@@ -3138,7 +4039,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": "[11]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20073,
@@ -3163,7 +4066,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": "[11]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20001,
@@ -3188,7 +4093,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": "[11]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20011,
@@ -3213,7 +4120,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": "[11]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20062,
@@ -3238,7 +4147,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": "[11]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20104,
@@ -3263,7 +4174,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": "[11]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20135,
@@ -3288,7 +4201,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": "[11]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20141,
@@ -3313,7 +4228,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": "[11]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20142,
@@ -3338,7 +4255,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": "[11]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20145,
@@ -3363,7 +4282,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": "[11]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20014,
@@ -3388,7 +4309,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": "[11]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20070,
@@ -3413,7 +4336,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": "[11]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20015,
@@ -3438,7 +4363,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": "[11]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20100,
@@ -3463,7 +4390,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": "[11]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20018,
@@ -3488,7 +4417,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": "[11]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20047,
@@ -3513,7 +4444,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": "[11]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20019,
@@ -3538,7 +4471,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": "[11]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20128,
@@ -3563,7 +4498,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": "[11]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20013,
@@ -3588,7 +4525,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": "[11]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20044,
@@ -3613,7 +4552,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": "[11]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20072,
@@ -3638,7 +4579,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": "[11]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20396,
@@ -3663,7 +4606,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": "[11]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20023,
@@ -3688,7 +4633,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": "[11]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20095,
@@ -3713,7 +4660,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": "[11]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20026,
@@ -3738,7 +4687,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": "[11]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20050,
@@ -3763,7 +4714,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": "[11]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20027,
@@ -3788,7 +4741,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": "[11]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20036,
@@ -3813,7 +4768,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": "[11]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20043,
@@ -3838,7 +4795,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": "[11]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20029,
@@ -3863,7 +4822,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": "[11]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20049,
@@ -3888,7 +4849,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": "[11]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20052,
@@ -3913,7 +4876,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": "[11]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20031,
@@ -3938,7 +4903,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": "[11]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20045,
@@ -3963,7 +4930,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": "[11]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20054,
@@ -3988,7 +4957,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": "[11]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20442,
@@ -4013,7 +4984,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": "[11]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20033,
@@ -4038,7 +5011,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": "[11]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20055,
@@ -4063,7 +5038,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": "[11]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20034,
@@ -4088,7 +5065,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": "[11]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20413,
@@ -4113,7 +5092,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": "[11]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20035,
@@ -4138,7 +5119,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": "[11]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20067,
@@ -4163,7 +5146,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": "[11]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20038,
@@ -4188,7 +5173,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": "[11]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20053,
@@ -4213,7 +5200,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": "[11]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20080,
@@ -4238,7 +5227,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": "[11]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20039,
@@ -4263,7 +5254,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": "[11]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20056,
@@ -4288,7 +5281,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": "[11]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20075,
@@ -4313,7 +5308,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": "[11]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20042,
@@ -4338,7 +5335,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": "[11]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20057,
@@ -4363,7 +5362,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": "[11]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20048,
@@ -4388,7 +5389,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": "[11]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20058,
@@ -4413,7 +5416,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": "[11]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20079,
@@ -4438,7 +5443,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": "[11]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20218,
@@ -4463,7 +5470,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": "[11]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20077,
@@ -4488,7 +5497,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": "[11]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20220,
@@ -4513,7 +5524,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": "[11]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20076,
@@ -4538,7 +5551,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": "[11]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20116,
@@ -4563,7 +5578,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": "[11]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20126,
@@ -4588,7 +5605,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": "[11]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20063,
@@ -4613,7 +5632,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": "[11]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20221,
@@ -4638,7 +5659,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": "[11]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20068,
@@ -4663,7 +5686,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": "[11]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20222,
@@ -4688,7 +5713,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": "[11]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20078,
@@ -4713,7 +5740,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": "[11]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20074,
@@ -4738,7 +5767,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": "[11]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20083,
@@ -4763,7 +5794,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": "[11]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20225,
@@ -4788,7 +5821,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": "[11]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20084,
@@ -4813,7 +5848,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": "[11]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20226,
@@ -4838,7 +5875,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": "[11]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20085,
@@ -4863,7 +5902,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": "[11]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20227,
@@ -4888,7 +5929,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": "[11]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20086,
@@ -4913,7 +5956,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": "[11]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20228,
@@ -4938,7 +5983,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": "[11]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20087,
@@ -4963,7 +6010,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": "[11]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20235,
@@ -4988,7 +6037,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": "[11]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20088,
@@ -5013,7 +6064,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": "[11]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20201,
@@ -5038,7 +6091,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": "[11]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20089,
@@ -5063,7 +6118,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": "[11]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20202,
@@ -5088,7 +6145,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": "[11]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20090,
@@ -5113,7 +6172,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": "[11]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20229,
@@ -5138,7 +6199,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": "[11]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20174,
@@ -5163,7 +6226,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": "[11]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20204,
@@ -5188,7 +6253,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": "[11]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20022,
@@ -5213,7 +6280,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": "[11]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20242,
@@ -5238,7 +6307,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": "[11]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20188,
@@ -5263,7 +6334,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": "[11]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20106,
@@ -5288,7 +6361,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": "[11]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20101,
@@ -5313,7 +6388,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": "[11]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20102,
@@ -5338,7 +6415,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": "[11]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20182,
@@ -5363,7 +6442,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": "[11]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20069,
@@ -5388,7 +6469,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": "[11]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20124,
@@ -5413,7 +6496,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": "[11]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20115,
@@ -5438,7 +6523,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": "[11]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20187,
@@ -5463,7 +6550,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": "[11]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20131,
@@ -5488,7 +6577,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": "[11]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20132,
@@ -5513,7 +6604,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": "[11]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20172,
@@ -5538,7 +6631,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": "[11]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 21542,
@@ -5563,7 +6658,36 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": "[40]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
+  },
+  {
+    "id": 20329,
+    "type": 5,
+    "name": "发财红包种子",
+    "interaction_type": "plant",
+    "sells": "1001:400",
+    "sell_cond": null,
+    "cond_sells": null,
+    "level": 30,
+    "target_id": null,
+    "asset_name": "Crop_329",
+    "icon_res": null,
+    "max_count": 9999,
+    "max_own": 9999,
+    "duration": null,
+    "can_use": null,
+    "desc": "种植后，可以收获一定数量的发财红包。",
+    "effectDesc": "发财红包",
+    "trait_id ": null,
+    "layer": 8,
+    "rarity": 1,
+    "rarity_color": "D2C5AC",
+    "jumps": "[71]",
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20112,
@@ -5588,7 +6712,9 @@
     "rarity": 2,
     "rarity_color": "A8C1F4",
     "jumps": "[41]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20025,
@@ -5613,7 +6739,9 @@
     "rarity": 2,
     "rarity_color": "A8C1F4",
     "jumps": "[41]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20121,
@@ -5638,7 +6766,9 @@
     "rarity": 2,
     "rarity_color": "A8C1F4",
     "jumps": "[41]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20109,
@@ -5663,7 +6793,9 @@
     "rarity": 2,
     "rarity_color": "A8C1F4",
     "jumps": "[41]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20224,
@@ -5688,7 +6820,9 @@
     "rarity": 3,
     "rarity_color": "B09DED",
     "jumps": "[41]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20249,
@@ -5713,7 +6847,9 @@
     "rarity": 3,
     "rarity_color": "B09DED",
     "jumps": "[41]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 21135,
@@ -5738,7 +6874,9 @@
     "rarity": 2,
     "rarity_color": "A8C1F4",
     "jumps": "[42]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20184,
@@ -5763,7 +6901,9 @@
     "rarity": 2,
     "rarity_color": "A8C1F4",
     "jumps": "[43]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20193,
@@ -5788,7 +6928,9 @@
     "rarity": 2,
     "rarity_color": "A8C1F4",
     "jumps": "[43]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20256,
@@ -5813,7 +6955,9 @@
     "rarity": 2,
     "rarity_color": "A8C1F4",
     "jumps": "[43]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20261,
@@ -5838,7 +6982,9 @@
     "rarity": 2,
     "rarity_color": "A8C1F4",
     "jumps": "[43]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20257,
@@ -5863,7 +7009,9 @@
     "rarity": 3,
     "rarity_color": "B09DED",
     "jumps": "[43]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20258,
@@ -5888,7 +7036,9 @@
     "rarity": 3,
     "rarity_color": "B09DED",
     "jumps": "[43]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20304,
@@ -5913,7 +7063,9 @@
     "rarity": 3,
     "rarity_color": "B09DED",
     "jumps": "[43]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20122,
@@ -5938,7 +7090,9 @@
     "rarity": 2,
     "rarity_color": "A8C1F4",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20134,
@@ -5963,7 +7117,9 @@
     "rarity": 2,
     "rarity_color": "A8C1F4",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20139,
@@ -5988,7 +7144,9 @@
     "rarity": 2,
     "rarity_color": "A8C1F4",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20140,
@@ -6013,7 +7171,9 @@
     "rarity": 2,
     "rarity_color": "A8C1F4",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20144,
@@ -6038,7 +7198,9 @@
     "rarity": 2,
     "rarity_color": "A8C1F4",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20154,
@@ -6063,7 +7225,9 @@
     "rarity": 2,
     "rarity_color": "A8C1F4",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20263,
@@ -6088,7 +7252,9 @@
     "rarity": 2,
     "rarity_color": "A8C1F4",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20269,
@@ -6113,7 +7279,9 @@
     "rarity": 2,
     "rarity_color": "A8C1F4",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20199,
@@ -6138,7 +7306,9 @@
     "rarity": 3,
     "rarity_color": "B09DED",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20262,
@@ -6163,7 +7333,9 @@
     "rarity": 3,
     "rarity_color": "B09DED",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20223,
@@ -6188,7 +7360,9 @@
     "rarity": 3,
     "rarity_color": "B09DED",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20185,
@@ -6213,7 +7387,9 @@
     "rarity": 2,
     "rarity_color": "A8C1F4",
     "jumps": "[48]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20267,
@@ -6238,7 +7414,9 @@
     "rarity": 3,
     "rarity_color": "B09DED",
     "jumps": "[48]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20133,
@@ -6263,7 +7441,9 @@
     "rarity": 2,
     "rarity_color": "A8C1F4",
     "jumps": "[47]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20176,
@@ -6288,7 +7468,9 @@
     "rarity": 2,
     "rarity_color": "A8C1F4",
     "jumps": "[47]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20186,
@@ -6313,7 +7495,9 @@
     "rarity": 2,
     "rarity_color": "A8C1F4",
     "jumps": "[47]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20251,
@@ -6338,7 +7522,9 @@
     "rarity": 2,
     "rarity_color": "A8C1F4",
     "jumps": "[47]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 21044,
@@ -6363,7 +7549,9 @@
     "rarity": 3,
     "rarity_color": "B09DED",
     "jumps": "[47]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 21038,
@@ -6388,7 +7576,9 @@
     "rarity": 3,
     "rarity_color": "B09DED",
     "jumps": "[47]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 21474,
@@ -6413,7 +7603,9 @@
     "rarity": 3,
     "rarity_color": "B09DED",
     "jumps": "[47]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20243,
@@ -6438,7 +7630,9 @@
     "rarity": 3,
     "rarity_color": "B09DED",
     "jumps": "[47]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 21134,
@@ -6463,7 +7657,9 @@
     "rarity": 3,
     "rarity_color": "B09DED",
     "jumps": "[47]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 26127,
@@ -6488,7 +7684,9 @@
     "rarity": 3,
     "rarity_color": "B09DED",
     "jumps": "[47]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20167,
@@ -6513,7 +7711,333 @@
     "rarity": 2,
     "rarity_color": "A8C1F4",
     "jumps": "[45]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
+  },
+  {
+    "id": 21221,
+    "type": 5,
+    "name": "青梅种子",
+    "interaction_type": "plant",
+    "sells": "1001:1000",
+    "sell_cond": null,
+    "cond_sells": null,
+    "level": 21,
+    "target_id": null,
+    "asset_name": "Crop_1221",
+    "icon_res": null,
+    "max_count": 9999,
+    "max_own": 9999,
+    "duration": null,
+    "can_use": null,
+    "desc": "种植后，可以收获一定数量的青梅。",
+    "effectDesc": "青梅",
+    "trait_id ": null,
+    "layer": null,
+    "rarity": 2,
+    "rarity_color": "A8C1F4",
+    "jumps": "[57]",
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
+  },
+  {
+    "id": 20264,
+    "type": 5,
+    "name": "帝王血种子",
+    "interaction_type": "plant",
+    "sells": "1001:1000",
+    "sell_cond": null,
+    "cond_sells": null,
+    "level": 21,
+    "target_id": null,
+    "asset_name": "Crop_264",
+    "icon_res": null,
+    "max_count": 9999,
+    "max_own": 9999,
+    "duration": null,
+    "can_use": null,
+    "desc": "种植后，可以收获一定数量的帝王血。",
+    "effectDesc": "帝王血",
+    "trait_id ": null,
+    "layer": null,
+    "rarity": 2,
+    "rarity_color": "A8C1F4",
+    "jumps": "[60]",
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
+  },
+  {
+    "id": 20108,
+    "type": 5,
+    "name": "铃兰种子",
+    "interaction_type": "plant",
+    "sells": "1001:1000",
+    "sell_cond": null,
+    "cond_sells": null,
+    "level": 21,
+    "target_id": null,
+    "asset_name": "Crop_108",
+    "icon_res": null,
+    "max_count": 9999,
+    "max_own": 9999,
+    "duration": null,
+    "can_use": null,
+    "desc": "种植后，可以收获一定数量的铃兰。",
+    "effectDesc": "铃兰",
+    "trait_id ": null,
+    "layer": null,
+    "rarity": 2,
+    "rarity_color": "A8C1F4",
+    "jumps": "[60]",
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
+  },
+  {
+    "id": 26032,
+    "type": 5,
+    "name": "月见草种子",
+    "interaction_type": "plant",
+    "sells": "1001:1000",
+    "sell_cond": null,
+    "cond_sells": null,
+    "level": 21,
+    "target_id": null,
+    "asset_name": "Crop_6032",
+    "icon_res": null,
+    "max_count": 9999,
+    "max_own": 9999,
+    "duration": null,
+    "can_use": null,
+    "desc": "种植后，可以收获一定数量的月见草。",
+    "effectDesc": "月见草",
+    "trait_id ": null,
+    "layer": null,
+    "rarity": 2,
+    "rarity_color": "A8C1F4",
+    "jumps": "[60]",
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
+  },
+  {
+    "id": 21251,
+    "type": 5,
+    "name": "紫茉莉种子",
+    "interaction_type": "plant",
+    "sells": "1001:1000",
+    "sell_cond": null,
+    "cond_sells": null,
+    "level": 21,
+    "target_id": null,
+    "asset_name": "Crop_1251",
+    "icon_res": null,
+    "max_count": 9999,
+    "max_own": 9999,
+    "duration": null,
+    "can_use": null,
+    "desc": "种植后，可以收获一定数量的紫茉莉。",
+    "effectDesc": "紫茉莉",
+    "trait_id ": null,
+    "layer": null,
+    "rarity": 2,
+    "rarity_color": "A8C1F4",
+    "jumps": "[60]",
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
+  },
+  {
+    "id": 21050,
+    "type": 5,
+    "name": "萱草种子",
+    "interaction_type": "plant",
+    "sells": "1001:2000",
+    "sell_cond": null,
+    "cond_sells": null,
+    "level": 41,
+    "target_id": null,
+    "asset_name": "Crop_1050",
+    "icon_res": null,
+    "max_count": 9999,
+    "max_own": 9999,
+    "duration": null,
+    "can_use": null,
+    "desc": "种植后，可以收获一定数量的萱草。",
+    "effectDesc": "萱草",
+    "trait_id ": null,
+    "layer": null,
+    "rarity": 3,
+    "rarity_color": "B09DED",
+    "jumps": "[60]",
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
+  },
+  {
+    "id": 21404,
+    "type": 5,
+    "name": "月光花种子",
+    "interaction_type": "plant",
+    "sells": "1001:2000",
+    "sell_cond": null,
+    "cond_sells": null,
+    "level": 41,
+    "target_id": null,
+    "asset_name": "Crop_1404",
+    "icon_res": null,
+    "max_count": 9999,
+    "max_own": 9999,
+    "duration": null,
+    "can_use": null,
+    "desc": "种植后，可以收获一定数量的月光花。",
+    "effectDesc": "月光花",
+    "trait_id ": null,
+    "layer": null,
+    "rarity": 3,
+    "rarity_color": "B09DED",
+    "jumps": "[60]",
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
+  },
+  {
+    "id": 21037,
+    "type": 5,
+    "name": "银星海棠种子",
+    "interaction_type": "plant",
+    "sells": "1001:2000",
+    "sell_cond": null,
+    "cond_sells": null,
+    "level": 41,
+    "target_id": null,
+    "asset_name": "Crop_1037",
+    "icon_res": null,
+    "max_count": 9999,
+    "max_own": 9999,
+    "duration": null,
+    "can_use": null,
+    "desc": "种植后，可以收获一定数量的银星海棠。",
+    "effectDesc": "银星海棠",
+    "trait_id ": null,
+    "layer": null,
+    "rarity": 3,
+    "rarity_color": "B09DED",
+    "jumps": "[60]",
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
+  },
+  {
+    "id": 21353,
+    "type": 5,
+    "name": "紫薇种子",
+    "interaction_type": "plant",
+    "sells": "1001:2000",
+    "sell_cond": null,
+    "cond_sells": null,
+    "level": 41,
+    "target_id": null,
+    "asset_name": "Crop_1353",
+    "icon_res": null,
+    "max_count": 9999,
+    "max_own": 9999,
+    "duration": null,
+    "can_use": null,
+    "desc": "种植后，可以收获一定数量的紫薇。",
+    "effectDesc": "紫薇",
+    "trait_id ": null,
+    "layer": null,
+    "rarity": 3,
+    "rarity_color": "B09DED",
+    "jumps": "[60]",
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
+  },
+  {
+    "id": 21380,
+    "type": 5,
+    "name": "梧桐种子",
+    "interaction_type": "plant",
+    "sells": "1001:2000",
+    "sell_cond": null,
+    "cond_sells": null,
+    "level": 41,
+    "target_id": null,
+    "asset_name": "Crop_1380",
+    "icon_res": null,
+    "max_count": 9999,
+    "max_own": 9999,
+    "duration": null,
+    "can_use": null,
+    "desc": "种植后，可以收获一定数量的梧桐。",
+    "effectDesc": "梧桐",
+    "trait_id ": null,
+    "layer": null,
+    "rarity": 3,
+    "rarity_color": "B09DED",
+    "jumps": "[60]",
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
+  },
+  {
+    "id": 20129,
+    "type": 5,
+    "name": "勿忘我种子",
+    "interaction_type": "plant",
+    "sells": "1001:2000",
+    "sell_cond": null,
+    "cond_sells": null,
+    "level": 41,
+    "target_id": null,
+    "asset_name": "Crop_129",
+    "icon_res": null,
+    "max_count": 9999,
+    "max_own": 9999,
+    "duration": null,
+    "can_use": null,
+    "desc": "种植后，可以收获一定数量的勿忘我。",
+    "effectDesc": "勿忘我",
+    "trait_id ": null,
+    "layer": null,
+    "rarity": 3,
+    "rarity_color": "B09DED",
+    "jumps": "[60]",
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
+  },
+  {
+    "id": 20375,
+    "type": 5,
+    "name": "木槿种子",
+    "interaction_type": "plant",
+    "sells": "1001:2000",
+    "sell_cond": null,
+    "cond_sells": null,
+    "level": 41,
+    "target_id": null,
+    "asset_name": "Crop_375",
+    "icon_res": null,
+    "max_count": 9999,
+    "max_own": 9999,
+    "duration": null,
+    "can_use": null,
+    "desc": "种植后，可以收获一定数量的木槿。",
+    "effectDesc": "木槿",
+    "trait_id ": null,
+    "layer": null,
+    "rarity": 3,
+    "rarity_color": "B09DED",
+    "jumps": "[60]",
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20136,
@@ -6538,7 +8062,9 @@
     "rarity": 2,
     "rarity_color": "A8C1F4",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20111,
@@ -6563,7 +8089,9 @@
     "rarity": 2,
     "rarity_color": "A8C1F4",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20118,
@@ -6588,57 +8116,9 @@
     "rarity": 2,
     "rarity_color": "A8C1F4",
     "jumps": null,
-    "ware_scale": null
-  },
-  {
-    "id": 20265,
-    "type": 5,
-    "name": "朱雀花种子",
-    "interaction_type": "plant",
-    "sells": "1001:2000",
-    "sell_cond": null,
-    "cond_sells": null,
-    "level": 61,
-    "target_id": null,
-    "asset_name": "Crop_265",
-    "icon_res": null,
-    "max_count": 9999,
-    "max_own": 9999,
-    "duration": null,
-    "can_use": null,
-    "desc": "种植后，可以收获一定数量的朱雀花。",
-    "effectDesc": "朱雀花",
-    "trait_id ": null,
-    "layer": 21,
-    "rarity": 3,
-    "rarity_color": "B09DED",
-    "jumps": null,
-    "ware_scale": null
-  },
-  {
-    "id": 20129,
-    "type": 5,
-    "name": "勿忘我种子",
-    "interaction_type": "plant",
-    "sells": "1001:1000",
-    "sell_cond": null,
-    "cond_sells": null,
-    "level": 81,
-    "target_id": null,
-    "asset_name": "Crop_129",
-    "icon_res": null,
-    "max_count": 9999,
-    "max_own": 9999,
-    "duration": null,
-    "can_use": null,
-    "desc": "种植后，可以收获一定数量的勿忘我。",
-    "effectDesc": "勿忘我",
-    "trait_id ": null,
-    "layer": 23,
-    "rarity": 2,
-    "rarity_color": "A8C1F4",
-    "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20114,
@@ -6663,57 +8143,9 @@
     "rarity": 2,
     "rarity_color": "A8C1F4",
     "jumps": null,
-    "ware_scale": null
-  },
-  {
-    "id": 20264,
-    "type": 5,
-    "name": "红色郁金香种子",
-    "interaction_type": "plant",
-    "sells": "1001:1000",
-    "sell_cond": null,
-    "cond_sells": null,
-    "level": 81,
-    "target_id": null,
-    "asset_name": "Crop_264",
-    "icon_res": null,
-    "max_count": 9999,
-    "max_own": 9999,
-    "duration": null,
-    "can_use": null,
-    "desc": "种植后，可以收获一定数量的红色郁金香。",
-    "effectDesc": "红色郁金香",
-    "trait_id ": null,
-    "layer": 23,
-    "rarity": 2,
-    "rarity_color": "A8C1F4",
-    "jumps": null,
-    "ware_scale": null
-  },
-  {
-    "id": 20266,
-    "type": 5,
-    "name": "羊乳花种子",
-    "interaction_type": "plant",
-    "sells": "1001:2000",
-    "sell_cond": null,
-    "cond_sells": null,
-    "level": 81,
-    "target_id": null,
-    "asset_name": "Crop_266",
-    "icon_res": null,
-    "max_count": 9999,
-    "max_own": 9999,
-    "duration": null,
-    "can_use": null,
-    "desc": "种植后，可以收获一定数量的羊乳花。",
-    "effectDesc": "羊乳花",
-    "trait_id ": null,
-    "layer": 26,
-    "rarity": 3,
-    "rarity_color": "B09DED",
-    "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20165,
@@ -6738,7 +8170,9 @@
     "rarity": 2,
     "rarity_color": "A8C1F4",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20107,
@@ -6763,7 +8197,9 @@
     "rarity": 2,
     "rarity_color": "A8C1F4",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20130,
@@ -6788,32 +8224,9 @@
     "rarity": 2,
     "rarity_color": "A8C1F4",
     "jumps": null,
-    "ware_scale": null
-  },
-  {
-    "id": 20108,
-    "type": 5,
-    "name": "铃兰种子",
-    "interaction_type": "plant",
-    "sells": "1001:1000",
-    "sell_cond": null,
-    "cond_sells": null,
-    "level": 101,
-    "target_id": null,
-    "asset_name": "Crop_108",
-    "icon_res": null,
-    "max_count": 9999,
-    "max_own": 9999,
-    "duration": null,
-    "can_use": null,
-    "desc": "种植后，可以收获一定数量的铃兰。",
-    "effectDesc": "铃兰",
-    "trait_id ": null,
-    "layer": 28,
-    "rarity": 2,
-    "rarity_color": "A8C1F4",
-    "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20123,
@@ -6838,7 +8251,9 @@
     "rarity": 2,
     "rarity_color": "A8C1F4",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20046,
@@ -6863,7 +8278,9 @@
     "rarity": 4,
     "rarity_color": "D1A21E",
     "jumps": "[41]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20416,
@@ -6888,7 +8305,9 @@
     "rarity": 4,
     "rarity_color": "D1A21E",
     "jumps": "[43]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 21032,
@@ -6913,7 +8332,36 @@
     "rarity": 4,
     "rarity_color": "D1A21E",
     "jumps": "[47]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
+  },
+  {
+    "id": 29003,
+    "type": 5,
+    "name": "星语铃花种子",
+    "interaction_type": "plant",
+    "sells": "1001:12000",
+    "sell_cond": null,
+    "cond_sells": null,
+    "level": 200,
+    "target_id": null,
+    "asset_name": "Crop_9003",
+    "icon_res": null,
+    "max_count": 9999,
+    "max_own": 9999,
+    "duration": null,
+    "can_use": null,
+    "desc": "种植后，可以收获一定数量的星语铃花。",
+    "effectDesc": "星语铃花",
+    "trait_id ": null,
+    "layer": null,
+    "rarity": 4,
+    "rarity_color": "D1A21E",
+    "jumps": "[60]",
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20219,
@@ -6938,7 +8386,9 @@
     "rarity": 4,
     "rarity_color": "D1A21E",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 20092,
@@ -6963,7 +8413,9 @@
     "rarity": 4,
     "rarity_color": "D1A21E",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 30184,
@@ -6988,7 +8440,9 @@
     "rarity": 2,
     "rarity_color": "A8C1F4",
     "jumps": null,
-    "ware_scale": 0.6
+    "jumps_dtype": null,
+    "ware_scale": 0.6,
+    "activity_id": null
   },
   {
     "id": 30193,
@@ -7013,7 +8467,9 @@
     "rarity": 2,
     "rarity_color": "A8C1F4",
     "jumps": null,
-    "ware_scale": 0.6
+    "jumps_dtype": null,
+    "ware_scale": 0.6,
+    "activity_id": null
   },
   {
     "id": 30256,
@@ -7038,7 +8494,9 @@
     "rarity": 2,
     "rarity_color": "A8C1F4",
     "jumps": null,
-    "ware_scale": 0.6
+    "jumps_dtype": null,
+    "ware_scale": 0.6,
+    "activity_id": null
   },
   {
     "id": 30261,
@@ -7063,7 +8521,9 @@
     "rarity": 2,
     "rarity_color": "A8C1F4",
     "jumps": null,
-    "ware_scale": 0.6
+    "jumps_dtype": null,
+    "ware_scale": 0.6,
+    "activity_id": null
   },
   {
     "id": 30263,
@@ -7088,7 +8548,9 @@
     "rarity": 2,
     "rarity_color": "A8C1F4",
     "jumps": null,
-    "ware_scale": 0.6
+    "jumps_dtype": null,
+    "ware_scale": 0.6,
+    "activity_id": null
   },
   {
     "id": 30154,
@@ -7113,7 +8575,9 @@
     "rarity": 2,
     "rarity_color": "A8C1F4",
     "jumps": null,
-    "ware_scale": 0.6
+    "jumps_dtype": null,
+    "ware_scale": 0.6,
+    "activity_id": null
   },
   {
     "id": 30223,
@@ -7138,7 +8602,9 @@
     "rarity": 3,
     "rarity_color": "B09DED",
     "jumps": null,
-    "ware_scale": 0.6
+    "jumps_dtype": null,
+    "ware_scale": 0.6,
+    "activity_id": null
   },
   {
     "id": 30224,
@@ -7163,7 +8629,9 @@
     "rarity": 3,
     "rarity_color": "B09DED",
     "jumps": null,
-    "ware_scale": 0.6
+    "jumps_dtype": null,
+    "ware_scale": 0.6,
+    "activity_id": null
   },
   {
     "id": 30134,
@@ -7188,7 +8656,9 @@
     "rarity": 2,
     "rarity_color": "A8C1F4",
     "jumps": null,
-    "ware_scale": 0.6
+    "jumps_dtype": null,
+    "ware_scale": 0.6,
+    "activity_id": null
   },
   {
     "id": 30136,
@@ -7213,7 +8683,9 @@
     "rarity": 2,
     "rarity_color": "A8C1F4",
     "jumps": null,
-    "ware_scale": 0.6
+    "jumps_dtype": null,
+    "ware_scale": 0.6,
+    "activity_id": null
   },
   {
     "id": 30139,
@@ -7238,7 +8710,9 @@
     "rarity": 2,
     "rarity_color": "A8C1F4",
     "jumps": null,
-    "ware_scale": 0.6
+    "jumps_dtype": null,
+    "ware_scale": 0.6,
+    "activity_id": null
   },
   {
     "id": 30140,
@@ -7263,7 +8737,9 @@
     "rarity": 2,
     "rarity_color": "A8C1F4",
     "jumps": null,
-    "ware_scale": 0.6
+    "jumps_dtype": null,
+    "ware_scale": 0.6,
+    "activity_id": null
   },
   {
     "id": 30269,
@@ -7288,7 +8764,9 @@
     "rarity": 2,
     "rarity_color": "A8C1F4",
     "jumps": null,
-    "ware_scale": 0.6
+    "jumps_dtype": null,
+    "ware_scale": 0.6,
+    "activity_id": null
   },
   {
     "id": 30111,
@@ -7313,7 +8791,9 @@
     "rarity": 2,
     "rarity_color": "A8C1F4",
     "jumps": null,
-    "ware_scale": 0.6
+    "jumps_dtype": null,
+    "ware_scale": 0.6,
+    "activity_id": null
   },
   {
     "id": 30257,
@@ -7338,7 +8818,9 @@
     "rarity": 3,
     "rarity_color": "B09DED",
     "jumps": null,
-    "ware_scale": 0.6
+    "jumps_dtype": null,
+    "ware_scale": 0.6,
+    "activity_id": null
   },
   {
     "id": 30258,
@@ -7363,7 +8845,9 @@
     "rarity": 3,
     "rarity_color": "B09DED",
     "jumps": null,
-    "ware_scale": 0.6
+    "jumps_dtype": null,
+    "ware_scale": 0.6,
+    "activity_id": null
   },
   {
     "id": 30122,
@@ -7388,7 +8872,9 @@
     "rarity": 2,
     "rarity_color": "A8C1F4",
     "jumps": null,
-    "ware_scale": 0.6
+    "jumps_dtype": null,
+    "ware_scale": 0.6,
+    "activity_id": null
   },
   {
     "id": 30144,
@@ -7413,7 +8899,9 @@
     "rarity": 2,
     "rarity_color": "A8C1F4",
     "jumps": null,
-    "ware_scale": 0.6
+    "jumps_dtype": null,
+    "ware_scale": 0.6,
+    "activity_id": null
   },
   {
     "id": 30118,
@@ -7438,7 +8926,9 @@
     "rarity": 2,
     "rarity_color": "A8C1F4",
     "jumps": null,
-    "ware_scale": 0.6
+    "jumps_dtype": null,
+    "ware_scale": 0.6,
+    "activity_id": null
   },
   {
     "id": 30112,
@@ -7463,7 +8953,9 @@
     "rarity": 2,
     "rarity_color": "A8C1F4",
     "jumps": null,
-    "ware_scale": 0.6
+    "jumps_dtype": null,
+    "ware_scale": 0.6,
+    "activity_id": null
   },
   {
     "id": 30113,
@@ -7488,7 +8980,9 @@
     "rarity": 2,
     "rarity_color": "A8C1F4",
     "jumps": null,
-    "ware_scale": 0.6
+    "jumps_dtype": null,
+    "ware_scale": 0.6,
+    "activity_id": null
   },
   {
     "id": 30025,
@@ -7513,7 +9007,9 @@
     "rarity": 2,
     "rarity_color": "A8C1F4",
     "jumps": null,
-    "ware_scale": 0.6
+    "jumps_dtype": null,
+    "ware_scale": 0.6,
+    "activity_id": null
   },
   {
     "id": 30249,
@@ -7538,7 +9034,9 @@
     "rarity": 3,
     "rarity_color": "B09DED",
     "jumps": null,
-    "ware_scale": 0.6
+    "jumps_dtype": null,
+    "ware_scale": 0.6,
+    "activity_id": null
   },
   {
     "id": 30265,
@@ -7563,7 +9061,9 @@
     "rarity": 3,
     "rarity_color": "B09DED",
     "jumps": null,
-    "ware_scale": 0.6
+    "jumps_dtype": null,
+    "ware_scale": 0.6,
+    "activity_id": null
   },
   {
     "id": 30121,
@@ -7588,7 +9088,9 @@
     "rarity": 2,
     "rarity_color": "A8C1F4",
     "jumps": null,
-    "ware_scale": 0.6
+    "jumps_dtype": null,
+    "ware_scale": 0.6,
+    "activity_id": null
   },
   {
     "id": 30129,
@@ -7613,7 +9115,9 @@
     "rarity": 2,
     "rarity_color": "A8C1F4",
     "jumps": null,
-    "ware_scale": 0.6
+    "jumps_dtype": null,
+    "ware_scale": 0.6,
+    "activity_id": null
   },
   {
     "id": 30109,
@@ -7638,7 +9142,9 @@
     "rarity": 2,
     "rarity_color": "A8C1F4",
     "jumps": null,
-    "ware_scale": 0.6
+    "jumps_dtype": null,
+    "ware_scale": 0.6,
+    "activity_id": null
   },
   {
     "id": 30185,
@@ -7663,7 +9169,9 @@
     "rarity": 2,
     "rarity_color": "A8C1F4",
     "jumps": null,
-    "ware_scale": 0.6
+    "jumps_dtype": null,
+    "ware_scale": 0.6,
+    "activity_id": null
   },
   {
     "id": 30114,
@@ -7688,7 +9196,9 @@
     "rarity": 2,
     "rarity_color": "A8C1F4",
     "jumps": null,
-    "ware_scale": 0.6
+    "jumps_dtype": null,
+    "ware_scale": 0.6,
+    "activity_id": null
   },
   {
     "id": 30264,
@@ -7713,7 +9223,9 @@
     "rarity": 2,
     "rarity_color": "A8C1F4",
     "jumps": null,
-    "ware_scale": 0.6
+    "jumps_dtype": null,
+    "ware_scale": 0.6,
+    "activity_id": null
   },
   {
     "id": 30266,
@@ -7738,7 +9250,9 @@
     "rarity": 3,
     "rarity_color": "B09DED",
     "jumps": null,
-    "ware_scale": 0.6
+    "jumps_dtype": null,
+    "ware_scale": 0.6,
+    "activity_id": null
   },
   {
     "id": 30304,
@@ -7763,7 +9277,9 @@
     "rarity": 3,
     "rarity_color": "B09DED",
     "jumps": null,
-    "ware_scale": 0.6
+    "jumps_dtype": null,
+    "ware_scale": 0.6,
+    "activity_id": null
   },
   {
     "id": 30165,
@@ -7788,7 +9304,9 @@
     "rarity": 2,
     "rarity_color": "A8C1F4",
     "jumps": null,
-    "ware_scale": 0.6
+    "jumps_dtype": null,
+    "ware_scale": 0.6,
+    "activity_id": null
   },
   {
     "id": 30107,
@@ -7813,7 +9331,9 @@
     "rarity": 2,
     "rarity_color": "A8C1F4",
     "jumps": null,
-    "ware_scale": 0.6
+    "jumps_dtype": null,
+    "ware_scale": 0.6,
+    "activity_id": null
   },
   {
     "id": 30130,
@@ -7838,7 +9358,9 @@
     "rarity": 2,
     "rarity_color": "A8C1F4",
     "jumps": null,
-    "ware_scale": 0.6
+    "jumps_dtype": null,
+    "ware_scale": 0.6,
+    "activity_id": null
   },
   {
     "id": 30108,
@@ -7863,7 +9385,9 @@
     "rarity": 2,
     "rarity_color": "A8C1F4",
     "jumps": null,
-    "ware_scale": 0.6
+    "jumps_dtype": null,
+    "ware_scale": 0.6,
+    "activity_id": null
   },
   {
     "id": 30186,
@@ -7888,7 +9412,9 @@
     "rarity": 2,
     "rarity_color": "A8C1F4",
     "jumps": null,
-    "ware_scale": 0.6
+    "jumps_dtype": null,
+    "ware_scale": 0.6,
+    "activity_id": null
   },
   {
     "id": 30123,
@@ -7913,7 +9439,9 @@
     "rarity": 2,
     "rarity_color": "A8C1F4",
     "jumps": null,
-    "ware_scale": 0.6
+    "jumps_dtype": null,
+    "ware_scale": 0.6,
+    "activity_id": null
   },
   {
     "id": 30199,
@@ -7938,7 +9466,9 @@
     "rarity": 3,
     "rarity_color": "B09DED",
     "jumps": null,
-    "ware_scale": 0.6
+    "jumps_dtype": null,
+    "ware_scale": 0.6,
+    "activity_id": null
   },
   {
     "id": 30262,
@@ -7963,7 +9493,9 @@
     "rarity": 3,
     "rarity_color": "B09DED",
     "jumps": null,
-    "ware_scale": 0.6
+    "jumps_dtype": null,
+    "ware_scale": 0.6,
+    "activity_id": null
   },
   {
     "id": 40002,
@@ -7988,7 +9520,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40003,
@@ -8013,7 +9547,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40059,
@@ -8038,7 +9574,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40065,
@@ -8063,7 +9601,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40064,
@@ -8088,7 +9628,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40060,
@@ -8113,7 +9655,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40061,
@@ -8138,7 +9682,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40004,
@@ -8163,7 +9709,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40066,
@@ -8188,7 +9736,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40005,
@@ -8213,7 +9763,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40071,
@@ -8238,7 +9790,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40096,
@@ -8263,7 +9817,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40099,
@@ -8288,7 +9844,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40006,
@@ -8313,7 +9871,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40051,
@@ -8338,7 +9898,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40120,
@@ -8363,7 +9925,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40259,
@@ -8388,7 +9952,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40007,
@@ -8413,7 +9979,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40098,
@@ -8438,7 +10006,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40305,
@@ -8463,7 +10033,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40105,
@@ -8488,7 +10060,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40008,
@@ -8513,7 +10087,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40037,
@@ -8538,7 +10114,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40041,
@@ -8563,7 +10141,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40161,
@@ -8588,7 +10168,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40110,
@@ -8613,7 +10195,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40143,
@@ -8638,7 +10222,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40147,
@@ -8663,7 +10249,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40162,
@@ -8688,7 +10276,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40009,
@@ -8713,7 +10303,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40097,
@@ -8738,7 +10330,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40306,
@@ -8763,7 +10357,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40103,
@@ -8788,7 +10384,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40010,
@@ -8813,7 +10411,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40308,
@@ -8838,7 +10438,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40091,
@@ -8863,7 +10465,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40073,
@@ -8888,7 +10492,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40001,
@@ -8913,7 +10519,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40011,
@@ -8938,7 +10546,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40062,
@@ -8963,7 +10573,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40104,
@@ -8988,7 +10600,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40135,
@@ -9013,7 +10627,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40141,
@@ -9038,7 +10654,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40142,
@@ -9063,7 +10681,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40145,
@@ -9088,7 +10708,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40014,
@@ -9113,7 +10735,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40070,
@@ -9138,7 +10762,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40015,
@@ -9163,7 +10789,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40100,
@@ -9188,7 +10816,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40018,
@@ -9213,7 +10843,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40047,
@@ -9238,7 +10870,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40019,
@@ -9263,7 +10897,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40128,
@@ -9288,7 +10924,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40013,
@@ -9313,7 +10951,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40044,
@@ -9338,7 +10978,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40072,
@@ -9363,7 +11005,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40396,
@@ -9388,7 +11032,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40023,
@@ -9413,7 +11059,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40095,
@@ -9438,7 +11086,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40026,
@@ -9463,7 +11113,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40050,
@@ -9488,7 +11140,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40027,
@@ -9513,7 +11167,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40036,
@@ -9538,7 +11194,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40043,
@@ -9563,7 +11221,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40029,
@@ -9588,7 +11248,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40049,
@@ -9613,7 +11275,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40052,
@@ -9638,7 +11302,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40031,
@@ -9663,7 +11329,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40045,
@@ -9688,7 +11356,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40054,
@@ -9713,7 +11383,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40442,
@@ -9738,7 +11410,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40033,
@@ -9763,7 +11437,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40055,
@@ -9788,7 +11464,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40034,
@@ -9813,7 +11491,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40413,
@@ -9838,7 +11518,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40035,
@@ -9863,7 +11545,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40067,
@@ -9888,7 +11572,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40038,
@@ -9913,7 +11599,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40053,
@@ -9938,7 +11626,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40080,
@@ -9963,7 +11653,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40039,
@@ -9988,7 +11680,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40056,
@@ -10013,7 +11707,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40075,
@@ -10038,7 +11734,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40042,
@@ -10063,7 +11761,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40057,
@@ -10088,7 +11788,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40048,
@@ -10113,7 +11815,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40058,
@@ -10138,7 +11842,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40079,
@@ -10163,7 +11869,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40218,
@@ -10188,7 +11896,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40077,
@@ -10213,7 +11923,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40220,
@@ -10238,7 +11950,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40076,
@@ -10263,7 +11977,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40116,
@@ -10288,7 +12004,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40126,
@@ -10313,7 +12031,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40063,
@@ -10338,7 +12058,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40221,
@@ -10363,7 +12085,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40068,
@@ -10388,7 +12112,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40222,
@@ -10413,7 +12139,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40078,
@@ -10438,7 +12166,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40074,
@@ -10463,7 +12193,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40083,
@@ -10488,7 +12220,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40225,
@@ -10513,7 +12247,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40084,
@@ -10538,7 +12274,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40226,
@@ -10563,7 +12301,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40085,
@@ -10588,7 +12328,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40227,
@@ -10613,7 +12355,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40086,
@@ -10638,7 +12382,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40228,
@@ -10663,7 +12409,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40087,
@@ -10688,7 +12436,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40235,
@@ -10713,7 +12463,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40088,
@@ -10738,7 +12490,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40201,
@@ -10763,7 +12517,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40089,
@@ -10788,7 +12544,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40202,
@@ -10813,7 +12571,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40090,
@@ -10838,7 +12598,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40229,
@@ -10863,7 +12625,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40174,
@@ -10888,7 +12652,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40204,
@@ -10913,7 +12679,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40022,
@@ -10938,7 +12706,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40242,
@@ -10963,7 +12733,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40188,
@@ -10988,7 +12760,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40106,
@@ -11013,7 +12787,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40101,
@@ -11038,7 +12814,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40102,
@@ -11063,7 +12841,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40182,
@@ -11088,7 +12868,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40069,
@@ -11113,7 +12895,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40124,
@@ -11138,7 +12922,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40115,
@@ -11163,7 +12949,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40187,
@@ -11188,7 +12976,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40131,
@@ -11213,7 +13003,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40132,
@@ -11238,7 +13030,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40172,
@@ -11263,7 +13057,9 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40112,
@@ -11288,7 +13084,9 @@
     "rarity": 2,
     "rarity_color": "A8C1F4",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40025,
@@ -11313,7 +13111,9 @@
     "rarity": 2,
     "rarity_color": "A8C1F4",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40121,
@@ -11338,7 +13138,9 @@
     "rarity": 2,
     "rarity_color": "A8C1F4",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40109,
@@ -11363,7 +13165,9 @@
     "rarity": 2,
     "rarity_color": "A8C1F4",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40224,
@@ -11388,7 +13192,9 @@
     "rarity": 3,
     "rarity_color": "B09DED",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40249,
@@ -11413,7 +13219,9 @@
     "rarity": 3,
     "rarity_color": "B09DED",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 41135,
@@ -11438,7 +13246,9 @@
     "rarity": 2,
     "rarity_color": "A8C1F4",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40184,
@@ -11463,7 +13273,9 @@
     "rarity": 2,
     "rarity_color": "A8C1F4",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40193,
@@ -11488,7 +13300,9 @@
     "rarity": 2,
     "rarity_color": "A8C1F4",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40256,
@@ -11513,7 +13327,9 @@
     "rarity": 2,
     "rarity_color": "A8C1F4",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40261,
@@ -11538,7 +13354,9 @@
     "rarity": 2,
     "rarity_color": "A8C1F4",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40257,
@@ -11563,7 +13381,9 @@
     "rarity": 3,
     "rarity_color": "B09DED",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40258,
@@ -11588,7 +13408,9 @@
     "rarity": 3,
     "rarity_color": "B09DED",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40304,
@@ -11613,7 +13435,9 @@
     "rarity": 3,
     "rarity_color": "B09DED",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 49001,
@@ -11638,7 +13462,9 @@
     "rarity": 3,
     "rarity_color": "B09DED",
     "jumps": "[43]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 49002,
@@ -11663,7 +13489,9 @@
     "rarity": 4,
     "rarity_color": "D1A21E",
     "jumps": "[43]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40122,
@@ -11688,7 +13516,9 @@
     "rarity": 2,
     "rarity_color": "A8C1F4",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40134,
@@ -11713,7 +13543,9 @@
     "rarity": 2,
     "rarity_color": "A8C1F4",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40139,
@@ -11738,7 +13570,9 @@
     "rarity": 2,
     "rarity_color": "A8C1F4",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40140,
@@ -11763,7 +13597,9 @@
     "rarity": 2,
     "rarity_color": "A8C1F4",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40144,
@@ -11788,7 +13624,9 @@
     "rarity": 2,
     "rarity_color": "A8C1F4",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40154,
@@ -11813,7 +13651,9 @@
     "rarity": 2,
     "rarity_color": "A8C1F4",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40263,
@@ -11838,7 +13678,9 @@
     "rarity": 2,
     "rarity_color": "A8C1F4",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40269,
@@ -11863,7 +13705,9 @@
     "rarity": 2,
     "rarity_color": "A8C1F4",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40199,
@@ -11888,7 +13732,9 @@
     "rarity": 3,
     "rarity_color": "B09DED",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40262,
@@ -11913,7 +13759,9 @@
     "rarity": 3,
     "rarity_color": "B09DED",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40223,
@@ -11938,7 +13786,9 @@
     "rarity": 3,
     "rarity_color": "B09DED",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40185,
@@ -11963,7 +13813,9 @@
     "rarity": 2,
     "rarity_color": "A8C1F4",
     "jumps": "[48]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40267,
@@ -11988,7 +13840,9 @@
     "rarity": 3,
     "rarity_color": "B09DED",
     "jumps": "[48]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40133,
@@ -12013,7 +13867,9 @@
     "rarity": 2,
     "rarity_color": "A8C1F4",
     "jumps": "[47]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40176,
@@ -12038,7 +13894,9 @@
     "rarity": 2,
     "rarity_color": "A8C1F4",
     "jumps": "[47]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40186,
@@ -12063,7 +13921,9 @@
     "rarity": 2,
     "rarity_color": "A8C1F4",
     "jumps": "[47]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40251,
@@ -12088,7 +13948,9 @@
     "rarity": 2,
     "rarity_color": "A8C1F4",
     "jumps": "[47]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 41044,
@@ -12113,7 +13975,9 @@
     "rarity": 3,
     "rarity_color": "B09DED",
     "jumps": "[47]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 41038,
@@ -12138,7 +14002,9 @@
     "rarity": 3,
     "rarity_color": "B09DED",
     "jumps": "[47]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 41474,
@@ -12163,7 +14029,9 @@
     "rarity": 3,
     "rarity_color": "B09DED",
     "jumps": "[47]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40243,
@@ -12188,7 +14056,9 @@
     "rarity": 3,
     "rarity_color": "B09DED",
     "jumps": "[47]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 41134,
@@ -12213,7 +14083,9 @@
     "rarity": 3,
     "rarity_color": "B09DED",
     "jumps": "[47]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 46127,
@@ -12238,7 +14110,9 @@
     "rarity": 3,
     "rarity_color": "B09DED",
     "jumps": "[47]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 46109,
@@ -12263,7 +14137,9 @@
     "rarity": 3,
     "rarity_color": "B09DED",
     "jumps": "[47]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 41032,
@@ -12288,7 +14164,9 @@
     "rarity": 4,
     "rarity_color": "D1A21E",
     "jumps": "[47]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40167,
@@ -12313,7 +14191,9 @@
     "rarity": 2,
     "rarity_color": "A8C1F4",
     "jumps": "[45]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40804,
@@ -12338,7 +14218,360 @@
     "rarity": 2,
     "rarity_color": "A8C1F4",
     "jumps": "[45]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
+  },
+  {
+    "id": 41221,
+    "type": 6,
+    "name": "青梅",
+    "interaction_type": null,
+    "sells": null,
+    "sell_cond": "活动结束后:2026080102",
+    "cond_sells": "1001:240",
+    "level": 21,
+    "target_id": null,
+    "asset_name": "Crop_1221",
+    "icon_res": null,
+    "max_count": 99999,
+    "max_own": 999990,
+    "duration": null,
+    "can_use": null,
+    "desc": "卖给商人后，可以获得金币，活动期间不售卖。",
+    "effectDesc": "卖给商人后，可以获得金币。",
+    "trait_id ": null,
+    "layer": null,
+    "rarity": 2,
+    "rarity_color": "A8C1F4",
+    "jumps": "[57]",
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
+  },
+  {
+    "id": 40264,
+    "type": 6,
+    "name": "帝王血",
+    "interaction_type": null,
+    "sells": "1001:240",
+    "sell_cond": null,
+    "cond_sells": null,
+    "level": 21,
+    "target_id": null,
+    "asset_name": "Crop_264",
+    "icon_res": null,
+    "max_count": 99999,
+    "max_own": 999990,
+    "duration": null,
+    "can_use": null,
+    "desc": "卖给商人后，可以获得金币。",
+    "effectDesc": "卖给商人后，可以获得金币。",
+    "trait_id ": null,
+    "layer": null,
+    "rarity": 2,
+    "rarity_color": "A8C1F4",
+    "jumps": "[60]",
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
+  },
+  {
+    "id": 40108,
+    "type": 6,
+    "name": "铃兰",
+    "interaction_type": null,
+    "sells": "1001:240",
+    "sell_cond": null,
+    "cond_sells": null,
+    "level": 21,
+    "target_id": null,
+    "asset_name": "Crop_108",
+    "icon_res": null,
+    "max_count": 99999,
+    "max_own": 999990,
+    "duration": null,
+    "can_use": null,
+    "desc": "卖给商人后，可以获得金币。",
+    "effectDesc": "卖给商人后，可以获得金币。",
+    "trait_id ": null,
+    "layer": null,
+    "rarity": 2,
+    "rarity_color": "A8C1F4",
+    "jumps": "[60]",
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
+  },
+  {
+    "id": 46032,
+    "type": 6,
+    "name": "月见草",
+    "interaction_type": null,
+    "sells": "1001:240",
+    "sell_cond": null,
+    "cond_sells": null,
+    "level": 21,
+    "target_id": null,
+    "asset_name": "Crop_6032",
+    "icon_res": null,
+    "max_count": 99999,
+    "max_own": 999990,
+    "duration": null,
+    "can_use": null,
+    "desc": "卖给商人后，可以获得金币。",
+    "effectDesc": "卖给商人后，可以获得金币。",
+    "trait_id ": null,
+    "layer": null,
+    "rarity": 2,
+    "rarity_color": "A8C1F4",
+    "jumps": "[60]",
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
+  },
+  {
+    "id": 41251,
+    "type": 6,
+    "name": "紫茉莉",
+    "interaction_type": null,
+    "sells": "1001:240",
+    "sell_cond": null,
+    "cond_sells": null,
+    "level": 21,
+    "target_id": null,
+    "asset_name": "Crop_1251",
+    "icon_res": null,
+    "max_count": 99999,
+    "max_own": 999990,
+    "duration": null,
+    "can_use": null,
+    "desc": "卖给商人后，可以获得金币。",
+    "effectDesc": "卖给商人后，可以获得金币。",
+    "trait_id ": null,
+    "layer": null,
+    "rarity": 2,
+    "rarity_color": "A8C1F4",
+    "jumps": "[60]",
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
+  },
+  {
+    "id": 41050,
+    "type": 6,
+    "name": "萱草",
+    "interaction_type": null,
+    "sells": "1001:280",
+    "sell_cond": null,
+    "cond_sells": null,
+    "level": 41,
+    "target_id": null,
+    "asset_name": "Crop_1050",
+    "icon_res": null,
+    "max_count": 99999,
+    "max_own": 999990,
+    "duration": null,
+    "can_use": null,
+    "desc": "卖给商人后，可以获得金币。",
+    "effectDesc": "卖给商人后，可以获得金币。",
+    "trait_id ": null,
+    "layer": null,
+    "rarity": 3,
+    "rarity_color": "B09DED",
+    "jumps": "[60]",
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
+  },
+  {
+    "id": 41404,
+    "type": 6,
+    "name": "月光花",
+    "interaction_type": null,
+    "sells": "1001:280",
+    "sell_cond": null,
+    "cond_sells": null,
+    "level": 41,
+    "target_id": null,
+    "asset_name": "Crop_1404",
+    "icon_res": null,
+    "max_count": 99999,
+    "max_own": 999990,
+    "duration": null,
+    "can_use": null,
+    "desc": "卖给商人后，可以获得金币。",
+    "effectDesc": "卖给商人后，可以获得金币。",
+    "trait_id ": null,
+    "layer": null,
+    "rarity": 3,
+    "rarity_color": "B09DED",
+    "jumps": "[60]",
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
+  },
+  {
+    "id": 41037,
+    "type": 6,
+    "name": "银星海棠",
+    "interaction_type": null,
+    "sells": "1001:280",
+    "sell_cond": null,
+    "cond_sells": null,
+    "level": 41,
+    "target_id": null,
+    "asset_name": "Crop_1037",
+    "icon_res": null,
+    "max_count": 99999,
+    "max_own": 999990,
+    "duration": null,
+    "can_use": null,
+    "desc": "卖给商人后，可以获得金币。",
+    "effectDesc": "卖给商人后，可以获得金币。",
+    "trait_id ": null,
+    "layer": null,
+    "rarity": 3,
+    "rarity_color": "B09DED",
+    "jumps": "[60]",
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
+  },
+  {
+    "id": 41353,
+    "type": 6,
+    "name": "紫薇",
+    "interaction_type": null,
+    "sells": "1001:280",
+    "sell_cond": null,
+    "cond_sells": null,
+    "level": 41,
+    "target_id": null,
+    "asset_name": "Crop_1353",
+    "icon_res": null,
+    "max_count": 99999,
+    "max_own": 999990,
+    "duration": null,
+    "can_use": null,
+    "desc": "卖给商人后，可以获得金币。",
+    "effectDesc": "卖给商人后，可以获得金币。",
+    "trait_id ": null,
+    "layer": null,
+    "rarity": 3,
+    "rarity_color": "B09DED",
+    "jumps": "[60]",
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
+  },
+  {
+    "id": 41380,
+    "type": 6,
+    "name": "梧桐",
+    "interaction_type": null,
+    "sells": "1001:280",
+    "sell_cond": null,
+    "cond_sells": null,
+    "level": 41,
+    "target_id": null,
+    "asset_name": "Crop_1380",
+    "icon_res": null,
+    "max_count": 99999,
+    "max_own": 999990,
+    "duration": null,
+    "can_use": null,
+    "desc": "卖给商人后，可以获得金币。",
+    "effectDesc": "卖给商人后，可以获得金币。",
+    "trait_id ": null,
+    "layer": null,
+    "rarity": 3,
+    "rarity_color": "B09DED",
+    "jumps": "[60]",
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
+  },
+  {
+    "id": 40129,
+    "type": 6,
+    "name": "勿忘我",
+    "interaction_type": null,
+    "sells": "1001:280",
+    "sell_cond": null,
+    "cond_sells": null,
+    "level": 41,
+    "target_id": null,
+    "asset_name": "Crop_129",
+    "icon_res": null,
+    "max_count": 99999,
+    "max_own": 999990,
+    "duration": null,
+    "can_use": null,
+    "desc": "卖给商人后，可以获得金币。",
+    "effectDesc": "卖给商人后，可以获得金币。",
+    "trait_id ": null,
+    "layer": null,
+    "rarity": 3,
+    "rarity_color": "B09DED",
+    "jumps": "[60]",
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
+  },
+  {
+    "id": 40375,
+    "type": 6,
+    "name": "木槿",
+    "interaction_type": null,
+    "sells": "1001:280",
+    "sell_cond": null,
+    "cond_sells": null,
+    "level": 41,
+    "target_id": null,
+    "asset_name": "Crop_375",
+    "icon_res": null,
+    "max_count": 99999,
+    "max_own": 999990,
+    "duration": null,
+    "can_use": null,
+    "desc": "卖给商人后，可以获得金币。",
+    "effectDesc": "卖给商人后，可以获得金币。",
+    "trait_id ": null,
+    "layer": null,
+    "rarity": 3,
+    "rarity_color": "B09DED",
+    "jumps": "[60]",
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
+  },
+  {
+    "id": 49003,
+    "type": 6,
+    "name": "星语铃花",
+    "interaction_type": null,
+    "sells": "1001:320",
+    "sell_cond": null,
+    "cond_sells": null,
+    "level": 200,
+    "target_id": null,
+    "asset_name": "Crop_9003",
+    "icon_res": null,
+    "max_count": 99999,
+    "max_own": 999990,
+    "duration": null,
+    "can_use": null,
+    "desc": "卖给商人后，可以获得金币。",
+    "effectDesc": "卖给商人后，可以获得金币。",
+    "trait_id ": null,
+    "layer": null,
+    "rarity": 4,
+    "rarity_color": "D1A21E",
+    "jumps": "[60]",
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40136,
@@ -12363,7 +14596,9 @@
     "rarity": 2,
     "rarity_color": "A8C1F4",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40111,
@@ -12388,7 +14623,9 @@
     "rarity": 2,
     "rarity_color": "A8C1F4",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40118,
@@ -12413,57 +14650,9 @@
     "rarity": 2,
     "rarity_color": "A8C1F4",
     "jumps": null,
-    "ware_scale": null
-  },
-  {
-    "id": 40265,
-    "type": 6,
-    "name": "朱雀花",
-    "interaction_type": null,
-    "sells": "1001:342",
-    "sell_cond": null,
-    "cond_sells": null,
-    "level": 61,
-    "target_id": null,
-    "asset_name": "Crop_265",
-    "icon_res": null,
-    "max_count": 99999,
-    "max_own": 999990,
-    "duration": null,
-    "can_use": null,
-    "desc": "卖给商人后，可以获得金币。",
-    "effectDesc": "卖给商人后，可以获得金币。",
-    "trait_id ": null,
-    "layer": 21,
-    "rarity": 3,
-    "rarity_color": "B09DED",
-    "jumps": null,
-    "ware_scale": null
-  },
-  {
-    "id": 40129,
-    "type": 6,
-    "name": "勿忘我",
-    "interaction_type": null,
-    "sells": "1001:144",
-    "sell_cond": null,
-    "cond_sells": null,
-    "level": 81,
-    "target_id": null,
-    "asset_name": "Crop_129",
-    "icon_res": null,
-    "max_count": 99999,
-    "max_own": 999990,
-    "duration": null,
-    "can_use": null,
-    "desc": "卖给商人后，可以获得金币。",
-    "effectDesc": "卖给商人后，可以获得金币。",
-    "trait_id ": null,
-    "layer": 23,
-    "rarity": 2,
-    "rarity_color": "A8C1F4",
-    "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40114,
@@ -12488,57 +14677,9 @@
     "rarity": 2,
     "rarity_color": "A8C1F4",
     "jumps": null,
-    "ware_scale": null
-  },
-  {
-    "id": 40264,
-    "type": 6,
-    "name": "红色郁金香",
-    "interaction_type": null,
-    "sells": "1001:217",
-    "sell_cond": null,
-    "cond_sells": null,
-    "level": 81,
-    "target_id": null,
-    "asset_name": "Crop_264",
-    "icon_res": null,
-    "max_count": 99999,
-    "max_own": 999990,
-    "duration": null,
-    "can_use": null,
-    "desc": "卖给商人后，可以获得金币。",
-    "effectDesc": "卖给商人后，可以获得金币。",
-    "trait_id ": null,
-    "layer": 23,
-    "rarity": 2,
-    "rarity_color": "A8C1F4",
-    "jumps": null,
-    "ware_scale": null
-  },
-  {
-    "id": 40266,
-    "type": 6,
-    "name": "羊乳花",
-    "interaction_type": null,
-    "sells": "1001:504",
-    "sell_cond": null,
-    "cond_sells": null,
-    "level": 81,
-    "target_id": null,
-    "asset_name": "Crop_266",
-    "icon_res": null,
-    "max_count": 99999,
-    "max_own": 999990,
-    "duration": null,
-    "can_use": null,
-    "desc": "卖给商人后，可以获得金币。",
-    "effectDesc": "卖给商人后，可以获得金币。",
-    "trait_id ": null,
-    "layer": 26,
-    "rarity": 3,
-    "rarity_color": "B09DED",
-    "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40165,
@@ -12563,7 +14704,9 @@
     "rarity": 2,
     "rarity_color": "A8C1F4",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40107,
@@ -12588,7 +14731,9 @@
     "rarity": 2,
     "rarity_color": "A8C1F4",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40130,
@@ -12613,32 +14758,9 @@
     "rarity": 2,
     "rarity_color": "A8C1F4",
     "jumps": null,
-    "ware_scale": null
-  },
-  {
-    "id": 40108,
-    "type": 6,
-    "name": "铃兰",
-    "interaction_type": null,
-    "sells": "1001:103",
-    "sell_cond": null,
-    "cond_sells": null,
-    "level": 101,
-    "target_id": null,
-    "asset_name": "Crop_108",
-    "icon_res": null,
-    "max_count": 99999,
-    "max_own": 999990,
-    "duration": null,
-    "can_use": null,
-    "desc": "卖给商人后，可以获得金币。",
-    "effectDesc": "卖给商人后，可以获得金币。",
-    "trait_id ": null,
-    "layer": 28,
-    "rarity": 2,
-    "rarity_color": "A8C1F4",
-    "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40123,
@@ -12663,7 +14785,9 @@
     "rarity": 2,
     "rarity_color": "A8C1F4",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 41542,
@@ -12688,7 +14812,36 @@
     "rarity": 1,
     "rarity_color": "D2C5AC",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
+  },
+  {
+    "id": 40329,
+    "type": 6,
+    "name": "发财红包",
+    "interaction_type": null,
+    "sells": "1002:10",
+    "sell_cond": null,
+    "cond_sells": null,
+    "level": 30,
+    "target_id": null,
+    "asset_name": "Crop_329",
+    "icon_res": null,
+    "max_count": 9999,
+    "max_own": 9999,
+    "duration": null,
+    "can_use": null,
+    "desc": "卖给商人后，可以获得点券。",
+    "effectDesc": "卖给商人后，可以获得点券。",
+    "trait_id ": null,
+    "layer": 8,
+    "rarity": 1,
+    "rarity_color": "D2C5AC",
+    "jumps": "[71]",
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40219,
@@ -12713,7 +14866,9 @@
     "rarity": 4,
     "rarity_color": "D1A21E",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40046,
@@ -12738,7 +14893,9 @@
     "rarity": 4,
     "rarity_color": "D1A21E",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40092,
@@ -12763,7 +14920,9 @@
     "rarity": 4,
     "rarity_color": "D1A21E",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 40416,
@@ -12788,7 +14947,9 @@
     "rarity": 1,
     "rarity_color": "D1A21E",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 1040112,
@@ -12813,7 +14974,9 @@
     "rarity": 2,
     "rarity_color": "A8C1F4",
     "jumps": "[41]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 1040025,
@@ -12838,7 +15001,9 @@
     "rarity": 2,
     "rarity_color": "A8C1F4",
     "jumps": "[41]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 1040121,
@@ -12863,7 +15028,9 @@
     "rarity": 2,
     "rarity_color": "A8C1F4",
     "jumps": "[41]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 1040109,
@@ -12888,7 +15055,9 @@
     "rarity": 2,
     "rarity_color": "A8C1F4",
     "jumps": "[41]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 1040224,
@@ -12913,7 +15082,9 @@
     "rarity": 3,
     "rarity_color": "B09DED",
     "jumps": "[41]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 1040249,
@@ -12938,7 +15109,9 @@
     "rarity": 3,
     "rarity_color": "B09DED",
     "jumps": "[41]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 1041135,
@@ -12963,7 +15136,9 @@
     "rarity": 2,
     "rarity_color": "A8C1F4",
     "jumps": "[42]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 1040184,
@@ -12988,7 +15163,9 @@
     "rarity": 2,
     "rarity_color": "A8C1F4",
     "jumps": "[43]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 1040193,
@@ -13013,7 +15190,9 @@
     "rarity": 2,
     "rarity_color": "A8C1F4",
     "jumps": "[43]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 1040256,
@@ -13038,7 +15217,9 @@
     "rarity": 2,
     "rarity_color": "A8C1F4",
     "jumps": "[43]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 1040261,
@@ -13063,7 +15244,9 @@
     "rarity": 2,
     "rarity_color": "A8C1F4",
     "jumps": "[43]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 1040257,
@@ -13088,7 +15271,9 @@
     "rarity": 3,
     "rarity_color": "B09DED",
     "jumps": "[43]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 1040258,
@@ -13113,7 +15298,9 @@
     "rarity": 3,
     "rarity_color": "B09DED",
     "jumps": "[43]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 1040304,
@@ -13138,7 +15325,9 @@
     "rarity": 3,
     "rarity_color": "B09DED",
     "jumps": "[43]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 1040046,
@@ -13163,7 +15352,9 @@
     "rarity": 4,
     "rarity_color": "D1A21E",
     "jumps": "[41]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 1040416,
@@ -13188,7 +15379,9 @@
     "rarity": 4,
     "rarity_color": "D1A21E",
     "jumps": "[43]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 1049001,
@@ -13213,7 +15406,9 @@
     "rarity": 3,
     "rarity_color": "B09DED",
     "jumps": "[43]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 1040122,
@@ -13238,7 +15433,9 @@
     "rarity": 2,
     "rarity_color": "A8C1F4",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 1040134,
@@ -13263,7 +15460,9 @@
     "rarity": 2,
     "rarity_color": "A8C1F4",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 1040139,
@@ -13288,7 +15487,9 @@
     "rarity": 2,
     "rarity_color": "A8C1F4",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 1040140,
@@ -13313,7 +15514,9 @@
     "rarity": 2,
     "rarity_color": "A8C1F4",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 1040144,
@@ -13338,7 +15541,9 @@
     "rarity": 2,
     "rarity_color": "A8C1F4",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 1040154,
@@ -13363,7 +15568,9 @@
     "rarity": 2,
     "rarity_color": "A8C1F4",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 1040263,
@@ -13388,7 +15595,9 @@
     "rarity": 2,
     "rarity_color": "A8C1F4",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 1040269,
@@ -13413,7 +15622,9 @@
     "rarity": 2,
     "rarity_color": "A8C1F4",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 1040199,
@@ -13438,7 +15649,9 @@
     "rarity": 3,
     "rarity_color": "B09DED",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 1040262,
@@ -13463,7 +15676,9 @@
     "rarity": 3,
     "rarity_color": "B09DED",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 1040223,
@@ -13488,7 +15703,9 @@
     "rarity": 3,
     "rarity_color": "B09DED",
     "jumps": null,
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 1040185,
@@ -13513,7 +15730,9 @@
     "rarity": 2,
     "rarity_color": "A8C1F4",
     "jumps": "[48]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 1040267,
@@ -13538,7 +15757,9 @@
     "rarity": 3,
     "rarity_color": "B09DED",
     "jumps": "[48]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 1040133,
@@ -13563,7 +15784,9 @@
     "rarity": 2,
     "rarity_color": "A8C1F4",
     "jumps": "[47]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 1040176,
@@ -13588,7 +15811,9 @@
     "rarity": 2,
     "rarity_color": "A8C1F4",
     "jumps": "[47]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 1040186,
@@ -13613,7 +15838,9 @@
     "rarity": 2,
     "rarity_color": "A8C1F4",
     "jumps": "[47]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 1040251,
@@ -13638,7 +15865,9 @@
     "rarity": 2,
     "rarity_color": "A8C1F4",
     "jumps": "[47]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 1041044,
@@ -13663,7 +15892,9 @@
     "rarity": 3,
     "rarity_color": "B09DED",
     "jumps": "[47]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 1041038,
@@ -13688,7 +15919,9 @@
     "rarity": 3,
     "rarity_color": "B09DED",
     "jumps": "[47]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 1041474,
@@ -13713,7 +15946,9 @@
     "rarity": 3,
     "rarity_color": "B09DED",
     "jumps": "[47]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 1040243,
@@ -13738,7 +15973,9 @@
     "rarity": 3,
     "rarity_color": "B09DED",
     "jumps": "[47]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 1041134,
@@ -13763,7 +16000,9 @@
     "rarity": 3,
     "rarity_color": "B09DED",
     "jumps": "[47]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 1046127,
@@ -13788,7 +16027,9 @@
     "rarity": 3,
     "rarity_color": "B09DED",
     "jumps": "[47]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 1046109,
@@ -13813,7 +16054,9 @@
     "rarity": 3,
     "rarity_color": "B09DED",
     "jumps": "[47]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 1041032,
@@ -13838,7 +16081,9 @@
     "rarity": 4,
     "rarity_color": "D1A21E",
     "jumps": "[47]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 1040167,
@@ -13863,7 +16108,360 @@
     "rarity": 2,
     "rarity_color": "A8C1F4",
     "jumps": "[45]",
-    "ware_scale": null
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
+  },
+  {
+    "id": 1041221,
+    "type": 17,
+    "name": "黄金·青梅",
+    "interaction_type": null,
+    "sells": "1005:3",
+    "sell_cond": null,
+    "cond_sells": null,
+    "level": 200,
+    "target_id": null,
+    "asset_name": "gold/Crop_1221",
+    "icon_res": null,
+    "max_count": 99999,
+    "max_own": 999990,
+    "duration": null,
+    "can_use": null,
+    "desc": "黄金变异获得的果实，卖给商人后，可以获得金豆豆。",
+    "effectDesc": "卖给商人后，可以获得金豆豆。",
+    "trait_id ": null,
+    "layer": null,
+    "rarity": 2,
+    "rarity_color": "A8C1F4",
+    "jumps": "[57]",
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
+  },
+  {
+    "id": 1040264,
+    "type": 17,
+    "name": "黄金·帝王血",
+    "interaction_type": null,
+    "sells": "1005:3",
+    "sell_cond": null,
+    "cond_sells": null,
+    "level": 200,
+    "target_id": null,
+    "asset_name": "gold/Crop_264",
+    "icon_res": null,
+    "max_count": 99999,
+    "max_own": 999990,
+    "duration": null,
+    "can_use": null,
+    "desc": "黄金变异获得的果实，卖给商人后，可以获得金豆豆。",
+    "effectDesc": "卖给商人后，可以获得金豆豆。",
+    "trait_id ": null,
+    "layer": null,
+    "rarity": 2,
+    "rarity_color": "A8C1F4",
+    "jumps": "[60]",
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
+  },
+  {
+    "id": 1040108,
+    "type": 17,
+    "name": "黄金·铃兰",
+    "interaction_type": null,
+    "sells": "1005:3",
+    "sell_cond": null,
+    "cond_sells": null,
+    "level": 200,
+    "target_id": null,
+    "asset_name": "gold/Crop_108",
+    "icon_res": null,
+    "max_count": 99999,
+    "max_own": 999990,
+    "duration": null,
+    "can_use": null,
+    "desc": "黄金变异获得的果实，卖给商人后，可以获得金豆豆。",
+    "effectDesc": "卖给商人后，可以获得金豆豆。",
+    "trait_id ": null,
+    "layer": null,
+    "rarity": 2,
+    "rarity_color": "A8C1F4",
+    "jumps": "[60]",
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
+  },
+  {
+    "id": 1046032,
+    "type": 17,
+    "name": "黄金·月见草",
+    "interaction_type": null,
+    "sells": "1005:3",
+    "sell_cond": null,
+    "cond_sells": null,
+    "level": 200,
+    "target_id": null,
+    "asset_name": "gold/Crop_6032",
+    "icon_res": null,
+    "max_count": 99999,
+    "max_own": 999990,
+    "duration": null,
+    "can_use": null,
+    "desc": "黄金变异获得的果实，卖给商人后，可以获得金豆豆。",
+    "effectDesc": "卖给商人后，可以获得金豆豆。",
+    "trait_id ": null,
+    "layer": null,
+    "rarity": 2,
+    "rarity_color": "A8C1F4",
+    "jumps": "[60]",
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
+  },
+  {
+    "id": 1041251,
+    "type": 17,
+    "name": "黄金·紫茉莉",
+    "interaction_type": null,
+    "sells": "1005:3",
+    "sell_cond": null,
+    "cond_sells": null,
+    "level": 200,
+    "target_id": null,
+    "asset_name": "gold/Crop_1251",
+    "icon_res": null,
+    "max_count": 99999,
+    "max_own": 999990,
+    "duration": null,
+    "can_use": null,
+    "desc": "黄金变异获得的果实，卖给商人后，可以获得金豆豆。",
+    "effectDesc": "卖给商人后，可以获得金豆豆。",
+    "trait_id ": null,
+    "layer": null,
+    "rarity": 2,
+    "rarity_color": "A8C1F4",
+    "jumps": "[60]",
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
+  },
+  {
+    "id": 1041050,
+    "type": 17,
+    "name": "黄金·萱草",
+    "interaction_type": null,
+    "sells": "1005:6",
+    "sell_cond": null,
+    "cond_sells": null,
+    "level": 200,
+    "target_id": null,
+    "asset_name": "gold/Crop_1050",
+    "icon_res": null,
+    "max_count": 99999,
+    "max_own": 999990,
+    "duration": null,
+    "can_use": null,
+    "desc": "黄金变异获得的果实，卖给商人后，可以获得金豆豆。",
+    "effectDesc": "卖给商人后，可以获得金豆豆。",
+    "trait_id ": null,
+    "layer": null,
+    "rarity": 3,
+    "rarity_color": "B09DED",
+    "jumps": "[60]",
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
+  },
+  {
+    "id": 1041404,
+    "type": 17,
+    "name": "黄金·月光花",
+    "interaction_type": null,
+    "sells": "1005:6",
+    "sell_cond": null,
+    "cond_sells": null,
+    "level": 200,
+    "target_id": null,
+    "asset_name": "gold/Crop_1404",
+    "icon_res": null,
+    "max_count": 99999,
+    "max_own": 999990,
+    "duration": null,
+    "can_use": null,
+    "desc": "黄金变异获得的果实，卖给商人后，可以获得金豆豆。",
+    "effectDesc": "卖给商人后，可以获得金豆豆。",
+    "trait_id ": null,
+    "layer": null,
+    "rarity": 3,
+    "rarity_color": "B09DED",
+    "jumps": "[60]",
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
+  },
+  {
+    "id": 1041037,
+    "type": 17,
+    "name": "黄金·银星海棠",
+    "interaction_type": null,
+    "sells": "1005:6",
+    "sell_cond": null,
+    "cond_sells": null,
+    "level": 200,
+    "target_id": null,
+    "asset_name": "gold/Crop_1037",
+    "icon_res": null,
+    "max_count": 99999,
+    "max_own": 999990,
+    "duration": null,
+    "can_use": null,
+    "desc": "黄金变异获得的果实，卖给商人后，可以获得金豆豆。",
+    "effectDesc": "卖给商人后，可以获得金豆豆。",
+    "trait_id ": null,
+    "layer": null,
+    "rarity": 3,
+    "rarity_color": "B09DED",
+    "jumps": "[60]",
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
+  },
+  {
+    "id": 1041353,
+    "type": 17,
+    "name": "黄金·紫薇",
+    "interaction_type": null,
+    "sells": "1005:6",
+    "sell_cond": null,
+    "cond_sells": null,
+    "level": 200,
+    "target_id": null,
+    "asset_name": "gold/Crop_1353",
+    "icon_res": null,
+    "max_count": 99999,
+    "max_own": 999990,
+    "duration": null,
+    "can_use": null,
+    "desc": "黄金变异获得的果实，卖给商人后，可以获得金豆豆。",
+    "effectDesc": "卖给商人后，可以获得金豆豆。",
+    "trait_id ": null,
+    "layer": null,
+    "rarity": 3,
+    "rarity_color": "B09DED",
+    "jumps": "[60]",
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
+  },
+  {
+    "id": 1041380,
+    "type": 17,
+    "name": "黄金·梧桐",
+    "interaction_type": null,
+    "sells": "1005:6",
+    "sell_cond": null,
+    "cond_sells": null,
+    "level": 200,
+    "target_id": null,
+    "asset_name": "gold/Crop_1380",
+    "icon_res": null,
+    "max_count": 99999,
+    "max_own": 999990,
+    "duration": null,
+    "can_use": null,
+    "desc": "黄金变异获得的果实，卖给商人后，可以获得金豆豆。",
+    "effectDesc": "卖给商人后，可以获得金豆豆。",
+    "trait_id ": null,
+    "layer": null,
+    "rarity": 3,
+    "rarity_color": "B09DED",
+    "jumps": "[60]",
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
+  },
+  {
+    "id": 1040129,
+    "type": 17,
+    "name": "黄金·勿忘我",
+    "interaction_type": null,
+    "sells": "1005:6",
+    "sell_cond": null,
+    "cond_sells": null,
+    "level": 200,
+    "target_id": null,
+    "asset_name": "gold/Crop_129",
+    "icon_res": null,
+    "max_count": 99999,
+    "max_own": 999990,
+    "duration": null,
+    "can_use": null,
+    "desc": "黄金变异获得的果实，卖给商人后，可以获得金豆豆。",
+    "effectDesc": "卖给商人后，可以获得金豆豆。",
+    "trait_id ": null,
+    "layer": null,
+    "rarity": 3,
+    "rarity_color": "B09DED",
+    "jumps": "[60]",
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
+  },
+  {
+    "id": 1040375,
+    "type": 17,
+    "name": "黄金·木槿",
+    "interaction_type": null,
+    "sells": "1005:6",
+    "sell_cond": null,
+    "cond_sells": null,
+    "level": 200,
+    "target_id": null,
+    "asset_name": "gold/Crop_375",
+    "icon_res": null,
+    "max_count": 99999,
+    "max_own": 999990,
+    "duration": null,
+    "can_use": null,
+    "desc": "黄金变异获得的果实，卖给商人后，可以获得金豆豆。",
+    "effectDesc": "卖给商人后，可以获得金豆豆。",
+    "trait_id ": null,
+    "layer": null,
+    "rarity": 3,
+    "rarity_color": "B09DED",
+    "jumps": "[60]",
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
+  },
+  {
+    "id": 1049003,
+    "type": 17,
+    "name": "黄金·星语铃花",
+    "interaction_type": null,
+    "sells": "1005:30",
+    "sell_cond": null,
+    "cond_sells": null,
+    "level": 200,
+    "target_id": null,
+    "asset_name": "gold/Crop_9003",
+    "icon_res": null,
+    "max_count": 99999,
+    "max_own": 999990,
+    "duration": null,
+    "can_use": null,
+    "desc": "黄金变异获得的果实，卖给商人后，出售可以获得金豆豆。",
+    "effectDesc": "卖给商人后，可以获得金豆豆。",
+    "trait_id ": null,
+    "layer": null,
+    "rarity": 4,
+    "rarity_color": "D1A21E",
+    "jumps": "[60]",
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 201001,
@@ -13910,7 +16508,8 @@
     "layer": null,
     "rarity": 4,
     "rarity_color": "D1A21E",
-    "jumps": "[44]"
+    "jumps": "[44]",
+    "jumps_dtype": null
   },
   {
     "id": 201003,
@@ -13939,7 +16538,7 @@
   {
     "id": 201004,
     "type": 18,
-    "name": "金穗至尊府邸",
+    "name": "晴空庄园小屋",
     "interaction_type": null,
     "sells": null,
     "sell_cond": null,
@@ -13952,13 +16551,14 @@
     "max_own": 999990,
     "duration": null,
     "can_use": null,
-    "desc": "【南瓜乐翻天】活动限定装扮，可在【装扮】功能中进行装备。",
-    "effectDesc": "【南瓜乐翻天】活动限定装扮，可在【装扮】功能中进行装备。",
+    "desc": "SVIP特权限定装扮，可在【装扮】功能中进行装备。",
+    "effectDesc": "SVIP特权装扮",
     "trait_id ": null,
     "layer": null,
     "rarity": 4,
     "rarity_color": "D1A21E",
-    "jumps": "[44]"
+    "jumps": "[34]",
+    "jumps_dtype": 1
   },
   {
     "id": 201005,
@@ -14033,6 +16633,54 @@
     "jumps": "[13]"
   },
   {
+    "id": 201008,
+    "type": 18,
+    "name": "萤火星房小屋",
+    "interaction_type": null,
+    "sells": null,
+    "sell_cond": null,
+    "cond_sells": null,
+    "level": 1,
+    "target_id": null,
+    "asset_name": null,
+    "icon_res": "gui/texture/skinIcon/icon_skin_house_7/spriteFrame",
+    "max_count": 99999,
+    "max_own": 999990,
+    "duration": null,
+    "can_use": null,
+    "desc": "【心许千灯星垂野】活动限定装扮，可在【装扮】功能中进行装备。",
+    "effectDesc": "【心许千灯星垂野】活动限定装扮，可在【装扮】功能中进行装备。",
+    "trait_id ": null,
+    "layer": null,
+    "rarity": 4,
+    "rarity_color": "D1A21E",
+    "jumps": "[61]"
+  },
+  {
+    "id": 201009,
+    "type": 18,
+    "name": "月光营地小屋",
+    "interaction_type": null,
+    "sells": null,
+    "sell_cond": null,
+    "cond_sells": null,
+    "level": 1,
+    "target_id": null,
+    "asset_name": null,
+    "icon_res": "gui/texture/skinIcon/icon_skin_house_8/spriteFrame",
+    "max_count": 99999,
+    "max_own": 999990,
+    "duration": null,
+    "can_use": null,
+    "desc": "【心许千灯星垂野】活动限定装扮，可在【装扮】功能中进行装备。",
+    "effectDesc": "【心许千灯星垂野】活动限定装扮，可在【装扮】功能中进行装备。",
+    "trait_id ": null,
+    "layer": null,
+    "rarity": 4,
+    "rarity_color": "D1A21E",
+    "jumps": "[61]"
+  },
+  {
     "id": 202001,
     "type": 18,
     "name": "默认木牌",
@@ -14054,7 +16702,8 @@
     "layer": null,
     "rarity": 1,
     "rarity_color": "D2C5AC",
-    "jumps": null
+    "jumps": null,
+    "jumps_dtype": null
   },
   {
     "id": 202002,
@@ -14083,7 +16732,7 @@
   {
     "id": 202003,
     "type": 18,
-    "name": "金穗至尊迎宾牌",
+    "name": "晴空庄园木牌",
     "interaction_type": null,
     "sells": null,
     "sell_cond": null,
@@ -14096,13 +16745,14 @@
     "max_own": 999990,
     "duration": null,
     "can_use": null,
-    "desc": "【南瓜乐翻天】活动限定装扮，可在【装扮】功能中进行装备。",
-    "effectDesc": "【南瓜乐翻天】活动限定装扮，可在【装扮】功能中进行装备。",
+    "desc": "SVIP特权限定装扮，可在【装扮】功能中进行装备。",
+    "effectDesc": "SVIP特权装扮",
     "trait_id ": null,
     "layer": null,
     "rarity": 3,
     "rarity_color": "B09DED",
-    "jumps": "[44]"
+    "jumps": "[34]",
+    "jumps_dtype": 1
   },
   {
     "id": 202004,
@@ -14177,6 +16827,60 @@
     "jumps": "[13]"
   },
   {
+    "id": 202007,
+    "type": 18,
+    "name": "萤火星房木牌",
+    "interaction_type": null,
+    "sells": null,
+    "sell_cond": null,
+    "cond_sells": null,
+    "level": 1,
+    "target_id": null,
+    "asset_name": null,
+    "icon_res": "gui/texture/skinIcon/icon_skin_board_6/spriteFrame",
+    "max_count": 99999,
+    "max_own": 999990,
+    "duration": null,
+    "can_use": null,
+    "desc": "【心许千灯星垂野】活动限定装扮，可在【装扮】功能中进行装备。",
+    "effectDesc": "【心许千灯星垂野】活动限定装扮，可在【装扮】功能中进行装备。",
+    "trait_id ": null,
+    "layer": null,
+    "rarity": 3,
+    "rarity_color": "B09DED",
+    "jumps": "[61]",
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
+  },
+  {
+    "id": 202008,
+    "type": 18,
+    "name": "月光营地木牌",
+    "interaction_type": null,
+    "sells": null,
+    "sell_cond": null,
+    "cond_sells": null,
+    "level": 1,
+    "target_id": null,
+    "asset_name": null,
+    "icon_res": "gui/texture/skinIcon/icon_skin_board_7/spriteFrame",
+    "max_count": 99999,
+    "max_own": 999990,
+    "duration": null,
+    "can_use": null,
+    "desc": "【心许千灯星垂野】活动限定装扮，可在【装扮】功能中进行装备。",
+    "effectDesc": "【心许千灯星垂野】活动限定装扮，可在【装扮】功能中进行装备。",
+    "trait_id ": null,
+    "layer": null,
+    "rarity": 3,
+    "rarity_color": "B09DED",
+    "jumps": "[61]",
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
+  },
+  {
     "id": 203001,
     "type": 18,
     "name": "默认栅栏",
@@ -14198,7 +16902,8 @@
     "layer": null,
     "rarity": 1,
     "rarity_color": "D2C5AC",
-    "jumps": null
+    "jumps": null,
+    "jumps_dtype": null
   },
   {
     "id": 203002,
@@ -14246,12 +16951,13 @@
     "layer": null,
     "rarity": 3,
     "rarity_color": "B09DED",
-    "jumps": "[44]"
+    "jumps": "[44]",
+    "jumps_dtype": null
   },
   {
     "id": 203004,
     "type": 18,
-    "name": "金穗至尊篱栏",
+    "name": "晴空庄园栅栏",
     "interaction_type": null,
     "sells": null,
     "sell_cond": null,
@@ -14264,13 +16970,14 @@
     "max_own": 999990,
     "duration": null,
     "can_use": null,
-    "desc": "【南瓜乐翻天】活动限定装扮，可在【装扮】功能中进行装备。",
-    "effectDesc": "【南瓜乐翻天】活动限定装扮，可在【装扮】功能中进行装备。",
+    "desc": "SVIP特权限定装扮，可在【装扮】功能中进行装备。",
+    "effectDesc": "SVIP特权装扮",
     "trait_id ": null,
     "layer": null,
     "rarity": 3,
     "rarity_color": "B09DED",
-    "jumps": "[44]"
+    "jumps": "[34]",
+    "jumps_dtype": 1
   },
   {
     "id": 203005,
@@ -14345,6 +17052,60 @@
     "jumps": "[13]"
   },
   {
+    "id": 203008,
+    "type": 18,
+    "name": "萤火星房栅栏",
+    "interaction_type": null,
+    "sells": null,
+    "sell_cond": null,
+    "cond_sells": null,
+    "level": 1,
+    "target_id": null,
+    "asset_name": null,
+    "icon_res": "gui/texture/skinIcon/icon_skin_barrier_7/spriteFrame",
+    "max_count": 99999,
+    "max_own": 999990,
+    "duration": null,
+    "can_use": null,
+    "desc": "【心许千灯星垂野】活动限定装扮，可在【装扮】功能中进行装备。",
+    "effectDesc": "【心许千灯星垂野】活动限定装扮，可在【装扮】功能中进行装备。",
+    "trait_id ": null,
+    "layer": null,
+    "rarity": 3,
+    "rarity_color": "B09DED",
+    "jumps": "[61]",
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
+  },
+  {
+    "id": 203009,
+    "type": 18,
+    "name": "月光营地栅栏",
+    "interaction_type": null,
+    "sells": null,
+    "sell_cond": null,
+    "cond_sells": null,
+    "level": 1,
+    "target_id": null,
+    "asset_name": null,
+    "icon_res": "gui/texture/skinIcon/icon_skin_barrier_8/spriteFrame",
+    "max_count": 99999,
+    "max_own": 999990,
+    "duration": null,
+    "can_use": null,
+    "desc": "【心许千灯星垂野】活动限定装扮，可在【装扮】功能中进行装备。",
+    "effectDesc": "【心许千灯星垂野】活动限定装扮，可在【装扮】功能中进行装备。",
+    "trait_id ": null,
+    "layer": null,
+    "rarity": 3,
+    "rarity_color": "B09DED",
+    "jumps": "[61]",
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
+  },
+  {
     "id": 204001,
     "type": 18,
     "name": "默认盆栽",
@@ -14366,7 +17127,8 @@
     "layer": null,
     "rarity": 1,
     "rarity_color": "D2C5AC",
-    "jumps": null
+    "jumps": null,
+    "jumps_dtype": null
   },
   {
     "id": 204002,
@@ -14414,7 +17176,8 @@
     "layer": null,
     "rarity": 4,
     "rarity_color": "D1A21E",
-    "jumps": "[43]"
+    "jumps": "[43]",
+    "jumps_dtype": null
   },
   {
     "id": 204004,
@@ -14438,7 +17201,8 @@
     "layer": null,
     "rarity": 4,
     "rarity_color": "D1A21E",
-    "jumps": "[47]"
+    "jumps": "[47]",
+    "jumps_dtype": null
   },
   {
     "id": 204005,
@@ -14462,7 +17226,58 @@
     "layer": null,
     "rarity": 4,
     "rarity_color": "D1A21E",
-    "jumps": "[47]"
+    "jumps": "[47]",
+    "jumps_dtype": null
+  },
+  {
+    "id": 204006,
+    "type": 18,
+    "name": "蝶梦星铃",
+    "interaction_type": null,
+    "sells": "1001:1000000",
+    "sell_cond": null,
+    "cond_sells": null,
+    "level": 1,
+    "target_id": null,
+    "asset_name": "Crop_8003",
+    "icon_res": "gui/texture/skinIcon/icon_skin_tower_3/spriteFrame",
+    "max_count": 99999,
+    "max_own": 999990,
+    "duration": null,
+    "can_use": null,
+    "desc": "活动期间收获，可以获得游记积分；出售可以获得金币。",
+    "effectDesc": "卖给商人后，可以获得金币。",
+    "trait_id ": null,
+    "layer": null,
+    "rarity": 4,
+    "rarity_color": "D1A21E",
+    "jumps": "[60]",
+    "jumps_dtype": null
+  },
+  {
+    "id": 204007,
+    "type": 18,
+    "name": "黄金·蝶梦星铃",
+    "interaction_type": null,
+    "sells": "1005:1200",
+    "sell_cond": null,
+    "cond_sells": null,
+    "level": 1,
+    "target_id": null,
+    "asset_name": "gold/Crop_8003",
+    "icon_res": "gui/texture/skinIcon/icon_skin_tower_3_1/spriteFrame",
+    "max_count": 99999,
+    "max_own": 999990,
+    "duration": null,
+    "can_use": null,
+    "desc": "活动期间收获，可以获得游记积分；出售可以获得金豆豆。",
+    "effectDesc": "卖给商人后，可以获得金豆豆。",
+    "trait_id ": null,
+    "layer": null,
+    "rarity": 4,
+    "rarity_color": "D1A21E",
+    "jumps": "[60]",
+    "jumps_dtype": null
   },
   {
     "id": 205001,
@@ -14509,12 +17324,13 @@
     "layer": null,
     "rarity": 3,
     "rarity_color": "B09DED",
-    "jumps": "[44]"
+    "jumps": "[44]",
+    "jumps_dtype": null
   },
   {
     "id": 205003,
     "type": 18,
-    "name": "金穗尊宠雅居",
+    "name": "晴空庄园狗屋",
     "interaction_type": null,
     "sells": null,
     "sell_cond": null,
@@ -14527,13 +17343,14 @@
     "max_own": 999990,
     "duration": null,
     "can_use": null,
-    "desc": "【南瓜乐翻天】活动限定装扮，可在【装扮】功能中进行装备。",
-    "effectDesc": "【南瓜乐翻天】活动限定装扮，可在【装扮】功能中进行装备。",
+    "desc": "SVIP特权限定装扮，可在【装扮】功能中进行装备。",
+    "effectDesc": "SVIP特权装扮",
     "trait_id ": null,
     "layer": null,
     "rarity": 3,
     "rarity_color": "B09DED",
-    "jumps": "[44]"
+    "jumps": "[34]",
+    "jumps_dtype": 1
   },
   {
     "id": 205004,
@@ -14557,7 +17374,8 @@
     "layer": null,
     "rarity": 3,
     "rarity_color": "B09DED",
-    "jumps": "[49]"
+    "jumps": "[49]",
+    "jumps_dtype": null
   },
   {
     "id": 205005,
@@ -14606,6 +17424,60 @@
     "rarity": 2,
     "rarity_color": "A8C1F4",
     "jumps": "[13]"
+  },
+  {
+    "id": 205007,
+    "type": 18,
+    "name": "萤火星房狗屋",
+    "interaction_type": null,
+    "sells": null,
+    "sell_cond": null,
+    "cond_sells": null,
+    "level": 1,
+    "target_id": null,
+    "asset_name": null,
+    "icon_res": "gui/texture/skinIcon/icon_skin_doghouse_6/spriteFrame",
+    "max_count": 99999,
+    "max_own": 999990,
+    "duration": null,
+    "can_use": null,
+    "desc": "【心许千灯星垂野】活动限定装扮，可在【装扮】功能中进行装备。",
+    "effectDesc": "【心许千灯星垂野】活动限定装扮，可在【装扮】功能中进行装备。",
+    "trait_id ": null,
+    "layer": null,
+    "rarity": 3,
+    "rarity_color": "B09DED",
+    "jumps": "[61]",
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
+  },
+  {
+    "id": 205008,
+    "type": 18,
+    "name": "月光营地狗屋",
+    "interaction_type": null,
+    "sells": null,
+    "sell_cond": null,
+    "cond_sells": null,
+    "level": 1,
+    "target_id": null,
+    "asset_name": null,
+    "icon_res": "gui/texture/skinIcon/icon_skin_doghouse_7/spriteFrame",
+    "max_count": 99999,
+    "max_own": 999990,
+    "duration": null,
+    "can_use": null,
+    "desc": "【心许千灯星垂野】活动限定装扮，可在【装扮】功能中进行装备。",
+    "effectDesc": "【心许千灯星垂野】活动限定装扮，可在【装扮】功能中进行装备。",
+    "trait_id ": null,
+    "layer": null,
+    "rarity": 3,
+    "rarity_color": "B09DED",
+    "jumps": "[61]",
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 206001,
@@ -14657,7 +17529,7 @@
   {
     "id": 206003,
     "type": 18,
-    "name": "金穗至尊粮仓",
+    "name": "晴空庄园仓库",
     "interaction_type": null,
     "sells": null,
     "sell_cond": null,
@@ -14670,13 +17542,14 @@
     "max_own": 999990,
     "duration": null,
     "can_use": null,
-    "desc": "【南瓜乐翻天】活动限定装扮，可在【装扮】功能中进行装备。",
-    "effectDesc": "【南瓜乐翻天】活动限定装扮，可在【装扮】功能中进行装备。",
+    "desc": "SVIP特权限定装扮，可在【装扮】功能中进行装备。",
+    "effectDesc": "SVIP特权装扮",
     "trait_id ": null,
     "layer": null,
     "rarity": 3,
     "rarity_color": "B09DED",
-    "jumps": "[44]"
+    "jumps": "[34]",
+    "jumps_dtype": 1
   },
   {
     "id": 206004,
@@ -14700,7 +17573,8 @@
     "layer": null,
     "rarity": 3,
     "rarity_color": "B09DED",
-    "jumps": "[49]"
+    "jumps": "[49]",
+    "jumps_dtype": null
   },
   {
     "id": 206005,
@@ -14749,6 +17623,60 @@
     "rarity": 2,
     "rarity_color": "A8C1F4",
     "jumps": "[13]"
+  },
+  {
+    "id": 206007,
+    "type": 18,
+    "name": "萤火星房仓库",
+    "interaction_type": null,
+    "sells": null,
+    "sell_cond": null,
+    "cond_sells": null,
+    "level": 1,
+    "target_id": null,
+    "asset_name": null,
+    "icon_res": "gui/texture/skinIcon/icon_skin_warehouse_6/spriteFrame",
+    "max_count": 99999,
+    "max_own": 999990,
+    "duration": null,
+    "can_use": null,
+    "desc": "【心许千灯星垂野】活动限定装扮，可在【装扮】功能中进行装备。",
+    "effectDesc": "【心许千灯星垂野】活动限定装扮，可在【装扮】功能中进行装备。",
+    "trait_id ": null,
+    "layer": null,
+    "rarity": 3,
+    "rarity_color": "B09DED",
+    "jumps": "[61]",
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
+  },
+  {
+    "id": 206008,
+    "type": 18,
+    "name": "月光营地仓库",
+    "interaction_type": null,
+    "sells": null,
+    "sell_cond": null,
+    "cond_sells": null,
+    "level": 1,
+    "target_id": null,
+    "asset_name": null,
+    "icon_res": "gui/texture/skinIcon/icon_skin_warehouse_7/spriteFrame",
+    "max_count": 99999,
+    "max_own": 999990,
+    "duration": null,
+    "can_use": null,
+    "desc": "【心许千灯星垂野】活动限定装扮，可在【装扮】功能中进行装备。",
+    "effectDesc": "【心许千灯星垂野】活动限定装扮，可在【装扮】功能中进行装备。",
+    "trait_id ": null,
+    "layer": null,
+    "rarity": 3,
+    "rarity_color": "B09DED",
+    "jumps": "[61]",
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
   },
   {
     "id": 207001,
@@ -14824,7 +17752,7 @@
   {
     "id": 207004,
     "type": 18,
-    "name": "金穗御景步道",
+    "name": "晴空庄园街道",
     "interaction_type": null,
     "sells": null,
     "sell_cond": null,
@@ -14837,13 +17765,14 @@
     "max_own": 999990,
     "duration": null,
     "can_use": null,
-    "desc": "【南瓜乐翻天】活动限定装扮，可在【装扮】功能中进行装备。",
-    "effectDesc": "【南瓜乐翻天】活动限定装扮，可在【装扮】功能中进行装备。",
+    "desc": "SVIP特权限定装扮，可在【装扮】功能中进行装备。",
+    "effectDesc": "SVIP特权装扮",
     "trait_id ": null,
     "layer": null,
     "rarity": 3,
     "rarity_color": "B09DED",
-    "jumps": "[44]"
+    "jumps": "[34]",
+    "jumps_dtype": 1
   },
   {
     "id": 207005,
@@ -14867,7 +17796,8 @@
     "layer": null,
     "rarity": 3,
     "rarity_color": "B09DED",
-    "jumps": "[49]"
+    "jumps": "[49]",
+    "jumps_dtype": null
   },
   {
     "id": 207006,
@@ -14918,6 +17848,60 @@
     "jumps": "[13]"
   },
   {
+    "id": 207008,
+    "type": 18,
+    "name": "萤火星房街道",
+    "interaction_type": null,
+    "sells": null,
+    "sell_cond": null,
+    "cond_sells": null,
+    "level": 1,
+    "target_id": null,
+    "asset_name": null,
+    "icon_res": "gui/texture/skinIcon/icon_skin_road_7/spriteFrame",
+    "max_count": 99999,
+    "max_own": 999990,
+    "duration": null,
+    "can_use": null,
+    "desc": "【心许千灯星垂野】活动限定装扮，可在【装扮】功能中进行装备。",
+    "effectDesc": "【心许千灯星垂野】活动限定装扮，可在【装扮】功能中进行装备。",
+    "trait_id ": null,
+    "layer": null,
+    "rarity": 3,
+    "rarity_color": "B09DED",
+    "jumps": "[61]",
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
+  },
+  {
+    "id": 207009,
+    "type": 18,
+    "name": "月光营地街道",
+    "interaction_type": null,
+    "sells": null,
+    "sell_cond": null,
+    "cond_sells": null,
+    "level": 1,
+    "target_id": null,
+    "asset_name": null,
+    "icon_res": "gui/texture/skinIcon/icon_skin_road_8/spriteFrame",
+    "max_count": 99999,
+    "max_own": 999990,
+    "duration": null,
+    "can_use": null,
+    "desc": "【心许千灯星垂野】活动限定装扮，可在【装扮】功能中进行装备。",
+    "effectDesc": "【心许千灯星垂野】活动限定装扮，可在【装扮】功能中进行装备。",
+    "trait_id ": null,
+    "layer": null,
+    "rarity": 3,
+    "rarity_color": "B09DED",
+    "jumps": "[61]",
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
+  },
+  {
     "id": 208001,
     "type": 18,
     "name": "默认围栏",
@@ -14939,7 +17923,8 @@
     "layer": null,
     "rarity": 1,
     "rarity_color": "D2C5AC",
-    "jumps": null
+    "jumps": null,
+    "jumps_dtype": null
   },
   {
     "id": 208002,
@@ -14987,12 +17972,13 @@
     "layer": null,
     "rarity": 3,
     "rarity_color": "B09DED",
-    "jumps": "[44]"
+    "jumps": "[44]",
+    "jumps_dtype": null
   },
   {
     "id": 208004,
     "type": 18,
-    "name": "金穗至尊围栏",
+    "name": "晴空庄园围栏",
     "interaction_type": null,
     "sells": null,
     "sell_cond": null,
@@ -15005,13 +17991,14 @@
     "max_own": 999990,
     "duration": null,
     "can_use": null,
-    "desc": "【南瓜乐翻天】活动限定装扮，可在【装扮】功能中进行装备。",
-    "effectDesc": "【南瓜乐翻天】活动限定装扮，可在【装扮】功能中进行装备。",
+    "desc": "SVIP特权限定装扮，可在【装扮】功能中进行装备。",
+    "effectDesc": "SVIP特权装扮",
     "trait_id ": null,
     "layer": null,
     "rarity": 3,
     "rarity_color": "B09DED",
-    "jumps": "[44]"
+    "jumps": "[34]",
+    "jumps_dtype": 1
   },
   {
     "id": 208005,
@@ -15035,7 +18022,8 @@
     "layer": null,
     "rarity": 3,
     "rarity_color": "B09DED",
-    "jumps": "[49]"
+    "jumps": "[49]",
+    "jumps_dtype": null
   },
   {
     "id": 208006,
@@ -15086,6 +18074,60 @@
     "jumps": "[13]"
   },
   {
+    "id": 208008,
+    "type": 18,
+    "name": "萤火星房围栏",
+    "interaction_type": null,
+    "sells": null,
+    "sell_cond": null,
+    "cond_sells": null,
+    "level": 1,
+    "target_id": null,
+    "asset_name": null,
+    "icon_res": "gui/texture/skinIcon/icon_skin_fence_7/spriteFrame",
+    "max_count": 99999,
+    "max_own": 999990,
+    "duration": null,
+    "can_use": null,
+    "desc": "【心许千灯星垂野】活动限定装扮，可在【装扮】功能中进行装备。",
+    "effectDesc": "【心许千灯星垂野】活动限定装扮，可在【装扮】功能中进行装备。",
+    "trait_id ": null,
+    "layer": null,
+    "rarity": 3,
+    "rarity_color": "B09DED",
+    "jumps": "[61]",
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
+  },
+  {
+    "id": 208009,
+    "type": 18,
+    "name": "月光营地围栏",
+    "interaction_type": null,
+    "sells": null,
+    "sell_cond": null,
+    "cond_sells": null,
+    "level": 1,
+    "target_id": null,
+    "asset_name": null,
+    "icon_res": "gui/texture/skinIcon/icon_skin_fence_8/spriteFrame",
+    "max_count": 99999,
+    "max_own": 999990,
+    "duration": null,
+    "can_use": null,
+    "desc": "【心许千灯星垂野】活动限定装扮，可在【装扮】功能中进行装备。",
+    "effectDesc": "【心许千灯星垂野】活动限定装扮，可在【装扮】功能中进行装备。",
+    "trait_id ": null,
+    "layer": null,
+    "rarity": 3,
+    "rarity_color": "B09DED",
+    "jumps": "[61]",
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": null
+  },
+  {
     "id": 301101,
     "type": 23,
     "name": "黄金虫",
@@ -15107,6 +18149,33 @@
     "layer": null,
     "rarity": 2,
     "rarity_color": "A8C1F4"
+  },
+  {
+    "id": 301102,
+    "type": 23,
+    "name": "足球",
+    "interaction_type": "addfootballsocialItem",
+    "sells": null,
+    "sell_cond": null,
+    "cond_sells": null,
+    "level": 1,
+    "target_id": null,
+    "asset_name": null,
+    "icon_res": "gui/texture/icon/icon_football/spriteFrame",
+    "max_count": 99999,
+    "max_own": 999990,
+    "duration": null,
+    "can_use": null,
+    "desc": "在好友农场放置可获得30经验，仅限好友本人清除，可获得金豆奖励，通过足球狂欢季活动获取。",
+    "effectDesc": "通过足球狂欢季活动获取，在好友农场放置可获得30经验。",
+    "trait_id ": null,
+    "layer": null,
+    "rarity": 2,
+    "rarity_color": "A8C1F4",
+    "jumps": "[58]",
+    "jumps_dtype": null,
+    "ware_scale": null,
+    "activity_id": 2026071501
   },
   {
     "id": 401001,
@@ -15131,6 +18200,7 @@
     "rarity": 3,
     "rarity_color": "B09DED",
     "jumps": "[52]",
+    "jumps_dtype": null,
     "ware_scale": null
   },
   {
@@ -15156,6 +18226,33 @@
     "rarity": 2,
     "rarity_color": "A8C1F4",
     "jumps": "[52]",
+    "jumps_dtype": null,
+    "ware_scale": null
+  },
+  {
+    "id": 401003,
+    "type": 10,
+    "name": "星月铭牌",
+    "interaction_type": null,
+    "sells": null,
+    "sell_cond": null,
+    "cond_sells": null,
+    "level": 1,
+    "target_id": 401003,
+    "asset_name": null,
+    "icon_res": "gui/texture/nameplate/icon/icon_nameplate_S2_1/spriteFrame",
+    "max_count": 99,
+    "max_own": 99,
+    "duration": null,
+    "can_use": null,
+    "desc": "千星游记系列活动获取，使用后可进行专属铭牌个性化设置。",
+    "effectDesc": "千星游记系列活动获取，使用后可进行专属铭牌个性化设置。",
+    "trait_id ": null,
+    "layer": null,
+    "rarity": 3,
+    "rarity_color": "B09DED",
+    "jumps": "[62]",
+    "jumps_dtype": null,
     "ware_scale": null
   }
 ]
