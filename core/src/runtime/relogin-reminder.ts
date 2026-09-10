@@ -37,7 +37,7 @@ function createReloginReminderService(options: ReloginReminderOptions) {
         return { ok: true, channel, endpoint, token, secret };
     }
 
-    async function sendConfiguredPush(payload: { title?: string; content?: string; accountId?: string; accountName?: string; logLabel?: string } = {}): Promise<void> {
+    async function sendConfiguredPush(payload: { title?: string; content?: string; html?: string; accountId?: string; accountName?: string; logLabel?: string } = {}): Promise<void> {
         const accountId = String(payload.accountId || '').trim();
         const accountName = String(payload.accountName || '').trim();
         const baseTitle = String(payload.title || '').trim();
@@ -61,6 +61,7 @@ function createReloginReminderService(options: ReloginReminderOptions) {
                 secret: channelCfg.secret,
                 title,
                 content,
+                html: payload.html,
             });
             if (result?.ok) {
                 log('系统', `${logLabel}发送成功: ${accountName || accountId || title}`);

@@ -3,10 +3,11 @@ const assert = require('node:assert/strict');
 const { buildLandUpgradeDetail } = require('../dist/services/farm/land-upgrade');
 
 test('land 21 keeps the exact server level and currency conditions and compares gold to crystal bonuses', () => {
+    const landsMap = new Map([[20, { unlocked: true, level: 5 }]]);
     const info = buildLandUpgradeDetail({ id: 21, unlocked: true, level: 4, max_level: 5,
         buff: { plant_yield_bonus: 30000, planting_time_reduction: 2000, plant_exp_bonus: 2000 },
-        upgrade_condition: { condition_type: 1, condition_value: 150,
-            required_items: [{ id: 1001, count: '450000000' }, { id: 1005, count: '18670' }] } });
+        upgrade_condition: { level_need: 150, preceeding_lands_count_need: 1,
+            items_need: [{ id: 1001, count: '450000000' }, { id: 1005, count: '18670' }] } }, landsMap);
     assert.equal(info.needLevel, 150);
     assert.deepEqual(info.costs.map(c => [c.id, c.count]), [['1001', '450000000'], ['1005', '18670']]);
     assert.equal(info.current.expBonus, 20);
@@ -38,7 +39,7 @@ test('unknown server condition types stay unknown; known official fallback does 
     const info = buildLandUpgradeDetail({ id: 21, unlocked: true, level: 4, max_level: 5,
         upgrade_condition: { condition_type: 99, condition_value: 150, required_items: [] } });
     assert.equal(info.unknown, true);
-    assert.equal(info.needLevel, null);
+    assert.equal(info.needLevel, 0);
     const fallback = buildLandUpgradeDetail({ id: 21, unlocked: true, level: 4, max_level: 5 });
     assert.equal(fallback.needLevel, 150);
     assert.equal(fallback.serverAllowed, false);
