@@ -19,11 +19,13 @@ const emit = defineEmits(['close', 'saved'])
 
 const loading = ref(false)
 const errorMessage = ref('')
-const activeLoginTab = ref<'code' | 'wx_qr' | 'qq_qr'>('code')
+const activeLoginTab = ref<'code' | 'wx_qr' | 'qq_qr' | 'yyb_qr'>('code')
 const loginSettingsLoaded = ref(false)
 const loginSettings = ref({
   wechatQrLogin: true,
   qqQrLogin: false,
+  yybQrLogin: true,
+  yybAutoReconnect: true,
   napCatEndpoint: '',
   napCatSignature: '',
 })
@@ -52,6 +54,7 @@ let qqPollKey = ''
 
 const wechatQrLoginEnabled = computed(() => loginSettingsLoaded.value && loginSettings.value.wechatQrLogin)
 const qqQrLoginEnabled = computed(() => loginSettingsLoaded.value && loginSettings.value.qqQrLogin)
+const yybQrLoginEnabled = computed(() => loginSettingsLoaded.value && loginSettings.value.yybQrLogin)
 
 // 表单数据
 const form = reactive({
@@ -102,6 +105,8 @@ async function loadLoginSettings() {
     loginSettings.value = {
       wechatQrLogin: typeof data?.wechatQrLogin === 'boolean' ? data.wechatQrLogin : true,
       qqQrLogin: typeof data?.qqQrLogin === 'boolean' ? data.qqQrLogin : false,
+      yybQrLogin: typeof data?.yybQrLogin === 'boolean' ? data.yybQrLogin : true,
+      yybAutoReconnect: typeof data?.yybAutoReconnect === 'boolean' ? data.yybAutoReconnect : true,
       napCatEndpoint: typeof data?.napCatEndpoint === 'string' ? data.napCatEndpoint : '',
       napCatSignature: typeof data?.napCatSignature === 'string' ? data.napCatSignature : '',
     }
@@ -113,6 +118,8 @@ async function loadLoginSettings() {
     loginSettings.value = {
       wechatQrLogin: true,
       qqQrLogin: false,
+      yybQrLogin: true,
+      yybAutoReconnect: true,
       napCatEndpoint: '',
       napCatSignature: '',
     }
@@ -123,6 +130,8 @@ async function loadLoginSettings() {
       if (activeLoginTab.value === 'wx_qr' && !loginSettings.value.wechatQrLogin)
         activeLoginTab.value = 'code'
       if (activeLoginTab.value === 'qq_qr' && !loginSettings.value.qqQrLogin)
+        activeLoginTab.value = 'code'
+      if (activeLoginTab.value === 'yyb_qr' && !loginSettings.value.yybQrLogin)
         activeLoginTab.value = 'code'
       if (activeLoginTab.value === 'qq_qr' && loginSettings.value.qqQrLogin && !qqTaskId.value)
         void startQqLogin()
@@ -226,6 +235,25 @@ async function getWxCodeAndAdd(taskId: string, flowVersion: number) {
   if (!code)
     throw new Error('未获取到登录 Code')
 
+  if (activeLoginTab.value === 'yyb_qr') {
+    // 应用宝扫码：持久化 loginBuffer + loginType=yyb，掉线后由后端自动补 Code 重连。
+    const loginBuffer = String(codeResult.data?.data?.login_buffer || '').trim()
+    const openid = String(codeResult.data?.data?.openid || '').trim()
+    const accessToken = String(codeResult.data?.data?.access_token || '').trim()
+    const refreshToken = String(codeResult.data?.data?.refresh_token || '').trim()
+    await addAccount({
+      name: form.name,
+      code,
+      platform: 'wx',
+      loginType: 'yyb',
+      loginBuffer,
+      openid,
+      accessToken,
+      refreshToken,
+    })
+    return
+  }
+
   // Deliberately use the same account API and payload as the manual form.
   await addAccount({ name: form.name, code, platform: 'wx', loginType: 'manual' })
 }
@@ -317,7 +345,8 @@ async function pollWxLogin(taskId: string, flowVersion: number) {
 }
 
 async function startWxLogin() {
-  if (!wechatQrLoginEnabled.value) {
+  const isYyb = activeLoginTab.value === 'yyb_qr'
+  if ((isYyb && !yybQrLoginEnabled.value) || (!isYyb && !wechatQrLoginEnabled.value)) {
     activeLoginTab.value = 'code'
     return
   }
@@ -583,11 +612,15 @@ watch(activeLoginTab, (tab) => {
     void startWxLogin()
   else if (tab === 'wx_qr' && !wechatQrLoginEnabled.value)
     activeLoginTab.value = 'code'
+  else if (tab === 'yyb_qr' && yybQrLoginEnabled.value && !wxTaskId.value)
+    void startWxLogin()
+  else if (tab === 'yyb_qr' && !yybQrLoginEnabled.value)
+    activeLoginTab.value = 'code'
   else if (tab === 'qq_qr' && qqQrLoginEnabled.value && !qqTaskId.value)
     void startQqLogin()
   else if (tab === 'qq_qr' && !qqQrLoginEnabled.value)
     activeLoginTab.value = 'code'
-  if (tab !== 'wx_qr')
+  if (tab !== 'wx_qr' && tab !== 'yyb_qr')
     resetWxLogin()
   if (tab !== 'qq_qr')
     resetQqLogin()
@@ -625,6 +658,9 @@ onBeforeUnmount(() => {
           </NTab>
           <NTab v-if="wechatQrLoginEnabled" name="wx_qr">
             微信扫码登录
+          </NTab>
+          <NTab v-if="yybQrLoginEnabled" name="yyb_qr">
+            应用宝扫码登录
           </NTab>
           <NTab v-if="qqQrLoginEnabled" name="qq_qr">
             QQ扫码登录
@@ -667,7 +703,7 @@ onBeforeUnmount(() => {
             </BaseButton>
           </div>
         </div>
-        <div v-else-if="activeLoginTab === 'wx_qr'" class="space-y-4" role="tabpanel" aria-label="微信扫码登录">
+        <div v-else-if="activeLoginTab === 'wx_qr' || activeLoginTab === 'yyb_qr'" class="space-y-4" role="tabpanel" aria-label="应用宝扫码登录">
           <BaseInput
             v-model="form.name"
             label="账号备注（必填）"
@@ -676,7 +712,7 @@ onBeforeUnmount(() => {
           />
           <div class="min-h-64 flex flex-col items-center justify-center gap-3">
             <div v-if="wxQrUrl" class="bg-white p-2">
-              <img :src="wxQrUrl" alt="微信登录二维码" class="h-52 w-52">
+              <img :src="wxQrUrl" alt="应用宝登录二维码" class="h-52 w-52">
             </div>
             <div v-else class="h-52 w-52 flex items-center justify-center text-sm opacity-60">
               {{ wxLoading ? '正在获取二维码...' : '二维码不可用' }}

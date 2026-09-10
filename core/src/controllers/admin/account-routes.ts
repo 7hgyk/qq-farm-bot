@@ -25,6 +25,18 @@ function mountAccountRoutes(app: Application, ctx: AdminContext): void {
     app.get('/api/accounts', (req: Request, res: Response) => {
         try {
             const data = ctx.provider.getAccounts();
+            if (Array.isArray(data?.accounts)) {
+                const sanitized = data.accounts.map((acc: any) => {
+                    const copy = { ...(acc || {}) };
+                    delete copy.accessToken;
+                    delete copy.access_token;
+                    delete copy.refreshToken;
+                    delete copy.refresh_token;
+                    return copy;
+                });
+                res.json({ ok: true, data: { ...data, accounts: sanitized } });
+                return;
+            }
             res.json({ ok: true, data });
         } catch (e: any) {
             handleApiError(res, e);
@@ -420,7 +432,7 @@ function mountAccountRoutes(app: Application, ctx: AdminContext): void {
                     timeZones: getTimeZoneOptions(),
                     loginSettings: store.getLoginSettings
                         ? store.getLoginSettings()
-                        : { wechatQrLogin: true, qqQrLogin: false, napCatEndpoint: '', napCatSignature: '' },
+                        : { wechatQrLogin: true, qqQrLogin: false, yybQrLogin: true, yybAutoReconnect: true, yybReconnectDelayMin: 5, yybReconnectMaxAttempts: 3, napCatEndpoint: '', napCatSignature: '' },
                 },
             });
         } catch (e: any) {
@@ -432,7 +444,7 @@ function mountAccountRoutes(app: Application, ctx: AdminContext): void {
         try {
             const loginSettings = store.getLoginSettings
                 ? store.getLoginSettings()
-                : { wechatQrLogin: true, qqQrLogin: false, napCatEndpoint: '', napCatSignature: '' };
+                : { wechatQrLogin: true, qqQrLogin: false, yybQrLogin: true, yybAutoReconnect: true, yybReconnectDelayMin: 5, yybReconnectMaxAttempts: 3, napCatEndpoint: '', napCatSignature: '' };
             res.json({ ok: true, data: loginSettings });
         } catch (e: any) {
             handleApiError(res, e);
@@ -446,10 +458,14 @@ function mountAccountRoutes(app: Application, ctx: AdminContext): void {
                 ? store.setLoginSettings({
                     wechatQrLogin: body.wechatQrLogin,
                     qqQrLogin: body.qqQrLogin,
+                    yybQrLogin: body.yybQrLogin,
+                    yybAutoReconnect: body.yybAutoReconnect,
+                    yybReconnectDelayMin: body.yybReconnectDelayMin,
+                    yybReconnectMaxAttempts: body.yybReconnectMaxAttempts,
                     napCatEndpoint: body.napCatEndpoint,
                     napCatSignature: body.napCatSignature,
                 })
-                : { wechatQrLogin: true, qqQrLogin: false, napCatEndpoint: '', napCatSignature: '' };
+                : { wechatQrLogin: true, qqQrLogin: false, yybQrLogin: true, yybAutoReconnect: true, yybReconnectDelayMin: 5, yybReconnectMaxAttempts: 3, napCatEndpoint: '', napCatSignature: '' };
             res.json({ ok: true, data: loginSettings });
         } catch (e: any) {
             handleApiError(res, e);

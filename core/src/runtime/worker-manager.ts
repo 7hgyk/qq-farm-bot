@@ -31,6 +31,7 @@ interface WorkerManagerOptions {
     sendConfiguredPush?: (payload: any) => Promise<void> | void;
     addOrUpdateAccount: (acc: any) => any;
     deleteAccount: (id: string) => void;
+    getLoginSettings?: () => any;
     onStatusSync?: (accountId: string, status: any, accountName?: string) => void;
     onWorkerLog?: (entry: any, accountId: string, accountName?: string) => void;
 }
@@ -54,6 +55,7 @@ function createWorkerManager(options: WorkerManagerOptions) {
         sendConfiguredPush,
         addOrUpdateAccount,
         deleteAccount,
+        getLoginSettings,
         onStatusSync,
         onWorkerLog,
     } = options;
@@ -100,7 +102,154 @@ function createWorkerManager(options: WorkerManagerOptions) {
         return createForkWorker(account);
     }
 
+    const WX_APP_ID = 'wx5306c5978fdb76e4';
+    const RECONNECT_SUCCESS_STABLE_MS = 60000;
+    const RECONNECT_DELAY_MIN = 2;
+    const RECONNECT_DELAY_MAX = 480;
+    const RECONNECT_ATTEMPTS_MIN = 1;
+    const RECONNECT_ATTEMPTS_MAX = 100;
+    function resolveReconnectConfig(loginSettings: any): { delayMin: number; maxAttempts: number } {
+        const logCfg = (loginSettings && typeof loginSettings === 'object') ? loginSettings : {};
+        const delayRaw = Number.parseInt(logCfg.yybReconnectDelayMin, 10);
+        const attemptsRaw = Number.parseInt(logCfg.yybReconnectMaxAttempts, 10);
+        const delayMin = Number.isFinite(delayRaw)
+            ? Math.max(RECONNECT_DELAY_MIN, Math.min(RECONNECT_DELAY_MAX, delayRaw))
+            : RECONNECT_DELAY_MIN;
+        const maxAttempts = Number.isFinite(attemptsRaw)
+            ? Math.max(RECONNECT_ATTEMPTS_MIN, Math.min(RECONNECT_ATTEMPTS_MAX, attemptsRaw))
+            : RECONNECT_ATTEMPTS_MIN;
+        return { delayMin, maxAttempts };
+    }
+    // 离线重连状态：只对 loginType=yyb 的微信账号生效
+    const reconnectScheduled = new Set<string>();
+    const reconnectAttemptsMap = new Map<string, number>();
+
+    /**
+     * 微信(应用宝/YYB)账号启动/重连前用持久化的 loginBuffer 换新 Code。
+     * 微信 Code 是一次性且短时效的，拿旧 Code 重连必然被 ws_error:400 拒绝，
+     * 因此必须使用项目内 getNativeWxLoginCode 先行刷新登录态。
+     */
+    async function refreshYybCodeIfNeeded(account: any): Promise<void> {
+        const isYybWx = !!account
+            && String(account.platform || '').toLowerCase() === 'wx'
+            && String(account.loginType || '') === 'yyb';
+        if (!isYybWx) return;
+        const { getNativeWxLoginCode } = require('../services/wx-login/native-protocol');
+        let loginBuffer = String(account.loginBuffer || '').trim();
+        const openid = String(account.openid || '').trim();
+        const accessToken = String(account.accessToken || '').trim();
+        const refreshToken = String(account.refreshToken || '').trim();
+        if (!loginBuffer && (!openid || (!accessToken && !refreshToken))) {
+            log('账号', `账号 ${account.name || account.id} 为微信账号但缺少 loginBuffer 与 (openid/accessToken)，无法自动刷新 Code（请重新扫码登录后生效）`, {
+                accountId: String(account.id),
+                accountName: account.name || '',
+            });
+            return;
+        }
+        let code: string | undefined;
+        if (loginBuffer) {
+            try {
+                code = await getNativeWxLoginCode(loginBuffer, WX_APP_ID);
+            } catch (err: any) {
+                const reason = err && err.message ? err.message : String(err || 'unknown error');
+                log('系统', `账号 ${account.name || account.id} 用当前 loginBuffer 换 Code 被拒(${String(reason).slice(0, 120)})，尝试用 openid/accessToken 续期新 loginBuffer`, {
+                    accountId: String(account.id),
+                    accountName: account.name || '',
+                });
+            }
+        }
+        if (!code && openid && (accessToken || refreshToken)) {
+            try {
+                const { WxLoginService } = require('../services/wx-login/service');
+                const svc = new WxLoginService();
+                let access = accessToken;
+                let refresh = refreshToken;
+                if (!access && refresh) {
+                    const refreshed = await svc.refreshAccessToken(refresh);
+                    access = refreshed.accessToken;
+                    refresh = refreshed.refreshToken || refresh;
+                    Object.assign(account, { accessToken: access, refreshToken: refresh });
+                    addOrUpdateAccount({ id: account.id, accessToken: access, refreshToken: refresh });
+                    log('系统', `账号 ${account.name || account.id} 已刷新微信 access_token`, {
+                        accountId: String(account.id),
+                        accountName: account.name || '',
+                    });
+                }
+                let newer: string;
+                try {
+                    newer = await svc.getWxLoginBuffer(openid, access);
+                } catch (bufferErr: any) {
+                    if (!refresh) throw bufferErr;
+                    const refreshed = await svc.refreshAccessToken(refresh);
+                    access = refreshed.accessToken;
+                    refresh = refreshed.refreshToken || refresh;
+                    Object.assign(account, { accessToken: access, refreshToken: refresh });
+                    addOrUpdateAccount({ id: account.id, accessToken: access, refreshToken: refresh });
+                    log('系统', `账号 ${account.name || account.id} accessToken 失效，已用 refresh_token 刷新后重试`, {
+                        accountId: String(account.id),
+                        accountName: account.name || '',
+                    });
+                    newer = await svc.getWxLoginBuffer(openid, access);
+                }
+                if (!String(newer || '').trim()) throw new Error('openid/accessToken 续期返回空的 loginBuffer');
+                loginBuffer = String(newer).trim();
+                Object.assign(account, { loginBuffer, accessToken: access, refreshToken: refresh });
+                addOrUpdateAccount({ id: account.id, loginBuffer, accessToken: access, refreshToken: refresh });
+                log('系统', `账号 ${account.name || account.id} 已通过 openid/accessToken 续期新 loginBuffer`, {
+                    accountId: String(account.id),
+                    accountName: account.name || '',
+                });
+                code = await getNativeWxLoginCode(loginBuffer, WX_APP_ID);
+            } catch (err: any) {
+                const reason = err && err.message ? err.message : String(err || 'unknown error');
+                throw new Error(`openid/accessToken 续期登录态失败: ${reason}`);
+            }
+        }
+        if (!code) throw new Error('应用宝刷新微信 Code 返回为空');
+        Object.assign(account, { code: String(code), loginBuffer });
+        addOrUpdateAccount({ id: account.id, code: String(code), loginBuffer, accessToken: String(account.accessToken || ''), refreshToken: String(account.refreshToken || '') });
+        log('系统', `账号 ${account.name || account.id} 已刷新微信 Code`, {
+            accountId: String(account.id),
+            accountName: account.name || '',
+        });
+    }
+
+    const startingIds = new Set<string>();
+
     function startWorker(account: any): boolean {
+        const id = String(account?.id || '');
+        if (!id || workers[account.id] || startingIds.has(id)) return false;
+        void startWorkerAsync(account);
+        return true;
+    }
+
+    async function startWorkerAsync(account: any): Promise<boolean> {
+        if (!account || !account.id) return false;
+        if (workers[account.id] || startingIds.has(String(account.id))) return false;
+        startingIds.add(String(account.id));
+        try {
+            if (String(account.platform || '').toLowerCase() === 'wx'
+                && String(account.loginType || '') === 'yyb') {
+                try {
+                    await refreshYybCodeIfNeeded(account);
+                } catch (err: any) {
+                    const reason = err && err.message ? err.message : String(err || 'unknown error');
+                    log('错误', `账号 ${account.name || account.id} 微信启动前刷新 Code 失败: ${reason}`, {
+                        accountId: String(account.id),
+                        accountName: account.name || '',
+                    });
+                    addAccountLog('yyb_start_refresh_failed', `微信启动前刷新 Code 失败: ${reason}`, account.id, account.name || '', { reason });
+                    return false;
+                }
+            }
+            if (workers[account.id]) return false;
+            return startWorkerInner(account);
+        } finally {
+            startingIds.delete(String(account.id));
+        }
+    }
+
+    function startWorkerInner(account: any): boolean {
         if (!account || !account.id) return false;
         if (workers[account.id]) return false;
 
@@ -248,6 +397,108 @@ function createWorkerManager(options: WorkerManagerOptions) {
         return error;
     }
 
+    /**
+     * 微信(应用宝)账号掉线自动补 Code 重连调度。
+     * Code 是一次性短时效的，掉线后必须用 persist loginBuffer 换新码再重启；
+     * 仅对 platform=wx 且 loginType=yyb 的账号生效，受 yybAutoReconnect 开关控制。
+     */
+    function scheduleReconnect(accountId: string, reason: string): void {
+        const wrk = workers[accountId];
+        const name = wrk ? wrk.name : String(accountId);
+        if (reconnectScheduled.has(accountId)) {
+            log('系统', `账号 ${name || accountId} 已在自动重连队列，忽略重复事件`, {
+                accountId: String(accountId),
+                accountName: name || '',
+                reason,
+            });
+            return;
+        }
+        reconnectScheduled.add(accountId);
+        log('系统', `账号 ${name} 触发应用宝离线重连调度 (${reason})`, {
+            accountId: String(accountId),
+            accountName: name,
+            reason,
+        });
+        stopWorker(accountId);
+        const { getAccounts } = require('../models/store');
+        const loginSettings = typeof getLoginSettings === 'function' ? getLoginSettings() : {};
+        const accountsData = getAccounts();
+        const account = (accountsData.accounts || []).find((a: any) => String(a.id) === String(accountId));
+        if (!account) {
+            reconnectScheduled.delete(accountId);
+            log('系统', `账号 ${name} 已不存在，取消自动重连`);
+            return;
+        }
+        const isYybWx = String(account.platform || '').toLowerCase() === 'wx'
+            && String(account.loginType || '') === 'yyb';
+        if (!isYybWx || !loginSettings || !loginSettings.yybAutoReconnect) {
+            reconnectScheduled.delete(accountId);
+            log('系统', `账号 ${name} 未启用应用宝自动重连，已停止`);
+            return;
+        }
+        if (!String(account.loginBuffer || '').trim()
+            && (!String(account.openid || '').trim()
+                || (!String(account.accessToken || '').trim() && !String(account.refreshToken || '').trim()))) {
+            reconnectScheduled.delete(accountId);
+            log('系统', `账号 ${name} 缺少 loginBuffer 及 (openid/accessToken)，无法自动补 Code 重连，请重新扫码`);
+            return;
+        }
+        const { delayMin, maxAttempts } = resolveReconnectConfig(loginSettings);
+        const currentAttempt = reconnectAttemptsMap.get(accountId) || 0;
+        if (currentAttempt >= maxAttempts) {
+            log('系统', `账号 ${name} 自动重连已达上限(${maxAttempts}次)，停止重连`, {
+                accountId: String(accountId),
+                attempts: currentAttempt,
+            });
+            reconnectAttemptsMap.delete(accountId);
+            reconnectScheduled.delete(accountId);
+            return;
+        }
+        const nextAttempt = currentAttempt + 1;
+        reconnectAttemptsMap.set(accountId, nextAttempt);
+        const fastFirstMs = 2000;
+        const subsequentDelayMs = delayMin * 60 * 1000;
+        const delayMs = nextAttempt === 1 ? fastFirstMs : subsequentDelayMs;
+        const delayDesc = nextAttempt === 1 ? '2 秒' : `${delayMin} 分钟`;
+        log('系统', `账号 ${name} 将在 ${delayDesc}后自动重连 (${nextAttempt}/${maxAttempts})`, {
+            accountId: String(accountId),
+            delayMs,
+            attempt: nextAttempt,
+            maxAttempts,
+        });
+        managerScheduler.setTimeoutTask(`reconnect_attempt_${accountId}`, delayMs, async () => {
+            reconnectScheduled.delete(accountId);
+            if (workers[accountId]) return;
+            try {
+                const { getAccounts: getAccountsNow } = require('../models/store');
+                const latest = (getAccountsNow().accounts || []).find((a: any) => String(a.id) === String(accountId));
+                if (!latest) {
+                    log('系统', `账号 ${name} 已被删除，取消自动重连`);
+                    reconnectAttemptsMap.delete(accountId);
+                    return;
+                }
+                log('系统', `账号 ${name} 开始自动重连 (${nextAttempt}/${maxAttempts})`);
+                const started = await startWorkerAsync(latest);
+                if (started) {
+                    managerScheduler.setTimeoutTask(`reconnect_reset_${accountId}`, RECONNECT_SUCCESS_STABLE_MS, () => {
+                        if (workers[accountId]) reconnectAttemptsMap.delete(accountId);
+                    });
+                    addAccountLog('reconnect_success', `账号 ${name} 已通过应用宝补 Code 重连恢复在线 (${nextAttempt}/${maxAttempts})`, accountId, name, { attempt: nextAttempt, maxAttempts });
+                } else {
+                    log('系统', `账号 ${name} 本次自动重连未能启动，安排下一次重试`, {
+                        accountId: String(accountId),
+                        accountName: name,
+                        attempt: nextAttempt,
+                        maxAttempts,
+                    });
+                    scheduleReconnect(accountId, 'reconnect_retry');
+                }
+            } catch (e: any) {
+                log('系统', `账号 ${name} 自动重连启动失败: ${e && e.message ? e.message : e}`);
+            }
+        });
+    }
+
     function handleWorkerMessage(accountId: string, sourceProcess: any, msg: any): void {
         const worker = workers[accountId];
         if (!worker || worker.process !== sourceProcess) return;
@@ -360,6 +611,7 @@ function createWorkerManager(options: WorkerManagerOptions) {
                     accountId,
                     worker.name,
                 );
+                scheduleReconnect(accountId, `ws_error:${code}`);
             }
         } else if (msg.type === 'account_kicked') {
             if (worker.terminalHandled) return;
@@ -374,6 +626,7 @@ function createWorkerManager(options: WorkerManagerOptions) {
             });
             addAccountLog('kickout_stop', `账号 ${worker.name} 被踢下线，已自动停止`, accountId, worker.name, { reason });
             stopWorker(accountId);
+            scheduleReconnect(accountId, `kickout:${reason}`);
         } else if (msg.type === 'account_disconnected') {
             if (worker.terminalHandled) return;
             worker.terminalHandled = true;
@@ -410,6 +663,7 @@ function createWorkerManager(options: WorkerManagerOptions) {
                 { source, code, reason, phase, connectionId: Number(msg.connectionId) || 0 },
             );
             stopWorker(accountId);
+            scheduleReconnect(accountId, `disconnect:${source}:${phase}:${code}`);
         } else if (msg.type === 'api_response') {
             const { id, result, error } = msg;
             managerScheduler.clear(`api_timeout_${accountId}_${id}`);

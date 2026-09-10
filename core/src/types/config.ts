@@ -114,6 +114,10 @@ export interface UIConfig {
 export interface LoginSettings {
   wechatQrLogin: boolean;
   qqQrLogin: boolean;
+  yybQrLogin: boolean;
+  yybAutoReconnect: boolean;
+  yybReconnectDelayMin: number;
+  yybReconnectMaxAttempts: number;
   napCatEndpoint: string;
   napCatSignature: string;
 }
