@@ -1,7 +1,7 @@
 import type { AccountConfig, AutomationConfig, BagSeedFallbackStrategy, FertilizerLandType, GlobalConfig, IntervalConfig, LoginSettings, OfflineReminder, PlantingStrategy, QuietHoursConfig } from '../../types/config';
 export {};
 
-const { DEFAULT_TIME_ZONE, normalizeTimeZone, resolveClientVersion } = require('../../config/config');
+const { DEFAULT_TIME_ZONE, DEFAULT_DEVICE_INFO: DEFAULT_DEVICE_INFO_DEFAULT, DEFAULT_PLATFORM, normalizeTimeZone, resolveClientVersion } = require('../../config/config');
 const { getDataFile, ensureDataDir } = require('../../config/runtime-paths');
 const { readJsonFile } = require('../../services/json-db');
 
@@ -27,7 +27,7 @@ let systemConfigMigrated: boolean = false;
 let accountFallbackConfig: AccountConfig;
 
 const DEFAULT_OFFLINE_REMINDER: OfflineReminder = {
-    channel: 'webhook',
+    channel: 'pushplus',
     endpoint: '',
     token: '',
     secret: '',
@@ -37,8 +37,13 @@ const DEFAULT_OFFLINE_REMINDER: OfflineReminder = {
 };
 
 const DEFAULT_LOGIN_SETTINGS: LoginSettings = {
-    wechatQrLogin: true,
+    codeLogin: false,
+    wechatQrLogin: false,
     qqQrLogin: false,
+    yybQrLogin: true,
+    yybAutoReconnect: true,
+    yybReconnectDelayMin: 5,
+    yybReconnectMaxAttempts: 3,
     napCatEndpoint: '',
     napCatSignature: '',
 };
@@ -49,20 +54,20 @@ const DEFAULT_ACCOUNT_CONFIG: AccountConfig = {
         farm_push: true,
         land_upgrade: true,
         friend: true,
-        friend_auto_accept: true,
+        friend_auto_accept: false,
         friend_help_exp_limit: true,
         friend_steal: true,
         friend_help: true,
         friend_bad: true,
         friend_help_protect_dog_ignore_exp_limit: true,
         task: true,
-        fertilizer_gift: false,
-        fertilizer_buy_organic: false,
-        fertilizer_buy_normal: false,
-        mystery_shop_auto_buy: false,
+        fertilizer_gift: true,
+        fertilizer_buy_organic: true,
+        fertilizer_buy_normal: true,
+        mystery_shop_auto_buy: true,
         mystery_shop_allow_gold: true,
-        mystery_shop_allow_coupon: false,
-        mystery_shop_allow_gold_bean: false,
+        mystery_shop_allow_coupon: true,
+        mystery_shop_allow_gold_bean: true,
         mystery_shop_allow_diamond: false,
         mystery_shop_arrival_notify: false,
         mystery_shop_purchase_notify: false,
@@ -71,10 +76,10 @@ const DEFAULT_ACCOUNT_CONFIG: AccountConfig = {
         fertilizer_multi_season: true,
         fertilizer_land_types: [...DEFAULT_FERTILIZER_LAND_TYPES],
         fertilizer_smart_seconds: 300,
-        skip_own_weed_bug: true,
+        skip_own_weed_bug: false,
         show_manual_fertilizer: true,
     },
-    plantingStrategy: 'max_exp',
+    plantingStrategy: 'bag_priority',
     preferredSeedId: 0,
     intervals: {
         farm: 2,
@@ -117,7 +122,7 @@ const DEFAULT_ACCOUNT_CONFIG: AccountConfig = {
     bagSeedPriority: [],
     bagSeedMultiLandReservationEnabled: false,
     bagSeedLandTypes: {},
-    bagSeedFallbackStrategy: 'level',
+    bagSeedFallbackStrategy: 'max_profit',
     autoAcceptFriendMinLevel: 0,
     autoAcceptRequireOwnLevel: false,
     autoAcceptHarvestStealEnabled: true,
@@ -491,11 +496,14 @@ accountFallbackConfig = {
 const globalConfig: GlobalConfig = {
     accountConfigs: {},
     defaultAccountConfig: cloneAccountConfig(DEFAULT_ACCOUNT_CONFIG),
+    defaultAccountConfigCustomized: false,
     ui: {
         theme: 'light',
     },
     loginSettings: { ...DEFAULT_LOGIN_SETTINGS },
+    loginSettingsCustomized: false,
     offlineReminder: { ...DEFAULT_OFFLINE_REMINDER },
+    offlineReminderCustomized: false,
     systemConfig: null,
 };
 
@@ -511,7 +519,11 @@ function loadGlobalConfig(): void {
     try {
         const data: any = readJsonFile(STORE_FILE, () => ({}));
         if (data && typeof data === 'object') {
-            accountFallbackConfig = cloneAccountConfig(DEFAULT_ACCOUNT_CONFIG);
+            // 只有当用户显式"设为全局默认策略"过（defaultAccountConfigCustomized）时才恢复保存值；
+            // 否则一律使用代码内置默认值，这样升级代码里的默认策略能直接对存量部署生效。
+            accountFallbackConfig = (data.defaultAccountConfigCustomized === true && data.defaultAccountConfig && typeof data.defaultAccountConfig === 'object')
+                ? normalizeAccountConfig(data.defaultAccountConfig, DEFAULT_ACCOUNT_CONFIG)
+                : cloneAccountConfig(DEFAULT_ACCOUNT_CONFIG);
             globalConfig.defaultAccountConfig = cloneAccountConfig(accountFallbackConfig);
 
             const cfgMap = (data.accountConfigs && typeof data.accountConfigs === 'object')
@@ -531,18 +543,33 @@ function loadGlobalConfig(): void {
             globalConfig.ui.theme = theme === 'light' ? 'light' : 'dark';
 
             // offlineReminder normalization done in global-config
-            if (data.offlineReminder && typeof data.offlineReminder === 'object') {
+            // 同理：只有用户显式保存过下线提醒（offlineReminderCustomized）时才恢复保存值，
+            // 否则以代码内置默认值为准（默认渠道 pushplus）。
+            if (data.offlineReminder && typeof data.offlineReminder === 'object' && data.offlineReminderCustomized === true) {
                 globalConfig.offlineReminder = data.offlineReminder;
             }
 
-            if (data.loginSettings && typeof data.loginSettings === 'object') {
+            // 只有当用户显式保存过登录设置（loginSettingsCustomized）时才恢复保存值；
+            // 否则以代码内置默认值为准，保证升级默认登录方式能直接对存量部署生效。
+            if (data.loginSettings && typeof data.loginSettings === 'object' && data.loginSettingsCustomized === true) {
                 globalConfig.loginSettings = {
+                    codeLogin: typeof data.loginSettings.codeLogin === 'boolean'
+                        ? data.loginSettings.codeLogin
+                        : DEFAULT_LOGIN_SETTINGS.codeLogin,
                     wechatQrLogin: typeof data.loginSettings.wechatQrLogin === 'boolean'
                         ? data.loginSettings.wechatQrLogin
                         : DEFAULT_LOGIN_SETTINGS.wechatQrLogin,
                     qqQrLogin: typeof data.loginSettings.qqQrLogin === 'boolean'
                         ? data.loginSettings.qqQrLogin
                         : DEFAULT_LOGIN_SETTINGS.qqQrLogin,
+                    yybQrLogin: typeof data.loginSettings.yybQrLogin === 'boolean'
+                        ? data.loginSettings.yybQrLogin
+                        : DEFAULT_LOGIN_SETTINGS.yybQrLogin,
+                    yybAutoReconnect: typeof data.loginSettings.yybAutoReconnect === 'boolean'
+                        ? data.loginSettings.yybAutoReconnect
+                        : DEFAULT_LOGIN_SETTINGS.yybAutoReconnect,
+                    yybReconnectDelayMin: Number.parseInt(data.loginSettings.yybReconnectDelayMin, 10),
+                    yybReconnectMaxAttempts: Number.parseInt(data.loginSettings.yybReconnectMaxAttempts, 10),
                     napCatEndpoint: typeof data.loginSettings.napCatEndpoint === 'string'
                         ? data.loginSettings.napCatEndpoint.trim()
                         : DEFAULT_LOGIN_SETTINGS.napCatEndpoint,
@@ -555,7 +582,7 @@ function loadGlobalConfig(): void {
             if (data.systemConfig && typeof data.systemConfig === 'object') {
                 const srcDevice = (data.systemConfig.deviceInfo && typeof data.systemConfig.deviceInfo === 'object')
                     ? data.systemConfig.deviceInfo : {};
-                const deviceOs = String(srcDevice.os || data.systemConfig.os || 'Windows').trim();
+                const deviceOs = String(srcDevice.os || data.systemConfig.os || DEFAULT_DEVICE_INFO_DEFAULT.os).trim();
                 const savedTopVersion = String(data.systemConfig.clientVersion || '').trim();
                 const savedDeviceVersion = String(srcDevice.clientVersion || '').trim();
                 const savedVersion = savedDeviceVersion || savedTopVersion;
@@ -568,17 +595,17 @@ function loadGlobalConfig(): void {
                     serverUrl: String(data.systemConfig.serverUrl || '').trim(),
                     clientVersion: deviceClientVersion,
                     clientVersionUpdatedAt: deviceClientVersionUpdatedAt,
-                    platform: String(data.systemConfig.platform || 'qq').trim(),
+                    platform: String(data.systemConfig.platform || DEFAULT_PLATFORM).trim(),
                     os: deviceOs,
                     timeZone: normalizeTimeZone(data.systemConfig.timeZone || DEFAULT_TIME_ZONE),
                     deviceInfo: {
                         os: deviceOs,
                         clientVersion: deviceClientVersion,
-                        sysSoftware: String(srcDevice.sysSoftware || 'Windows').trim(),
-                        network: String(srcDevice.network || 'wifi').trim(),
-                        memory: String(srcDevice.memory || '16384').trim(),
-                        deviceId: String(srcDevice.deviceId || 'DESKTOP-PC<WPC>').trim(),
-                        userAgent: String(srcDevice.userAgent || '').trim(),
+                        sysSoftware: String(srcDevice.sysSoftware || DEFAULT_DEVICE_INFO_DEFAULT.sysSoftware).trim(),
+                        network: String(srcDevice.network || DEFAULT_DEVICE_INFO_DEFAULT.network).trim(),
+                        memory: String(srcDevice.memory || DEFAULT_DEVICE_INFO_DEFAULT.memory).trim(),
+                        deviceId: String(srcDevice.deviceId || DEFAULT_DEVICE_INFO_DEFAULT.deviceId).trim(),
+                        userAgent: String(srcDevice.userAgent || DEFAULT_DEVICE_INFO_DEFAULT.userAgent).trim(),
                     },
                 };
                 systemConfigMigrated = savedTopVersion !== deviceClientVersion
