@@ -1289,6 +1289,10 @@ const defaultSystemConfig = ref({
 const localLoginSettings = ref({
   wechatQrLogin: true,
   qqQrLogin: false,
+  yybQrLogin: true,
+  yybAutoReconnect: true,
+  yybReconnectDelayMin: 5,
+  yybReconnectMaxAttempts: 3,
   napCatEndpoint: '',
   napCatSignature: '',
 })
@@ -1322,6 +1326,10 @@ function normalizeLoginSettings(source: any) {
   return {
     wechatQrLogin: typeof source?.wechatQrLogin === 'boolean' ? source.wechatQrLogin : true,
     qqQrLogin: typeof source?.qqQrLogin === 'boolean' ? source.qqQrLogin : false,
+    yybQrLogin: typeof source?.yybQrLogin === 'boolean' ? source.yybQrLogin : true,
+    yybAutoReconnect: typeof source?.yybAutoReconnect === 'boolean' ? source.yybAutoReconnect : true,
+    yybReconnectDelayMin: Number.parseInt(source?.yybReconnectDelayMin, 10),
+    yybReconnectMaxAttempts: Number.parseInt(source?.yybReconnectMaxAttempts, 10),
     napCatEndpoint: typeof source?.napCatEndpoint === 'string' ? source.napCatEndpoint.trim() : '',
     napCatSignature: typeof source?.napCatSignature === 'string' ? source.napCatSignature.trim() : '',
   }
@@ -2083,7 +2091,38 @@ async function handleResetSystemConfig() {
                   <div class="border border-gray-200 rounded-lg bg-gray-50/70 p-3 dark:border-gray-700 dark:bg-gray-900/30">
                     <BaseSwitch v-model="localLoginSettings.qqQrLogin" label="QQ扫码登录" />
                   </div>
+                  <div class="border border-gray-200 rounded-lg bg-gray-50/70 p-3 dark:border-gray-700 dark:bg-gray-900/30">
+                    <BaseSwitch v-model="localLoginSettings.yybQrLogin" label="应用宝扫码登录" />
+                  </div>
+                  <div class="border border-gray-200 rounded-lg bg-gray-50/70 p-3 dark:border-gray-700 dark:bg-gray-900/30">
+                    <BaseSwitch v-model="localLoginSettings.yybAutoReconnect" label="应用宝掉线自动重连" />
+                  </div>
                 </div>
+
+                <div
+                  v-if="localLoginSettings.yybAutoReconnect"
+                  class="mt-4 grid grid-cols-1 gap-3 rounded-lg border border-gray-200 bg-gray-50/70 p-4 sm:grid-cols-2 dark:border-gray-700 dark:bg-gray-900/30"
+                >
+                  <BaseInput
+                    v-model="localLoginSettings.yybReconnectDelayMin"
+                    label="应用宝重连间隔(分钟)"
+                    type="number"
+                    :min="2"
+                    :max="480"
+                    :step="1"
+                    placeholder="最小 2，默认 5"
+                  />
+                  <BaseInput
+                    v-model="localLoginSettings.yybReconnectMaxAttempts"
+                    label="应用宝重试上限(次)"
+                    type="number"
+                    :min="1"
+                    :max="100"
+                    :step="1"
+                    placeholder="最小 1，默认 3"
+                  />
+                </div>
+
 
                 <div
                   v-if="localLoginSettings.qqQrLogin"

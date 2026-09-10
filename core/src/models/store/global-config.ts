@@ -115,9 +115,15 @@ function getOfflineReminder(): OfflineReminder {
 
 function normalizeLoginSettings(input: unknown): LoginSettings {
     const src: Record<string, any> = (input && typeof input === 'object') ? input as Record<string, any> : {};
+    const delayRaw = Number.parseInt(src.yybReconnectDelayMin, 10);
+    const attemptsRaw = Number.parseInt(src.yybReconnectMaxAttempts, 10);
     return {
         wechatQrLogin: typeof src.wechatQrLogin === 'boolean' ? src.wechatQrLogin : DEFAULT_LOGIN_SETTINGS.wechatQrLogin,
         qqQrLogin: typeof src.qqQrLogin === 'boolean' ? src.qqQrLogin : DEFAULT_LOGIN_SETTINGS.qqQrLogin,
+        yybQrLogin: typeof src.yybQrLogin === 'boolean' ? src.yybQrLogin : DEFAULT_LOGIN_SETTINGS.yybQrLogin,
+        yybAutoReconnect: typeof src.yybAutoReconnect === 'boolean' ? src.yybAutoReconnect : DEFAULT_LOGIN_SETTINGS.yybAutoReconnect,
+        yybReconnectDelayMin: Math.max(2, Math.min(480, Number.isFinite(delayRaw) ? delayRaw : DEFAULT_LOGIN_SETTINGS.yybReconnectDelayMin)),
+        yybReconnectMaxAttempts: Math.max(1, Math.min(100, Number.isFinite(attemptsRaw) ? attemptsRaw : DEFAULT_LOGIN_SETTINGS.yybReconnectMaxAttempts)),
         napCatEndpoint: typeof src.napCatEndpoint === 'string' ? src.napCatEndpoint.trim() : DEFAULT_LOGIN_SETTINGS.napCatEndpoint,
         napCatSignature: typeof src.napCatSignature === 'string' ? src.napCatSignature.trim() : DEFAULT_LOGIN_SETTINGS.napCatSignature,
     };

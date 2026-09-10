@@ -96,7 +96,35 @@ function parseManual(body: Buffer, temp: any) {
 }
 function jsPlain(uin: bigint, appId: string, host: Buffer) { const mac = crypto.randomBytes(6); mac[0] = (mac[0] | 0x02) & 0xFE; const dev = U8(mac.toString('hex').match(/../g)!.join('-').toUpperCase()); const uin32 = BigInt.asUintN(32, uin); const info = (name: string) => Buffer.concat([pbl(1, U8('sessionkey')), pbv(2, uin32), pbl(3, dev), pbv(4, 1661404927), pbl(5, U8(name)), pbv(6, 0)]); const req = Buffer.concat([pbl(1, info('UnifiedPCWindows')), pbl(2, U8(appId)), pbv(4, 1), pbl(5, Buffer.alloc(0)), pbl(6, Buffer.alloc(0)), pbv(7, 1)]); return Buffer.concat([pbl(1, info('Windows')), pbl(2, U8('/cgi-bin/mmbiz-bin/js-login')), pbl(3, host), pbv(4, 5), pbl(5, req), pbl(6, U8(appId)), pbv(7, 1029), pbv(8, 1610627409), pbl(9, U8('WindowsxWebPlugin')), pbv(10, 573651281)]); }
 function envelope(s: Session, plain: Buffer) { const enc = layout(s.sendKey, lz4Literal(plain)); const head = wpkg({ 1: 1, 2: s.uin, 3: 0, 4: 0, 5: 524545, 6: 11, 7: 0, 8: 0, 9: 0, 10: 1, 11: 0, 12: 0, 13: 0, 17: 0, 18: 1, 20: 1504, 21: 0, 22: s.uin, 23: 0, 25: 16, 26: 4, 28: 1, 29: 1, 30: 0 }, { 14: Buffer.alloc(0), 24: s.deviceId, 27: s.f9 }); const inner = short(0x0B41, 0, Buffer.concat([head, enc])); const b = Buffer.concat([Buffer.alloc(2), TRANSFER_PATH, Buffer.alloc(2), TRANSFER_HOST, Buffer.alloc(4), inner]); b.writeUInt16BE(TRANSFER_PATH.length); b.writeUInt16BE(TRANSFER_HOST.length, 2 + TRANSFER_PATH.length); b.writeUInt32BE(inner.length, 4 + TRANSFER_PATH.length + TRANSFER_HOST.length); const n = Buffer.alloc(4); n.writeUInt32BE(b.length); return Buffer.concat([n, b]); }
-async function targets(kind: 'long' | 'short') { const r = await fetch('http://aedns.weixin.qq.com/cgi-bin/default/getdns?clientversion=0&devicetype=Windows&uin=0&format=json', { headers: { 'User-Agent': 'MicroMessenger Client' } }); const d: any = await r.json(); const item = d?.dns?.domainlist?.find((x: any) => x.name === (kind === 'long' ? 'longcloud.weixin.com' : 'shortcloud.weixin.com')); const proto = kind === 'long' ? 'mmtlsovertcp' : 'http'; const ports = item?.protocollist?.find((x: any) => x.name === proto)?.portlist || []; const ips = (item?.iplist || []).map((x: any) => x.ip); const out = ips.flatMap((ip: string) => ports.map((port: number) => ({ ip, port }))); return out.length ? out : [{ ip: kind === 'long' ? '180.153.202.85' : '120.241.131.173', port: kind === 'long' ? 8080 : 80 }]; }
+const HTTPDNS_QUERY = '/cgi-bin/default/getdns?clientversion=0&devicetype=Windows&uin=0&format=json';
+// 明文 http 出站可能被运行环境阻断，优先走 https，失败再退回 http。
+const HTTPDNS_URLS = ['https://aedns.weixin.qq.com', 'http://aedns.weixin.qq.com'];
+const FALLBACK_TARGETS: Record<'long' | 'short', Target> = { long: { ip: '180.153.202.85', port: 8080 }, short: { ip: '120.241.131.173', port: 80 } };
+async function targets(kind: 'long' | 'short'): Promise<Target[]> {
+    const domain = kind === 'long' ? 'longcloud.weixin.com' : 'shortcloud.weixin.com';
+    const proto = kind === 'long' ? 'mmtlsovertcp' : 'http';
+    let lastError: any;
+    for (const base of HTTPDNS_URLS) {
+        const controller = new AbortController();
+        const timer = setTimeout(() => controller.abort(), 8000);
+        try {
+            const r = await fetch(`${base}${HTTPDNS_QUERY}`, { headers: { 'User-Agent': 'MicroMessenger Client' }, signal: controller.signal });
+            if (!r.ok) throw new Error(`HTTP ${r.status}`);
+            const d: any = await r.json();
+            const item = d?.dns?.domainlist?.find((x: any) => x.name === domain);
+            const ports = item?.protocollist?.find((x: any) => x.name === proto)?.portlist || [];
+            const ips = (item?.iplist || []).map((x: any) => x.ip);
+            const out = ips.flatMap((ip: string) => ports.map((port: number) => ({ ip, port })));
+            if (out.length) return out;
+        } catch (error: any) {
+            lastError = error;
+        } finally {
+            clearTimeout(timer);
+        }
+    }
+    if (lastError) console.warn(`[wx-login] HTTPDNS 解析失败，使用兜底目标: ${String(lastError?.message || lastError)}`);
+    return [{ ...FALLBACK_TARGETS[kind] }];
+}
 
 export async function getNativeWxLoginCode(loginBuffer: string, appId: string): Promise<string> {
     const { req, device, host } = manualRequest(loginBuffer, crypto.randomBytes(32));

@@ -39,6 +39,10 @@ const DEFAULT_OFFLINE_REMINDER: OfflineReminder = {
 const DEFAULT_LOGIN_SETTINGS: LoginSettings = {
     wechatQrLogin: true,
     qqQrLogin: false,
+    yybQrLogin: true,
+    yybAutoReconnect: true,
+    yybReconnectDelayMin: 5,
+    yybReconnectMaxAttempts: 3,
     napCatEndpoint: '',
     napCatSignature: '',
 };
@@ -543,6 +547,14 @@ function loadGlobalConfig(): void {
                     qqQrLogin: typeof data.loginSettings.qqQrLogin === 'boolean'
                         ? data.loginSettings.qqQrLogin
                         : DEFAULT_LOGIN_SETTINGS.qqQrLogin,
+                    yybQrLogin: typeof data.loginSettings.yybQrLogin === 'boolean'
+                        ? data.loginSettings.yybQrLogin
+                        : DEFAULT_LOGIN_SETTINGS.yybQrLogin,
+                    yybAutoReconnect: typeof data.loginSettings.yybAutoReconnect === 'boolean'
+                        ? data.loginSettings.yybAutoReconnect
+                        : DEFAULT_LOGIN_SETTINGS.yybAutoReconnect,
+                    yybReconnectDelayMin: Number.parseInt(data.loginSettings.yybReconnectDelayMin, 10),
+                    yybReconnectMaxAttempts: Number.parseInt(data.loginSettings.yybReconnectMaxAttempts, 10),
                     napCatEndpoint: typeof data.loginSettings.napCatEndpoint === 'string'
                         ? data.loginSettings.napCatEndpoint.trim()
                         : DEFAULT_LOGIN_SETTINGS.napCatEndpoint,
