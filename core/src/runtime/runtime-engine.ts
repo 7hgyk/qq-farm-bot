@@ -25,8 +25,10 @@ interface RuntimeEngineOptions {
 
 function createRuntimeEngine(options: RuntimeEngineOptions = {}) {
     const processRef = options.processRef || process;
-    // Detect if running from source (tsx) or compiled (node)
-    const isRunningFromSource = __dirname.includes(`${path.sep}src${path.sep}`);
+    // Detect if running from source (tsx) or compiled (node).
+    // 用模块文件扩展名判断：部署目录本身可能就叫 "src"（Render 的 /opt/render/project/src），
+    // 用路径包含 "src" 会误判成源码模式，导致 worker 去找 .ts 并加载 tsx。
+    const isRunningFromSource = /\.[cm]?tsx?$/.test(__filename);
     const fileExt = isRunningFromSource ? '.ts' : '.js';
     const mainEntryPath = options.mainEntryPath || path.join(__dirname, `../../client${fileExt}`);
     const workerScriptPath = options.workerScriptPath || path.join(__dirname, `../core/worker${fileExt}`);
@@ -66,6 +68,8 @@ function createRuntimeEngine(options: RuntimeEngineOptions = {}) {
         sendConfiguredPush,
     } = reloginReminder;
 
+    // relogin 服务依赖 startWorker，而 worker-manager 又需要 requestReloginQr，故用 holder 懒引用打破循环
+    const reloginQrHolder: { requestReloginQr: ((account: any) => void) | null } = { requestReloginQr: null };
     const { startWorker, stopWorker, restartWorker, callWorkerApi } = createWorkerManager({
         fork,
         WorkerThread: Worker,
@@ -82,8 +86,10 @@ function createRuntimeEngine(options: RuntimeEngineOptions = {}) {
         getOfflineAutoDeleteMs,
         triggerOfflineReminder,
         sendConfiguredPush,
+        requestReloginQr: (account: any) => { if (reloginQrHolder.requestReloginQr) reloginQrHolder.requestReloginQr(account); },
         addOrUpdateAccount: store.addOrUpdateAccount,
         deleteAccount: store.deleteAccount,
+        getLoginSettings: store.getLoginSettings,
         onStatusSync: (accountId: string, status: any, accountName?: string) => {
             runtimeEvents.emit('status', { accountId, status, accountName });
             if (onStatusSync) onStatusSync(accountId, status, accountName);
@@ -93,6 +99,18 @@ function createRuntimeEngine(options: RuntimeEngineOptions = {}) {
             if (onLog) onLog(entry, accountId, accountName);
         },
     });
+
+    const { createReloginQrService } = require('../services/wx-login/relogin');
+    const reloginQr = createReloginQrService({
+        store,
+        log,
+        addOrUpdateAccount: store.addOrUpdateAccount,
+        startAccount: (account: any) => {
+            if (account && account.id) startWorker(account);
+        },
+        sendConfiguredPush,
+    });
+    reloginQrHolder.requestReloginQr = (account: any) => reloginQr.requestRelogin(account);
     const dataProvider = createDataProvider({
         workers,
         globalLogs: GLOBAL_LOGS,

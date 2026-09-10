@@ -6,6 +6,54 @@ export {};
 const path = require('node:path');
 const fs = require('node:fs');
 
+// 全局异常兜底：崩溃前把原因同步写进 stdout，避免 Render 上"无日志秒死"。
+// 用 fs.writeSync 而不是 console，保证进程退出前一定刷出去。
+function fatalLog(label: string, detail: any): void {
+    let text: string;
+    try {
+        text = detail instanceof Error
+            ? JSON.stringify({ name: detail.name, message: detail.message, stack: detail.stack })
+            : (typeof detail === 'string' ? detail : JSON.stringify(detail));
+    } catch {
+        text = String(detail);
+    }
+    const line = `[FATAL] ${label}: ${text}\n`;
+    try {
+        fs.writeSync(1, line);
+    } catch {
+        try { process.stderr.write(line); } catch { /* ignore */ }
+    }
+}
+
+process.on('unhandledRejection', (reason: any) => {
+    fatalLog('unhandledRejection', reason);
+});
+
+process.on('uncaughtException', (err: any) => {
+    fatalLog('uncaughtException', err);
+    process.exit(1);
+});
+
+process.on('SIGTERM', () => {
+    let mem = '';
+    try {
+        const m = process.memoryUsage();
+        mem = ` rss=${Math.round(m.rss / 1048576)}MB heapUsed=${Math.round(m.heapUsed / 1048576)}MB`;
+    } catch { /* ignore */ }
+    fatalLog('signal', `SIGTERM received, exiting (uptime=${Math.round(process.uptime())}s${mem})`);
+    process.exit(0);
+});
+
+process.on('SIGINT', () => {
+    let mem = '';
+    try {
+        const m = process.memoryUsage();
+        mem = ` rss=${Math.round(m.rss / 1048576)}MB heapUsed=${Math.round(m.heapUsed / 1048576)}MB`;
+    } catch { /* ignore */ }
+    fatalLog('signal', `SIGINT received, exiting (uptime=${Math.round(process.uptime())}s${mem})`);
+    process.exit(0);
+});
+
 // tsx/bun 直接跑 client.ts 时用 src，避免 stale dist 缺新路由。
 // node client.js / 打包产物仍优先加载已编译的 dist。
 const runningFromSource = /\.[cm]?tsx?$/.test(__filename);

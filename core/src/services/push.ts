@@ -133,6 +133,11 @@ async function sendPushooMessage(payload: any = {}): Promise<{ ok: boolean; code
     const title: string = assertRequiredText('title', payload.title);
     const content: string = assertRequiredText('content', payload.content);
 
+    // pushplus 的 pushoo 实现写死 markdown 模板，无法内嵌图片；需要发送 HTML（二维码）时自行构造请求
+    if (payload.html && (channel === 'pushplus' || channel === 'pushplushxtrip')) {
+        return await sendPushplusHtml({ channel, token, title, html: String(payload.html) });
+    }
+
     const options: any = {};
     if (channel === 'webhook') {
         const url: string = assertRequiredText('endpoint', endpoint);
@@ -163,9 +168,37 @@ async function sendPushooMessage(payload: any = {}): Promise<{ ok: boolean; code
     };
 }
 
+const PUSHPLUS_ENDPOINTS: Record<string, string> = {
+    pushplus: 'https://www.pushplus.plus/send',
+    pushplushxtrip: 'https://pushplus.hxtrip.com/send',
+};
+
+/**
+ * 直发 pushplus 富文本（html）消息，用于把二维码以 base64 图片内嵌推送。
+ * @param payload.channel pushplus | pushplushxtrip
+ * @param payload.token 必填 用户令牌
+ * @param payload.title 必填 推送标题
+ * @param payload.html 必填 HTML 内容
+ */
+async function sendPushplusHtml(payload: any = {}): Promise<{ ok: boolean; code: string; msg: string; raw: any }> {
+    const channel: string = assertRequiredText('channel', payload.channel);
+    const url: string = PUSHPLUS_ENDPOINTS[channel] || '';
+    if (!url) throw new Error(`不支持的 pushplus 渠道: ${channel}`);
+    const token: string = assertRequiredText('token', payload.token);
+    const title: string = assertRequiredText('title', payload.title);
+    const html: string = assertRequiredText('html', payload.html || payload.content);
+    const response = await axios.post(url, { token, title, content: html, template: 'html' });
+    const raw: any = (response && response.data && typeof response.data === 'object') ? response.data : { data: response && response.data };
+    const code: string = String(raw.code ?? raw.errcode ?? 'ok');
+    const message: string = String(raw.msg || raw.errmsg || raw.message || 'ok');
+    const ok: boolean = code === '200' || code === '0' || code === 'ok' || String(raw.status || '').toLowerCase() === 'success';
+    return { ok, code, msg: message, raw };
+}
+
 module.exports = {
     buildDingTalkWebhook,
     createDingTalkSign,
     sendMeowMessage,
+    sendPushplusHtml,
     sendPushooMessage,
 };
