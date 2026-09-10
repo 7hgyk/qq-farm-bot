@@ -48,6 +48,16 @@ function normalizeAccount(raw: any): Account {
     };
     const nick = String(source.nick || '').trim();
     if (nick) account.nick = nick;
+    const loginType = String(source.loginType || '').trim();
+    if (loginType) account.loginType = loginType;
+    const loginBuffer = String(source.loginBuffer || '').trim();
+    if (loginBuffer) account.loginBuffer = loginBuffer;
+    const openid = String(source.openid || '').trim();
+    if (openid) account.openid = openid;
+    const accessToken = String(source.accessToken || '').trim();
+    if (accessToken) account.accessToken = accessToken;
+    const refreshToken = String(source.refreshToken || '').trim();
+    if (refreshToken) account.refreshToken = refreshToken;
     return account;
 }
 
@@ -57,7 +67,7 @@ function addOrUpdateAccount(acc: Partial<Account> & { avatarUrl?: string }): Acc
     let touchedAccountId = '';
     const source: any = acc || {};
     const cleanAccount: any = {};
-    for (const key of ['id', 'name', 'code', 'platform', 'uin', 'qq', 'avatar', 'avatarUrl', 'nick']) {
+    for (const key of ['id', 'name', 'code', 'platform', 'uin', 'qq', 'avatar', 'avatarUrl', 'nick', 'loginType', 'loginBuffer', 'openid', 'accessToken', 'refreshToken']) {
         if (source[key] !== undefined) cleanAccount[key] = source[key];
     }
     acc = cleanAccount;
@@ -78,6 +88,11 @@ function addOrUpdateAccount(acc: Partial<Account> & { avatarUrl?: string }): Acc
             uin: acc.uin ? String(acc.uin) : '',
             qq: acc.qq ? String(acc.qq) : (acc.uin ? String(acc.uin) : ''),
             avatar: acc.avatar || acc.avatarUrl || '',
+            loginType: acc.loginType || '',
+            loginBuffer: acc.loginBuffer || '',
+            openid: acc.openid || '',
+            accessToken: acc.accessToken || '',
+            refreshToken: acc.refreshToken || '',
             createdAt: Date.now(),
             updatedAt: Date.now(),
         });

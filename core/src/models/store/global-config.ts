@@ -2,7 +2,21 @@ import type { AccountConfig, LoginSettings, OfflineReminder, SystemConfig, UICon
 export {};
 
 const { readTextFile, writeJsonFileAtomic } = require('../../services/json-db');
-const { DEFAULT_CLIENT_VERSION, DEFAULT_TIME_ZONE, normalizeTimeZone, resolveClientVersionUpdatedAt } = require('../../config/config');
+const { CONFIG, DEFAULT_CLIENT_VERSION, DEFAULT_TIME_ZONE, DEFAULT_DEVICE_INFO: DEFAULT_DEVICE_INFO_DEFAULT, DEFAULT_PLATFORM, normalizeTimeZone, resolveClientVersionUpdatedAt } = require('../../config/config');
+
+/**
+ * 把 PUSHPLUS_TOKEN / PUSHPLUS_CHANNEL 环境变量套用到下线提醒配置上。
+ * 环境变量存在时视为权威值：留空不会清掉 token，渠道也以环境变量为准。
+ */
+function applyPushplusEnvToReminder<T extends Record<string, any>>(cfg: T): T {
+    const envToken = String(CONFIG.pushplusToken || '').trim();
+    const envChannel = String(CONFIG.pushplusChannel || '').trim().toLowerCase();
+    if (!envToken && !envChannel) return cfg;
+    const next: Record<string, any> = { ...cfg };
+    if (envToken && !String(next.token || '').trim()) next.token = envToken;
+    if (envChannel && PUSHOO_CHANNELS.has(envChannel)) next.channel = envChannel;
+    return next as T;
+}
 
 const sharedState = require('./shared-state');
 
@@ -115,9 +129,16 @@ function getOfflineReminder(): OfflineReminder {
 
 function normalizeLoginSettings(input: unknown): LoginSettings {
     const src: Record<string, any> = (input && typeof input === 'object') ? input as Record<string, any> : {};
+    const delayRaw = Number.parseInt(src.yybReconnectDelayMin, 10);
+    const attemptsRaw = Number.parseInt(src.yybReconnectMaxAttempts, 10);
     return {
+        codeLogin: typeof src.codeLogin === 'boolean' ? src.codeLogin : DEFAULT_LOGIN_SETTINGS.codeLogin,
         wechatQrLogin: typeof src.wechatQrLogin === 'boolean' ? src.wechatQrLogin : DEFAULT_LOGIN_SETTINGS.wechatQrLogin,
         qqQrLogin: typeof src.qqQrLogin === 'boolean' ? src.qqQrLogin : DEFAULT_LOGIN_SETTINGS.qqQrLogin,
+        yybQrLogin: typeof src.yybQrLogin === 'boolean' ? src.yybQrLogin : DEFAULT_LOGIN_SETTINGS.yybQrLogin,
+        yybAutoReconnect: typeof src.yybAutoReconnect === 'boolean' ? src.yybAutoReconnect : DEFAULT_LOGIN_SETTINGS.yybAutoReconnect,
+        yybReconnectDelayMin: Math.max(2, Math.min(480, Number.isFinite(delayRaw) ? delayRaw : DEFAULT_LOGIN_SETTINGS.yybReconnectDelayMin)),
+        yybReconnectMaxAttempts: Math.max(1, Math.min(100, Number.isFinite(attemptsRaw) ? attemptsRaw : DEFAULT_LOGIN_SETTINGS.yybReconnectMaxAttempts)),
         napCatEndpoint: typeof src.napCatEndpoint === 'string' ? src.napCatEndpoint.trim() : DEFAULT_LOGIN_SETTINGS.napCatEndpoint,
         napCatSignature: typeof src.napCatSignature === 'string' ? src.napCatSignature.trim() : DEFAULT_LOGIN_SETTINGS.napCatSignature,
     };
@@ -133,13 +154,19 @@ function setLoginSettings(cfg: Partial<LoginSettings> | undefined): LoginSetting
         throw new Error('开启 QQ 扫码登录前，请配置 NapCat 接口地址和接口签名');
     }
     globalConfig.loginSettings = next;
+    globalConfig.loginSettingsCustomized = true;
     saveGlobalConfig();
     return getLoginSettings();
 }
 
 function setOfflineReminder(cfg: Partial<OfflineReminder> | undefined): OfflineReminder {
     const current = normalizeOfflineReminder(globalConfig.offlineReminder);
-    globalConfig.offlineReminder = normalizeOfflineReminder({ ...current, ...(cfg || {}) });
+    const next = normalizeOfflineReminder({ ...current, ...(cfg || {}) });
+    // PUSHPLUS_TOKEN / PUSHPLUS_CHANNEL 设置了就是权威值：面板里留空保存时
+    // 不能被清掉，避免把 Render 上的环境变量 token 覆盖成空。
+    const envApplied = applyPushplusEnvToReminder(next);
+    globalConfig.offlineReminder = normalizeOfflineReminder(envApplied);
+    globalConfig.offlineReminderCustomized = true;
     saveGlobalConfig();
     return getOfflineReminder();
 }
@@ -150,15 +177,7 @@ function getSystemConfig(): SystemConfig | null {
 
 function setSystemConfig(config: Partial<SystemConfig> | undefined): SystemConfig | null {
     if (!config || typeof config !== 'object') return null;
-    const DEFAULT_DEVICE_INFO = {
-        os: 'Windows',
-        clientVersion: DEFAULT_CLIENT_VERSION,
-        sysSoftware: 'Windows',
-        network: 'wifi',
-        memory: '16384',
-        deviceId: 'DESKTOP-PC<WPC>',
-        userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 MicroMessenger/7.0.20.1781(0x6700143B) NetType/WIFI MiniProgramEnv/Windows WindowsWechat/WMPF WindowsWechat(0x63090a13)',
-    };
+    const DEFAULT_DEVICE_INFO = { clientVersion: DEFAULT_CLIENT_VERSION, ...DEFAULT_DEVICE_INFO_DEFAULT };
     const srcDevice = (config.deviceInfo && typeof config.deviceInfo === 'object') ? config.deviceInfo : {};
     const topVersion = String(config.clientVersion || '').trim();
     const deviceVersion = String((srcDevice as any).clientVersion || '').trim();
@@ -185,7 +204,7 @@ function setSystemConfig(config: Partial<SystemConfig> | undefined): SystemConfi
         serverUrl: String(config.serverUrl || '').trim(),
         clientVersion: deviceInfo.clientVersion,
         clientVersionUpdatedAt,
-        platform: String(config.platform || 'qq').trim(),
+        platform: String(config.platform || DEFAULT_PLATFORM).trim(),
         os: deviceInfo.os,
         timeZone: normalizeTimeZone(config.timeZone || DEFAULT_TIME_ZONE),
         deviceInfo,
@@ -200,7 +219,34 @@ loadGlobalConfig();
 // Apply offlineReminder normalization after load
 globalConfig.offlineReminder = normalizeOfflineReminder(globalConfig.offlineReminder);
 globalConfig.loginSettings = normalizeLoginSettings(globalConfig.loginSettings);
-if (sharedState.systemConfigMigrated) {
+
+// 环境变量覆盖：PUSHPLUS_TOKEN / PUSHPLUS_CHANNEL。
+// 每次启动都以环境变量为准，避免每次部署后还要在面板里手动重填 Token。
+function applyPushplusEnvOverrides(): boolean {
+    const token = String(CONFIG.pushplusToken || '').trim();
+    const channel = String(CONFIG.pushplusChannel || '').trim().toLowerCase();
+    if (!token && !channel) return false;
+    const current = normalizeOfflineReminder(globalConfig.offlineReminder);
+    let changed = false;
+    if (channel && PUSHOO_CHANNELS.has(channel) && channel !== current.channel) {
+        current.channel = channel;
+        changed = true;
+    }
+    if (token && token !== current.token) {
+        current.token = token;
+        if (!channel && current.channel === DEFAULT_OFFLINE_REMINDER.channel) {
+            current.channel = 'pushplus';
+        }
+        changed = true;
+    }
+    if (!changed) return false;
+    globalConfig.offlineReminder = current;
+    globalConfig.offlineReminderCustomized = true;
+    console.log(`[系统] 已按 PUSHPLUS_* 环境变量更新下线提醒渠道: channel=${current.channel}, token=${token ? '已设置' : '未变更'}`);
+    return true;
+}
+
+if (applyPushplusEnvOverrides() || sharedState.systemConfigMigrated) {
     saveGlobalConfig();
     sharedState.systemConfigMigrated = false;
 }
@@ -213,6 +259,7 @@ module.exports = {
     setLoginSettings,
     getOfflineReminder,
     setOfflineReminder,
+    applyPushplusEnvToReminder,
     getSystemConfig,
     setSystemConfig,
 };

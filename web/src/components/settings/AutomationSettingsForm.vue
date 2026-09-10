@@ -23,12 +23,14 @@ export type AutomationSettingsFormModel = Pick<
 
 defineProps<{
   saving: boolean
+  savingDefault?: boolean
   fertilizerLandTypeOptions: Array<{ label: string, value: string }>
   fertilizerOptions: Array<{ label: string, value: string }>
 }>()
 
 const emit = defineEmits<{
   save: []
+  saveDefault: []
 }>()
 
 const settings = defineModel<AutomationSettingsFormModel>({ required: true })
@@ -319,7 +321,16 @@ const settings = defineModel<AutomationSettingsFormModel>({ required: true })
       </div>
     </div>
 
-    <div class="flex justify-end gap-2 border-t pt-3 dark:border-gray-700">
+    <div class="flex flex-wrap justify-end gap-2 border-t pt-3 dark:border-gray-700">
+      <BaseButton
+        variant="secondary"
+        size="sm"
+        :loading="savingDefault"
+        title="把当前账号的完整策略设为默认，之后新增账号会自动套用"
+        @click="emit('saveDefault')"
+      >
+        设为全局默认策略
+      </BaseButton>
       <BaseButton variant="primary" size="sm" :loading="saving" @click="emit('save')">
         保存自动控制
       </BaseButton>

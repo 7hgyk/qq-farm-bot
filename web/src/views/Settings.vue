@@ -232,6 +232,7 @@ interface SeedOptionItem {
 const seedOptions = ref<SeedOptionItem[]>([])
 const seedOptionsRevision = ref(0)
 const strategySaving = ref(false)
+const defaultSaving = ref(false)
 let strategyLoadRevision = 0
 let seedOptionsRequestRevision = 0
 let bagSeedsRequestRevision = 0
@@ -782,6 +783,41 @@ async function saveStrategySettings() {
   }
 }
 
+async function saveAsGlobalDefault(tab: 'strategy' | 'automation') {
+  const accountId = currentAccountId.value
+  if (!accountId) {
+    showAlert('请先选择一个账号', 'danger')
+    return
+  }
+  defaultSaving.value = true
+  try {
+    // 先把当前表单保存到账号，保证“设为默认”的就是你看到的配置
+    const payload: any = tab === 'strategy'
+      ? JSON.parse(JSON.stringify(localStrategySettings.value))
+      : JSON.parse(JSON.stringify(localAutomationSettings.value))
+    if (tab === 'strategy' && payload.plantingStrategy === 'bag_priority') {
+      bagSortRequestRevision++
+      payload.bagSeedPriority = mergeVisibleBagSeedOrder(normalizeVisibleBagSeedOrder(payload.bagSeedPriority))
+    }
+    if (tab === 'automation')
+      payload.automation.fertilizer_land_types = normalizeFertilizerLandTypes(payload.automation.fertilizer_land_types)
+
+    const saved = await settingStore.saveSettings(accountId, payload)
+    if (!saved.ok && !saved.saved) {
+      showAlert(`保存失败: ${saved.error || '未知错误'}`, 'danger')
+      return
+    }
+    const res = await settingStore.saveDefaultFromAccount(accountId)
+    if (res.ok)
+      showAlert('已将该账号的完整配置设为全局默认策略，之后新增账号会自动套用', 'primary')
+    else
+      showAlert(`保存全局默认策略失败: ${res.error || '未知错误'}`, 'danger')
+  }
+  finally {
+    defaultSaving.value = false
+  }
+}
+
 watch(currentAccountId, (accountId) => {
   strategySaving.value = false
   automationSaving.value = false
@@ -1040,7 +1076,7 @@ const passwordForm = ref({
 })
 
 const localOffline = ref({
-  channel: 'webhook',
+  channel: 'pushplus',
   endpoint: '',
   token: '',
   secret: '',
@@ -1120,7 +1156,7 @@ function syncLocalOfflineSettings() {
   if (settings.value?.offlineReminder) {
     const saved = JSON.parse(JSON.stringify(settings.value.offlineReminder))
     const next = {
-      channel: 'webhook',
+      channel: 'pushplus',
       endpoint: '',
       token: '',
       secret: '',
@@ -1261,34 +1297,39 @@ const systemConfigLoading = ref(false)
 const loginSettingsSaving = ref(false)
 
 const defaultDeviceInfo = {
-  os: 'Windows',
+  os: 'Android',
   clientVersion: '',
-  sysSoftware: 'Windows 10',
+  sysSoftware: 'Android 14',
   network: 'wifi',
-  memory: '16384',
-  deviceId: 'DESKTOP-PC<WPC>',
+  memory: '8192',
+  deviceId: 'Xiaomi 14',
   userAgent: '',
 }
 
 const localSystemConfig = ref({
   serverUrl: '',
   clientVersion: '',
-  platform: 'qq',
-  os: 'Windows',
+  platform: 'wx',
+  os: 'Android',
   timeZone: 'Asia/Shanghai',
   deviceInfo: { ...defaultDeviceInfo },
 })
 const defaultSystemConfig = ref({
   serverUrl: '',
   clientVersion: '',
-  platform: 'qq',
-  os: 'Windows',
+  platform: 'wx',
+  os: 'Android',
   timeZone: 'Asia/Shanghai',
   deviceInfo: { ...defaultDeviceInfo },
 })
 const localLoginSettings = ref({
-  wechatQrLogin: true,
+  codeLogin: false,
+  wechatQrLogin: false,
   qqQrLogin: false,
+  yybQrLogin: true,
+  yybAutoReconnect: true,
+  yybReconnectDelayMin: 5,
+  yybReconnectMaxAttempts: 3,
   napCatEndpoint: '',
   napCatSignature: '',
 })
@@ -1311,8 +1352,8 @@ function normalizeSystemConfig(source: any, fallback: any) {
   return {
     serverUrl: source?.serverUrl || '',
     clientVersion: source?.clientVersion || '',
-    platform: source?.platform || 'qq',
-    os: source?.os || 'Windows',
+    platform: source?.platform || 'wx',
+    os: source?.os || 'Android',
     timeZone: source?.timeZone || fallback.timeZone || 'Asia/Shanghai',
     deviceInfo: source?.deviceInfo ? { ...fallback.deviceInfo, ...source.deviceInfo } : { ...fallback.deviceInfo },
   }
@@ -1320,8 +1361,13 @@ function normalizeSystemConfig(source: any, fallback: any) {
 
 function normalizeLoginSettings(source: any) {
   return {
-    wechatQrLogin: typeof source?.wechatQrLogin === 'boolean' ? source.wechatQrLogin : true,
+    codeLogin: typeof source?.codeLogin === 'boolean' ? source.codeLogin : false,
+    wechatQrLogin: typeof source?.wechatQrLogin === 'boolean' ? source.wechatQrLogin : false,
     qqQrLogin: typeof source?.qqQrLogin === 'boolean' ? source.qqQrLogin : false,
+    yybQrLogin: typeof source?.yybQrLogin === 'boolean' ? source.yybQrLogin : true,
+    yybAutoReconnect: typeof source?.yybAutoReconnect === 'boolean' ? source.yybAutoReconnect : true,
+    yybReconnectDelayMin: Number.parseInt(source?.yybReconnectDelayMin, 10),
+    yybReconnectMaxAttempts: Number.parseInt(source?.yybReconnectMaxAttempts, 10),
     napCatEndpoint: typeof source?.napCatEndpoint === 'string' ? source.napCatEndpoint.trim() : '',
     napCatSignature: typeof source?.napCatSignature === 'string' ? source.napCatSignature.trim() : '',
   }
@@ -1345,7 +1391,7 @@ function applyDevicePreset(presetId: string) {
   const deviceInfo = { ...defaultDeviceInfo, ...(preset.deviceInfo || {}) }
   localSystemConfig.value = {
     ...localSystemConfig.value,
-    os: deviceInfo.os || 'Windows',
+    os: deviceInfo.os || 'Android',
     clientVersion: deviceInfo.clientVersion || '',
     deviceInfo,
   }
@@ -1871,7 +1917,16 @@ async function handleResetSystemConfig() {
               </div>
             </div>
 
-            <div class="flex justify-end gap-2 border-t pt-3 dark:border-gray-700">
+            <div class="flex flex-wrap justify-end gap-2 border-t pt-3 dark:border-gray-700">
+              <BaseButton
+                variant="secondary"
+                size="sm"
+                :loading="defaultSaving"
+                title="把当前账号的完整策略设为默认，之后新增账号会自动套用"
+                @click="saveAsGlobalDefault('strategy')"
+              >
+                设为全局默认策略
+              </BaseButton>
               <BaseButton
                 variant="primary"
                 size="sm"
@@ -1909,9 +1964,11 @@ async function handleResetSystemConfig() {
             v-else
             v-model="localAutomationSettings"
             :saving="automationSaving"
+            :saving-default="defaultSaving"
             :fertilizer-land-type-options="fertilizerLandTypeOptions"
             :fertilizer-options="fertilizerOptions"
             @save="saveAutomationSettings"
+            @save-default="saveAsGlobalDefault('automation')"
           />
         </div>
 
@@ -2071,19 +2128,53 @@ async function handleResetSystemConfig() {
                       登录设置
                     </h4>
                     <p class="mt-0.5 text-xs text-gray-500 dark:text-gray-400">
-                      控制添加账号时可用的扫码登录方式
+                      控制添加账号时可用的登录方式
                     </p>
                   </div>
                 </div>
 
                 <div class="grid grid-cols-1 gap-2 sm:grid-cols-2">
                   <div class="border border-gray-200 rounded-lg bg-gray-50/70 p-3 dark:border-gray-700 dark:bg-gray-900/30">
+                    <BaseSwitch v-model="localLoginSettings.codeLogin" label="输入 Code 登录" />
+                  </div>
+                  <div class="border border-gray-200 rounded-lg bg-gray-50/70 p-3 dark:border-gray-700 dark:bg-gray-900/30">
                     <BaseSwitch v-model="localLoginSettings.wechatQrLogin" label="微信扫码登录" />
                   </div>
                   <div class="border border-gray-200 rounded-lg bg-gray-50/70 p-3 dark:border-gray-700 dark:bg-gray-900/30">
                     <BaseSwitch v-model="localLoginSettings.qqQrLogin" label="QQ扫码登录" />
                   </div>
+                  <div class="border border-gray-200 rounded-lg bg-gray-50/70 p-3 dark:border-gray-700 dark:bg-gray-900/30">
+                    <BaseSwitch v-model="localLoginSettings.yybQrLogin" label="应用宝扫码登录" />
+                  </div>
+                  <div class="border border-gray-200 rounded-lg bg-gray-50/70 p-3 dark:border-gray-700 dark:bg-gray-900/30">
+                    <BaseSwitch v-model="localLoginSettings.yybAutoReconnect" label="应用宝掉线自动重连" />
+                  </div>
                 </div>
+
+                <div
+                  v-if="localLoginSettings.yybAutoReconnect"
+                  class="mt-4 grid grid-cols-1 gap-3 rounded-lg border border-gray-200 bg-gray-50/70 p-4 sm:grid-cols-2 dark:border-gray-700 dark:bg-gray-900/30"
+                >
+                  <BaseInput
+                    v-model="localLoginSettings.yybReconnectDelayMin"
+                    label="应用宝重连间隔(分钟)"
+                    type="number"
+                    :min="2"
+                    :max="480"
+                    :step="1"
+                    placeholder="最小 2，默认 5"
+                  />
+                  <BaseInput
+                    v-model="localLoginSettings.yybReconnectMaxAttempts"
+                    label="应用宝重试上限(次)"
+                    type="number"
+                    :min="1"
+                    :max="100"
+                    :step="1"
+                    placeholder="最小 1，默认 3"
+                  />
+                </div>
+
 
                 <div
                   v-if="localLoginSettings.qqQrLogin"

@@ -21,6 +21,7 @@ const { mountFriendRoutes } = require('./friend-routes');
 const { mountActivityCenterRoutes } = require('./activity-center-routes');
 const { mountCommerceRoutes } = require('./commerce-routes');
 const { mountWxLoginRoutes } = require('./wx-login-routes');
+const { mountReloginRoutes } = require('./relogin-routes');
 const { mountQqLoginRoutes } = require('./qq-login-routes');
 const {
     setupSocketIO,
@@ -63,6 +64,15 @@ function startAdminServer(dataProvider: any): void {
         next();
     });
 
+    // 记录可公网访问的来源地址，供重新扫码二维码生成外链（无需用户配置）
+    app.use((req: any, _res: any, next: any) => {
+        try {
+            const { recordPublicOrigin } = require('../../services/wx-login/relogin');
+            recordPublicOrigin(req);
+        } catch { /* ignore */ }
+        next();
+    });
+
     const webDist = path.join(__dirname, '../../../../web/dist');
     if (fs.existsSync(webDist)) {
         app.use(express.static(webDist));
@@ -73,6 +83,8 @@ function startAdminServer(dataProvider: any): void {
     app.use('/game-config', express.static(getResourcePath('gameConfig')));
 
     // Mount route modules
+    // 重新扫码路由必须挂在全局 /api 鉴权之前（二维码图片凭 token 免登录访问）
+    mountReloginRoutes(app);
     mountAuthRoutes(app, ctx);
     mountWxLoginRoutes(app, ctx);
     mountQqLoginRoutes(app, ctx);

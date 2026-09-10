@@ -44,6 +44,7 @@ module.exports = {
     getPlantBlacklist: accountConfig.getPlantBlacklist,
     setPlantBlacklist: accountConfig.setPlantBlacklist,
     getDefaultAccountConfig: accountConfig.getDefaultAccountConfig,
+    setDefaultAccountConfigFromAccount: accountConfig.setDefaultAccountConfigFromAccount,
 
     // Global config
     getUI: globalConfig.getUI,
@@ -52,6 +53,7 @@ module.exports = {
     setLoginSettings: globalConfig.setLoginSettings,
     getOfflineReminder: globalConfig.getOfflineReminder,
     setOfflineReminder: globalConfig.setOfflineReminder,
+    applyPushplusEnvToReminder: globalConfig.applyPushplusEnvToReminder,
 
     // Accounts
     getAccounts: accounts.getAccounts,

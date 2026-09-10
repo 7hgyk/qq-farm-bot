@@ -25,6 +25,18 @@ function mountAccountRoutes(app: Application, ctx: AdminContext): void {
     app.get('/api/accounts', (req: Request, res: Response) => {
         try {
             const data = ctx.provider.getAccounts();
+            if (Array.isArray(data?.accounts)) {
+                const sanitized = data.accounts.map((acc: any) => {
+                    const copy = { ...(acc || {}) };
+                    delete copy.accessToken;
+                    delete copy.access_token;
+                    delete copy.refreshToken;
+                    delete copy.refresh_token;
+                    return copy;
+                });
+                res.json({ ok: true, data: { ...data, accounts: sanitized } });
+                return;
+            }
             res.json({ ok: true, data });
         } catch (e: any) {
             handleApiError(res, e);
@@ -298,7 +310,11 @@ function mountAccountRoutes(app: Application, ctx: AdminContext): void {
         try {
             const saved = store.getOfflineReminder ? store.getOfflineReminder() : {};
             const body = (req.body && typeof req.body === 'object') ? req.body : {};
-            const cfg = { ...(saved || {}), ...body };
+            // 面板可能把 token 留空提交；先套用 PUSHPLUS_* 环境变量，避免测试时报
+            // 「需要填写 Token」，也让用户能验证环境变量里的 token 是否生效。
+            const cfg = typeof store.applyPushplusEnvToReminder === 'function'
+                ? store.applyPushplusEnvToReminder({ ...(saved || {}), ...body })
+                : { ...(saved || {}), ...body };
 
             const channel = String(cfg.channel || '').trim().toLowerCase();
             const endpoint = String(cfg.endpoint || '').trim();
@@ -381,7 +397,7 @@ function mountAccountRoutes(app: Application, ctx: AdminContext): void {
             const ui = store.getUI();
             const offlineReminder = store.getOfflineReminder
                 ? store.getOfflineReminder()
-                : { channel: 'webhook', endpoint: '', token: '', secret: '', title: '账号下线提醒', msg: '账号下线', offlineDeleteSec: 0 };
+                : { channel: 'pushplus', endpoint: '', token: '', secret: '', title: '账号下线提醒', msg: '账号下线', offlineDeleteSec: 0 };
             res.json({ ok: true, data: { intervals, strategy, preferredSeed, friendQuietHours, automation, stealDelaySeconds, plantOrderRandom, plantDelaySeconds, fertilizerBuyOrganicCount, fertilizerBuyOrganicThresholdHours, fertilizerBuyNormalCount, fertilizerBuyNormalThresholdHours, fertilizerBuyCheckIntervalMinutes, bagSeedPriority, bagSeedMultiLandReservationEnabled, bagSeedLandTypes, bagSeedFallbackStrategy, autoAcceptFriendMinLevel, autoAcceptRequireOwnLevel, autoAcceptHarvestStealEnabled, autoAcceptHarvestStealHarvest, autoAcceptHarvestStealSteal, ui, offlineReminder } });
         } catch (e: any) {
             handleApiError(res, e);
@@ -396,6 +412,23 @@ function mountAccountRoutes(app: Application, ctx: AdminContext): void {
                 return res.status(500).json({ ok: false, error: '无法获取默认配置' });
             }
             res.json({ ok: true, data: defaultConfig });
+        } catch (e: any) {
+            handleApiError(res, e);
+        }
+    });
+
+    // API: 将指定账号的配置设为“全局默认策略”（新增账号自动套用）
+    app.post('/api/settings/default', (req: Request, res: Response) => {
+        const id = getAccId(ctx, req) || String((req.body && req.body.accountId) || '').trim();
+        if (!id) {
+            return res.status(400).json({ ok: false, error: 'Missing x-account-id' });
+        }
+        try {
+            const saved = store.setDefaultAccountConfigFromAccount ? store.setDefaultAccountConfigFromAccount(id) : null;
+            if (!saved) {
+                return res.status(400).json({ ok: false, error: '账号不存在' });
+            }
+            res.json({ ok: true, data: saved });
         } catch (e: any) {
             handleApiError(res, e);
         }
@@ -420,7 +453,7 @@ function mountAccountRoutes(app: Application, ctx: AdminContext): void {
                     timeZones: getTimeZoneOptions(),
                     loginSettings: store.getLoginSettings
                         ? store.getLoginSettings()
-                        : { wechatQrLogin: true, qqQrLogin: false, napCatEndpoint: '', napCatSignature: '' },
+                        : { wechatQrLogin: true, qqQrLogin: false, yybQrLogin: true, yybAutoReconnect: true, yybReconnectDelayMin: 5, yybReconnectMaxAttempts: 3, napCatEndpoint: '', napCatSignature: '' },
                 },
             });
         } catch (e: any) {
@@ -432,7 +465,7 @@ function mountAccountRoutes(app: Application, ctx: AdminContext): void {
         try {
             const loginSettings = store.getLoginSettings
                 ? store.getLoginSettings()
-                : { wechatQrLogin: true, qqQrLogin: false, napCatEndpoint: '', napCatSignature: '' };
+                : { wechatQrLogin: true, qqQrLogin: false, yybQrLogin: true, yybAutoReconnect: true, yybReconnectDelayMin: 5, yybReconnectMaxAttempts: 3, napCatEndpoint: '', napCatSignature: '' };
             res.json({ ok: true, data: loginSettings });
         } catch (e: any) {
             handleApiError(res, e);
@@ -446,10 +479,14 @@ function mountAccountRoutes(app: Application, ctx: AdminContext): void {
                 ? store.setLoginSettings({
                     wechatQrLogin: body.wechatQrLogin,
                     qqQrLogin: body.qqQrLogin,
+                    yybQrLogin: body.yybQrLogin,
+                    yybAutoReconnect: body.yybAutoReconnect,
+                    yybReconnectDelayMin: body.yybReconnectDelayMin,
+                    yybReconnectMaxAttempts: body.yybReconnectMaxAttempts,
                     napCatEndpoint: body.napCatEndpoint,
                     napCatSignature: body.napCatSignature,
                 })
-                : { wechatQrLogin: true, qqQrLogin: false, napCatEndpoint: '', napCatSignature: '' };
+                : { wechatQrLogin: true, qqQrLogin: false, yybQrLogin: true, yybAutoReconnect: true, yybReconnectDelayMin: 5, yybReconnectMaxAttempts: 3, napCatEndpoint: '', napCatSignature: '' };
             res.json({ ok: true, data: loginSettings });
         } catch (e: any) {
             handleApiError(res, e);
