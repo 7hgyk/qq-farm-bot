@@ -83,9 +83,9 @@ function createRuntimeState(options: RuntimeStateOptions) {
             ts: Date.now(),
             ...extra,
         };
-        entry._searchText = `${entry.msg || ''} ${entry.tag || ''} ${JSON.stringify(entry.meta || {})}`.toLowerCase();
+        entry._searchText = `${entry.msg || ''} ${entry.tag || ''} ${JSON.stringify(entry.meta || {})}`.toLowerCase().slice(0, 300);
         globalLogs.push(entry);
-        if (globalLogs.length > 1000) globalLogs.shift();
+        if (globalLogs.length > 300) globalLogs.shift();
         runtimeEvents.emit('log', entry);
     }
 
@@ -99,7 +99,7 @@ function createRuntimeState(options: RuntimeStateOptions) {
             ...extra,
         };
         accountLogs.push(entry);
-        if (accountLogs.length > 300) accountLogs.shift();
+        if (accountLogs.length > 150) accountLogs.shift();
         runtimeEvents.emit('account_log', entry);
     }
 

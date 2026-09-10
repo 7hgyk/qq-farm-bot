@@ -148,18 +148,18 @@ const SAVEABLE_SETTINGS_KEYS: SaveableSettingsKey[] = [
 
 function createDefaultSettings(): SettingsState {
   return {
-    plantingStrategy: 'max_exp',
+    plantingStrategy: 'bag_priority',
     preferredSeedId: 0,
     bagSeedPriority: [],
     bagSeedMultiLandReservationEnabled: false,
     bagSeedLandTypes: {},
-    bagSeedFallbackStrategy: 'level',
+    bagSeedFallbackStrategy: 'max_profit',
     intervals: {},
     friendQuietHours: { enabled: false, start: '23:00', end: '07:00', continueFarm: true },
     automation: {},
     ui: {},
     offlineReminder: {
-      channel: 'webhook',
+      channel: 'pushplus',
       endpoint: '',
       token: '',
       secret: '',
@@ -170,11 +170,11 @@ function createDefaultSettings(): SettingsState {
     stealDelaySeconds: 0,
     plantOrderRandom: false,
     plantDelaySeconds: 0,
-    fertilizerBuyOrganicCount: 10,
+    fertilizerBuyOrganicCount: 1,
     fertilizerBuyOrganicThresholdHours: 10,
-    fertilizerBuyNormalCount: 10,
+    fertilizerBuyNormalCount: 1,
     fertilizerBuyNormalThresholdHours: 10,
-    fertilizerBuyCheckIntervalMinutes: 30,
+    fertilizerBuyCheckIntervalMinutes: 60,
     autoAcceptFriendMinLevel: 0,
     autoAcceptRequireOwnLevel: false,
     autoAcceptHarvestStealEnabled: true,
@@ -330,6 +330,27 @@ export const useSettingStore = defineStore('setting', () => {
     }
   }
 
+  async function saveDefaultFromAccount(accountId: string) {
+    if (!accountId)
+      return { ok: false, error: '未选择账号' }
+    beginRequest()
+    try {
+      const { data } = await api.post('/api/settings/default', {}, {
+        headers: { 'x-account-id': accountId },
+        timeout: 15000,
+      })
+      if (!data?.ok)
+        return { ok: false, error: getApiErrorMessage(data, '保存默认策略失败') }
+      return { ok: true, data: data.data }
+    }
+    catch (error: any) {
+      return { ok: false, error: getApiErrorMessage(error, '保存默认策略失败') }
+    }
+    finally {
+      endRequest()
+    }
+  }
+
   async function saveOfflineConfig(config: OfflineConfig) {
     beginRequest()
     try {
@@ -348,5 +369,5 @@ export const useSettingStore = defineStore('setting', () => {
     }
   }
 
-  return { settings, loading, loadedAccountId, fetchSettings, saveSettings, saveOfflineConfig }
+  return { settings, loading, loadedAccountId, fetchSettings, saveSettings, saveDefaultFromAccount, saveOfflineConfig }
 })

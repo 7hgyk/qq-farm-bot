@@ -17,7 +17,7 @@ interface DataProviderOptions {
     broadcastConfigToWorkers: (accountId?: string) => void;
     buildConfigSnapshotForAccount: (accountId: string) => any;
     broadcastGameConfigReload?: () => void;
-    startWorker: (account: any) => boolean;
+    startWorker: (account: any) => void;
     stopWorker: (accountId: string) => void;
     restartWorker: (account: any) => void;
 }
