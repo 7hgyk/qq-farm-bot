@@ -45,3 +45,15 @@ This file records user instructions, preferences, and teachings for reference in
 - Category: Workflow & Collaboration
 - Instructions:
   - 仓库多为 CRLF/混合行尾，改文件必须最小 diff，禁止整体行尾转换；可用脚本按 `git show HEAD:<file>` 逐行恢复 EOL 校正。
+
+[登录态彻底失效时推送二维码自动重新登录]
+- Date: 2026-09-12
+- Context: refresh_token 过期后无法自动续期，实现"通知推送二维码、扫码即自动恢复"
+- Category: Features & Architecture
+- Instructions:
+  - 触发点：worker-manager `startWorkerAsync` 捕获到 `openid/accessToken 续期登录态失败: ... 微信登录态已彻底失效（refresh_token 无效/过期 ... 原始信息: invalid refresh_token）` 时，调用 runtime-engine 注入的 `requestReloginQr`（仅"彻底失效"触发，其它失败仍按原逻辑）。
+  - 服务 `services/wx-login/relogin.ts`：`requestRelogin(account)` 生成微信二维码并经通知渠道推送；后台轮询当前会话，`authorized` 后自动 `confirm` → 写回 openid/accessToken/refreshToken/loginBuffer → 重启账号；二维码过期/超时则清理会话，等下次访问链接再生成新码（同一账号 request 幂等，24h 内复用）。
+  - 免登录路由 `controllers/admin/relogin-routes.ts`：`GET /api/relogin/:token/qr`（JPEG 图片）与 `GET /api/relogin/:token`（极简扫码页），凭随机 token 保护；必须挂在全局 `/api` 鉴权中间件之前（`controllers/admin/index.ts` 中早于 `mountAuthRoutes`）。
+  - 通知里图片只能用**外链 URL**：pushplus/微信 **不渲染** `data:image/base64` 内嵌图（这是踩过的坑）。公网地址优先 `process.env.PUBLIC_BASE_URL` / `RENDER_EXTERNAL_URL`（Render 自动注入），否则用 `recordPublicOrigin(req)` 从访问请求自动推断（过滤 localhost/内网 IP）。
+  - pushplus 的 pushoo 实现写死 `template:'markdown'`，无法发 HTML；需在 `services/push.ts` 直发 `template:'html'`（`sendPushplusHtml`，支持 pushplus / pushplushxtrip），且 pushplus content 上限约 2 万字。
+  - 已实测全链路：登录态失效 → 推送二维码 → 扫码 → 自动写回凭据并重启账号，全程无需登录后台。

@@ -245,7 +245,7 @@ function createWorkerManager(options: WorkerManagerOptions) {
                     });
                     addAccountLog('yyb_start_refresh_failed', `微信启动前刷新 Code 失败: ${reason}`, account.id, account.name || '', { reason });
                     // 登录态彻底失效（refresh_token 无效/过期）无法自动续期，改为推送二维码让用户重新扫码
-                    if (typeof requestReloginQr === 'function' && /彻底失效|invalid refresh_token/i.test(reason)) {
+                    if (typeof requestReloginQr === 'function' && /彻底失效|invalid refresh_token|login buffer response is invalid|invalid scope|40188/i.test(reason)) {
                         try {
                             requestReloginQr(account);
                         } catch (reloginErr: any) {
