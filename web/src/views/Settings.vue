@@ -783,7 +783,7 @@ async function saveStrategySettings() {
   }
 }
 
-async function saveGlobalDefaultStrategy() {
+async function saveAsGlobalDefault(tab: 'strategy' | 'automation') {
   const accountId = currentAccountId.value
   if (!accountId) {
     showAlert('请先选择一个账号', 'danger')
@@ -791,6 +791,22 @@ async function saveGlobalDefaultStrategy() {
   }
   defaultSaving.value = true
   try {
+    // 先把当前表单保存到账号，保证“设为默认”的就是你看到的配置
+    const payload: any = tab === 'strategy'
+      ? JSON.parse(JSON.stringify(localStrategySettings.value))
+      : JSON.parse(JSON.stringify(localAutomationSettings.value))
+    if (tab === 'strategy' && payload.plantingStrategy === 'bag_priority') {
+      bagSortRequestRevision++
+      payload.bagSeedPriority = mergeVisibleBagSeedOrder(normalizeVisibleBagSeedOrder(payload.bagSeedPriority))
+    }
+    if (tab === 'automation')
+      payload.automation.fertilizer_land_types = normalizeFertilizerLandTypes(payload.automation.fertilizer_land_types)
+
+    const saved = await settingStore.saveSettings(accountId, payload)
+    if (!saved.ok && !saved.saved) {
+      showAlert(`保存失败: ${saved.error || '未知错误'}`, 'danger')
+      return
+    }
     const res = await settingStore.saveDefaultFromAccount(accountId)
     if (res.ok)
       showAlert('已将该账号的完整配置设为全局默认策略，之后新增账号会自动套用', 'primary')
@@ -1905,7 +1921,7 @@ async function handleResetSystemConfig() {
                 size="sm"
                 :loading="defaultSaving"
                 title="把当前账号的完整策略设为默认，之后新增账号会自动套用"
-                @click="saveGlobalDefaultStrategy"
+                @click="saveAsGlobalDefault('strategy')"
               >
                 设为全局默认策略
               </BaseButton>
@@ -1946,9 +1962,11 @@ async function handleResetSystemConfig() {
             v-else
             v-model="localAutomationSettings"
             :saving="automationSaving"
+            :saving-default="defaultSaving"
             :fertilizer-land-type-options="fertilizerLandTypeOptions"
             :fertilizer-options="fertilizerOptions"
             @save="saveAutomationSettings"
+            @save-default="saveAsGlobalDefault('automation')"
           />
         </div>
 
