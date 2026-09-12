@@ -241,7 +241,12 @@ export class WxLoginService {
         if (response.status < 200 || response.status >= 300) throw new Error(`Unable to refresh WeChat access token (HTTP ${response.status})`);
         const data = JSON.parse(response.body.toString('utf8'));
         if (!data || data.errcode || !String(data.access_token || '').trim()) {
-            throw new Error(`WeChat access token refresh failed: ${data && data.errmsg ? data.errmsg : 'invalid response'}`);
+            const errcode = data && data.errcode ? Number(data.errcode) : 0;
+            const errmsg = (data && data.errmsg) || 'invalid response';
+            if (errcode === 40030 || /invalid refresh_token/i.test(String(errmsg))) {
+                throw new Error(`微信登录态已彻底失效（refresh_token 无效/过期），请重新扫码登录。原始信息: ${errmsg}`);
+            }
+            throw new Error(`WeChat access token refresh failed: ${errmsg}`);
         }
         return {
             accessToken: String(data.access_token).trim(),
