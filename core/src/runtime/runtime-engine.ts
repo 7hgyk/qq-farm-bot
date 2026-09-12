@@ -66,6 +66,8 @@ function createRuntimeEngine(options: RuntimeEngineOptions = {}) {
         sendConfiguredPush,
     } = reloginReminder;
 
+    // relogin 服务依赖 startWorker，而 worker-manager 又需要 requestReloginQr，故用 holder 懒引用打破循环
+    const reloginQrHolder: { requestReloginQr: ((account: any) => void) | null } = { requestReloginQr: null };
     const { startWorker, stopWorker, restartWorker, callWorkerApi } = createWorkerManager({
         fork,
         WorkerThread: Worker,
@@ -82,6 +84,7 @@ function createRuntimeEngine(options: RuntimeEngineOptions = {}) {
         getOfflineAutoDeleteMs,
         triggerOfflineReminder,
         sendConfiguredPush,
+        requestReloginQr: (account: any) => { if (reloginQrHolder.requestReloginQr) reloginQrHolder.requestReloginQr(account); },
         addOrUpdateAccount: store.addOrUpdateAccount,
         deleteAccount: store.deleteAccount,
         getLoginSettings: store.getLoginSettings,
@@ -94,6 +97,18 @@ function createRuntimeEngine(options: RuntimeEngineOptions = {}) {
             if (onLog) onLog(entry, accountId, accountName);
         },
     });
+
+    const { createReloginQrService } = require('../services/wx-login/relogin');
+    const reloginQr = createReloginQrService({
+        store,
+        log,
+        addOrUpdateAccount: store.addOrUpdateAccount,
+        startAccount: (account: any) => {
+            if (account && account.id) startWorker(account);
+        },
+        sendConfiguredPush,
+    });
+    reloginQrHolder.requestReloginQr = (account: any) => reloginQr.requestRelogin(account);
     const dataProvider = createDataProvider({
         workers,
         globalLogs: GLOBAL_LOGS,

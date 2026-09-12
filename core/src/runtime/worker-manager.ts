@@ -29,6 +29,7 @@ interface WorkerManagerOptions {
     getOfflineAutoDeleteMs: () => number;
     triggerOfflineReminder: (payload: any) => void;
     sendConfiguredPush?: (payload: any) => Promise<void> | void;
+    requestReloginQr?: (account: any) => void;
     addOrUpdateAccount: (acc: any) => any;
     deleteAccount: (id: string) => void;
     getLoginSettings?: () => any;
@@ -53,6 +54,7 @@ function createWorkerManager(options: WorkerManagerOptions) {
         getOfflineAutoDeleteMs,
         triggerOfflineReminder,
         sendConfiguredPush,
+        requestReloginQr,
         addOrUpdateAccount,
         deleteAccount,
         getLoginSettings,
@@ -242,6 +244,17 @@ function createWorkerManager(options: WorkerManagerOptions) {
                         accountName: account.name || '',
                     });
                     addAccountLog('yyb_start_refresh_failed', `微信启动前刷新 Code 失败: ${reason}`, account.id, account.name || '', { reason });
+                    // 登录态彻底失效（refresh_token 无效/过期）无法自动续期，改为推送二维码让用户重新扫码
+                    if (typeof requestReloginQr === 'function' && /彻底失效|invalid refresh_token/i.test(reason)) {
+                        try {
+                            requestReloginQr(account);
+                        } catch (reloginErr: any) {
+                            log('错误', `账号 ${account.name || account.id} 触发重新扫码失败: ${reloginErr && reloginErr.message ? reloginErr.message : reloginErr}`, {
+                                accountId: String(account.id),
+                                accountName: account.name || '',
+                            });
+                        }
+                    }
                     return false;
                 }
             }
