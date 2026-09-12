@@ -413,6 +413,23 @@ function mountAccountRoutes(app: Application, ctx: AdminContext): void {
         }
     });
 
+    // API: 将指定账号的配置设为“全局默认策略”（新增账号自动套用）
+    app.post('/api/settings/default', (req: Request, res: Response) => {
+        const id = getAccId(ctx, req) || String((req.body && req.body.accountId) || '').trim();
+        if (!id) {
+            return res.status(400).json({ ok: false, error: 'Missing x-account-id' });
+        }
+        try {
+            const saved = store.setDefaultAccountConfigFromAccount ? store.setDefaultAccountConfigFromAccount(id) : null;
+            if (!saved) {
+                return res.status(400).json({ ok: false, error: '账号不存在' });
+            }
+            res.json({ ok: true, data: saved });
+        } catch (e: any) {
+            handleApiError(res, e);
+        }
+    });
+
     app.get('/api/settings/device-presets', (_req: Request, res: Response) => {
         try {
             res.json({ ok: true, data: getDevicePresets() });

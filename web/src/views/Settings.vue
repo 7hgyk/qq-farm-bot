@@ -232,6 +232,7 @@ interface SeedOptionItem {
 const seedOptions = ref<SeedOptionItem[]>([])
 const seedOptionsRevision = ref(0)
 const strategySaving = ref(false)
+const defaultSaving = ref(false)
 let strategyLoadRevision = 0
 let seedOptionsRequestRevision = 0
 let bagSeedsRequestRevision = 0
@@ -779,6 +780,25 @@ async function saveStrategySettings() {
   finally {
     if (accountId === currentAccountId.value)
       strategySaving.value = false
+  }
+}
+
+async function saveGlobalDefaultStrategy() {
+  const accountId = currentAccountId.value
+  if (!accountId) {
+    showAlert('请先选择一个账号', 'danger')
+    return
+  }
+  defaultSaving.value = true
+  try {
+    const res = await settingStore.saveDefaultFromAccount(accountId)
+    if (res.ok)
+      showAlert('已将该账号的完整配置设为全局默认策略，之后新增账号会自动套用', 'primary')
+    else
+      showAlert(`保存全局默认策略失败: ${res.error || '未知错误'}`, 'danger')
+  }
+  finally {
+    defaultSaving.value = false
   }
 }
 
@@ -1879,7 +1899,16 @@ async function handleResetSystemConfig() {
               </div>
             </div>
 
-            <div class="flex justify-end gap-2 border-t pt-3 dark:border-gray-700">
+            <div class="flex flex-wrap justify-end gap-2 border-t pt-3 dark:border-gray-700">
+              <BaseButton
+                variant="secondary"
+                size="sm"
+                :loading="defaultSaving"
+                title="把当前账号的完整策略设为默认，之后新增账号会自动套用"
+                @click="saveGlobalDefaultStrategy"
+              >
+                设为全局默认策略
+              </BaseButton>
               <BaseButton
                 variant="primary"
                 size="sm"
