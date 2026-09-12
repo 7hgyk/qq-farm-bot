@@ -269,9 +269,18 @@ export class WxLoginService {
             headers: { 'Content-Type': 'application/json', 'Ual-Access-Businessid': 'pc_yyb_auth', 'Ual-Access-Timestamp': timestamp, 'Ual-Access-Nonce': nonce, 'Ual-Access-Signature': signature },
         });
         if (response.status < 200 || response.status >= 300) throw new Error(`Unable to obtain WeChat login buffer (HTTP ${response.status})`);
-        const data = JSON.parse(response.body.toString('utf8'));
+        let data: any;
+        try {
+            data = JSON.parse(response.body.toString('utf8'));
+        } catch {
+            throw new Error(`WeChat login buffer response is not JSON: ${response.body.toString('utf8').slice(0, 200)}`);
+        }
         const loginBuffer = data?.code === 0 ? data?.ext_info?.list_s?.login_buffer?.value?.[0] : '';
-        if (typeof loginBuffer !== 'string' || !loginBuffer) throw new Error('WeChat login buffer response is invalid');
+        if (typeof loginBuffer !== 'string' || !loginBuffer) {
+            const code = data && data.code !== undefined ? data.code : 'n/a';
+            const msg = (data && (data.msg || data.message)) || '';
+            throw new Error(`WeChat login buffer response is invalid (code=${code}${msg ? `, msg=${String(msg).slice(0, 200)}` : ''})`);
+        }
         return loginBuffer;
     }
 

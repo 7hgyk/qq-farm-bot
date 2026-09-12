@@ -164,12 +164,14 @@ function createWorkerManager(options: WorkerManagerOptions) {
                 const svc = new WxLoginService();
                 let access = accessToken;
                 let refresh = refreshToken;
+                let oid = openid;
                 if (!access && refresh) {
                     const refreshed = await svc.refreshAccessToken(refresh);
                     access = refreshed.accessToken;
                     refresh = refreshed.refreshToken || refresh;
-                    Object.assign(account, { accessToken: access, refreshToken: refresh });
-                    addOrUpdateAccount({ id: account.id, accessToken: access, refreshToken: refresh });
+                    if (refreshed.openid) oid = refreshed.openid;
+                    Object.assign(account, { accessToken: access, refreshToken: refresh, openid: oid });
+                    addOrUpdateAccount({ id: account.id, accessToken: access, refreshToken: refresh, openid: oid });
                     log('系统', `账号 ${account.name || account.id} 已刷新微信 access_token`, {
                         accountId: String(account.id),
                         accountName: account.name || '',
@@ -177,24 +179,25 @@ function createWorkerManager(options: WorkerManagerOptions) {
                 }
                 let newer: string;
                 try {
-                    newer = await svc.getWxLoginBuffer(openid, access);
+                    newer = await svc.getWxLoginBuffer(oid, access);
                 } catch (bufferErr: any) {
                     if (!refresh) throw bufferErr;
                     const refreshed = await svc.refreshAccessToken(refresh);
                     access = refreshed.accessToken;
                     refresh = refreshed.refreshToken || refresh;
-                    Object.assign(account, { accessToken: access, refreshToken: refresh });
-                    addOrUpdateAccount({ id: account.id, accessToken: access, refreshToken: refresh });
+                    if (refreshed.openid) oid = refreshed.openid;
+                    Object.assign(account, { accessToken: access, refreshToken: refresh, openid: oid });
+                    addOrUpdateAccount({ id: account.id, accessToken: access, refreshToken: refresh, openid: oid });
                     log('系统', `账号 ${account.name || account.id} accessToken 失效，已用 refresh_token 刷新后重试`, {
                         accountId: String(account.id),
                         accountName: account.name || '',
                     });
-                    newer = await svc.getWxLoginBuffer(openid, access);
+                    newer = await svc.getWxLoginBuffer(oid, access);
                 }
                 if (!String(newer || '').trim()) throw new Error('openid/accessToken 续期返回空的 loginBuffer');
                 loginBuffer = String(newer).trim();
-                Object.assign(account, { loginBuffer, accessToken: access, refreshToken: refresh });
-                addOrUpdateAccount({ id: account.id, loginBuffer, accessToken: access, refreshToken: refresh });
+                Object.assign(account, { loginBuffer, openid: oid, accessToken: access, refreshToken: refresh });
+                addOrUpdateAccount({ id: account.id, loginBuffer, openid: oid, accessToken: access, refreshToken: refresh });
                 log('系统', `账号 ${account.name || account.id} 已通过 openid/accessToken 续期新 loginBuffer`, {
                     accountId: String(account.id),
                     accountName: account.name || '',
