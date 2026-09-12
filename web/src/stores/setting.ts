@@ -329,6 +329,27 @@ export const useSettingStore = defineStore('setting', () => {
     }
   }
 
+  async function saveDefaultFromAccount(accountId: string) {
+    if (!accountId)
+      return { ok: false, error: '未选择账号' }
+    beginRequest()
+    try {
+      const { data } = await api.post('/api/settings/default', {}, {
+        headers: { 'x-account-id': accountId },
+        timeout: 15000,
+      })
+      if (!data?.ok)
+        return { ok: false, error: getApiErrorMessage(data, '保存默认策略失败') }
+      return { ok: true, data: data.data }
+    }
+    catch (error: any) {
+      return { ok: false, error: getApiErrorMessage(error, '保存默认策略失败') }
+    }
+    finally {
+      endRequest()
+    }
+  }
+
   async function saveOfflineConfig(config: OfflineConfig) {
     beginRequest()
     try {
@@ -347,5 +368,5 @@ export const useSettingStore = defineStore('setting', () => {
     }
   }
 
-  return { settings, loading, loadedAccountId, fetchSettings, saveSettings, saveOfflineConfig }
+  return { settings, loading, loadedAccountId, fetchSettings, saveSettings, saveDefaultFromAccount, saveOfflineConfig }
 })

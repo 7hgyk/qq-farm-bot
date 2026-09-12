@@ -65,7 +65,8 @@ function ensureAccountConfig(accountId: unknown, options: { persist?: boolean } 
     if (globalConfig.accountConfigs[id]) {
         return cloneAccountConfig(globalConfig.accountConfigs[id]);
     }
-    globalConfig.accountConfigs[id] = cloneAccountConfig(sharedState.DEFAULT_ACCOUNT_CONFIG);
+    // 新账号继承"全局默认策略"（globalConfig.defaultAccountConfig），而非代码里写死的默认值
+    globalConfig.accountConfigs[id] = cloneAccountConfig(sharedState.accountFallbackConfig);
     if (options.persist !== false) require('./global-config').saveGlobalConfig();
     return cloneAccountConfig(globalConfig.accountConfigs[id]);
 }
@@ -467,7 +468,18 @@ function setPlantBlacklist(accountId: unknown, list: unknown[]): number[] {
 }
 
 function getDefaultAccountConfig(): AccountConfig {
-    return cloneAccountConfig(sharedState.DEFAULT_ACCOUNT_CONFIG);
+    return cloneAccountConfig(sharedState.accountFallbackConfig);
+}
+
+/**
+ * 把指定账号的完整配置设为"全局默认策略"，之后新增账号会自动套用该配置。
+ */
+function setDefaultAccountConfigFromAccount(accountId: unknown): AccountConfig | null {
+    const id = sharedState.resolveAccountId(accountId);
+    if (!id) return null;
+    const current = getAccountConfigSnapshot(id);
+    setAccountConfigSnapshot(undefined, current, true);
+    return cloneAccountConfig(sharedState.accountFallbackConfig);
 }
 
 module.exports = {
@@ -513,4 +525,5 @@ module.exports = {
     getPlantBlacklist,
     setPlantBlacklist,
     getDefaultAccountConfig,
+    setDefaultAccountConfigFromAccount,
 };

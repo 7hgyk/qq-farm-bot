@@ -57,3 +57,13 @@ This file records user instructions, preferences, and teachings for reference in
   - 通知里图片只能用**外链 URL**：pushplus/微信 **不渲染** `data:image/base64` 内嵌图（这是踩过的坑）。公网地址优先 `process.env.PUBLIC_BASE_URL` / `RENDER_EXTERNAL_URL`（Render 自动注入），否则用 `recordPublicOrigin(req)` 从访问请求自动推断（过滤 localhost/内网 IP）。
   - pushplus 的 pushoo 实现写死 `template:'markdown'`，无法发 HTML；需在 `services/push.ts` 直发 `template:'html'`（`sendPushplusHtml`，支持 pushplus / pushplushxtrip），且 pushplus content 上限约 2 万字。
   - 已实测全链路：登录态失效 → 推送二维码 → 扫码 → 自动写回凭据并重启账号，全程无需登录后台。
+
+[全局默认策略（新账号自动套用）]
+- Date: 2026-09-12
+- Context: 每新增账号都要手动配策略太麻烦，改为可配置全局默认
+- Category: Features & Architecture
+- Instructions:
+  - 新账号在 `ensureAccountConfig` 里继承 `sharedState.accountFallbackConfig`（即持久化的 `globalConfig.defaultAccountConfig`），不再用硬编码的 DEFAULT_ACCOUNT_CONFIG。
+  - `POST /api/settings/default`（带 `x-account-id`）把该账号的整份 AccountConfig 复制为全局默认；`GET /api/settings/default` 读取当前默认。
+  - 前端：设置页「策略设置」→「设为全局默认策略」按钮（store `saveDefaultFromAccount`）。
+  - 只影响新增账号，已有账号配置不变。
