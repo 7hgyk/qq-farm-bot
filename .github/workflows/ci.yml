@@ -4,8 +4,10 @@ name: CI
 # 这里做一次完整的"能跑"验证：类型检查 → 单元测试 → 构建 → 启动冒烟。
 
 on:
+  # 只在 yyb 分支被 push 时自动跑（master 及其它分支不跑）
   push:
-  pull_request:
+    branches:
+      - feat/yyb-wx-auto-reconnect
   workflow_dispatch:
 
 concurrency:
