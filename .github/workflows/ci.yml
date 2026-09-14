@@ -1,0 +1,76 @@
+name: CI
+
+# Render 的 "After CI Checks Pass" 依赖 GitHub 上的检查，
+# 这里做一次完整的"能跑"验证：类型检查 → 单元测试 → 构建 → 启动冒烟。
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    name: 构建与运行验证
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+
+    steps:
+      - name: 检出代码
+        uses: actions/checkout@v4
+
+      - name: 安装 pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: 安装 Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+
+      - name: 安装依赖
+        run: pnpm install --frozen-lockfile
+
+      - name: 类型检查（core + web）
+        run: |
+          pnpm -C core typecheck
+          pnpm -C web typecheck
+
+      - name: 单元测试（core）
+        run: pnpm -C core test
+
+      - name: 单元测试（web）
+        run: pnpm -C web test
+
+      - name: 构建（web + core）
+        run: pnpm build
+
+      - name: 启动冒烟测试（验证整体可运行）
+        run: |
+          set -euo pipefail
+          ADMIN_PORT=3907 node core/client.js > /tmp/app-smoke.log 2>&1 &
+          APP_PID=$!
+          ok=0
+          for i in $(seq 1 60); do
+            if ! kill -0 "$APP_PID" 2>/dev/null; then
+              echo "应用进程提前退出"
+              break
+            fi
+            code="$(curl -s -o /dev/null -w '%{http_code}' -m 2 http://127.0.0.1:3907/ || true)"
+            if [ "$code" = "200" ]; then
+              ok=1
+              echo "应用已就绪（第 ${i} 秒返回 HTTP 200）"
+              break
+            fi
+            sleep 1
+          done
+          kill "$APP_PID" 2>/dev/null || true
+          if [ "$ok" != "1" ]; then
+            echo "::error::启动冒烟测试失败"
+            tail -n 60 /tmp/app-smoke.log || true
+            exit 1
+          fi
+          echo "启动冒烟测试通过"
