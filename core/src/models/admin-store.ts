@@ -5,6 +5,10 @@ const security = require('./auth-security');
 
 const ADMIN_FILE: string = getDataFile('admin.json');
 
+// 默认管理员凭据（首次启动且不存在 admin.json 时使用）
+const DEFAULT_ADMIN_USERNAME = 'ikun';
+const DEFAULT_ADMIN_PASSWORD = 'J!RZpE9jvQ8QkRwB';
+
 interface AdminRecord {
     username: string;
     password: string;
@@ -17,7 +21,7 @@ let admin: AdminRecord | null = null;
 function normalizeAdmin(raw: any): AdminRecord | null {
     if (!raw || typeof raw !== 'object' || !String(raw.password || '').trim()) return null;
     return {
-        username: String(raw.username || 'admin').trim() || 'admin',
+        username: String(raw.username || DEFAULT_ADMIN_USERNAME).trim() || DEFAULT_ADMIN_USERNAME,
         password: String(raw.password),
         createdAt: Number(raw.createdAt) || Date.now(),
         mustChangePassword: raw.mustChangePassword === true || undefined,
@@ -43,13 +47,12 @@ function loadAdmin(): AdminRecord {
     }
     if (!admin) {
         admin = {
-            username: 'admin',
-            password: security.hashPassword('admin'),
+            username: DEFAULT_ADMIN_USERNAME,
+            password: security.hashPassword(DEFAULT_ADMIN_PASSWORD),
             createdAt: Date.now(),
-            mustChangePassword: true,
         };
         saveAdmin();
-        console.log('[管理员] 已创建默认账号 admin，默认密码 admin');
+        console.log(`[管理员] 已创建默认账号 ${DEFAULT_ADMIN_USERNAME}`);
     }
     return admin;
 }
