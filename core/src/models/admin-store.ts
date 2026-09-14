@@ -1,13 +1,14 @@
 export {};
 const fs = require('node:fs');
+const crypto = require('node:crypto');
 const { getDataFile, ensureDataDir } = require('../config/runtime-paths');
+const { CONFIG } = require('../config/config');
 const security = require('./auth-security');
 
 const ADMIN_FILE: string = getDataFile('admin.json');
 
-// 默认管理员凭据（首次启动且不存在 admin.json 时使用）
+// 默认管理员用户名（非敏感，仅作为未配置 ADMIN_USERNAME 时的兜底）
 const DEFAULT_ADMIN_USERNAME = 'ikun';
-const DEFAULT_ADMIN_PASSWORD = 'J!RZpE9jvQ8QkRwB';
 
 interface AdminRecord {
     username: string;
@@ -17,6 +18,19 @@ interface AdminRecord {
 }
 
 let admin: AdminRecord | null = null;
+
+function envUsername(): string {
+    const raw = String(CONFIG.adminUsername || '').trim();
+    return raw || DEFAULT_ADMIN_USERNAME;
+}
+
+function envPassword(): string {
+    return String(CONFIG.adminPassword || '');
+}
+
+function generateRandomPassword(): string {
+    return crypto.randomBytes(18).toString('base64url');
+}
 
 function normalizeAdmin(raw: any): AdminRecord | null {
     if (!raw || typeof raw !== 'object' || !String(raw.password || '').trim()) return null;
@@ -45,15 +59,43 @@ function loadAdmin(): AdminRecord {
     } catch {
         admin = null;
     }
+
+    const username = envUsername();
+    const password = envPassword();
+
     if (!admin) {
+        // 首次启动：优先使用 ADMIN_PASSWORD，未配置则随机生成并打印一次
+        const initialPassword = password || generateRandomPassword();
         admin = {
-            username: DEFAULT_ADMIN_USERNAME,
-            password: security.hashPassword(DEFAULT_ADMIN_PASSWORD),
+            username,
+            password: security.hashPassword(initialPassword),
             createdAt: Date.now(),
         };
         saveAdmin();
-        console.log(`[管理员] 已创建默认账号 ${DEFAULT_ADMIN_USERNAME}`);
+        if (password) {
+            console.log(`[管理员] 已创建默认账号 ${username}（密码来自 ADMIN_PASSWORD 环境变量）`);
+        } else {
+            console.log(`[管理员] 已创建默认账号 ${username}`);
+            console.log(`[管理员] 未配置 ADMIN_PASSWORD，已生成随机密码（仅本次显示，请立即保存）：${initialPassword}`);
+        }
+        return admin;
     }
+
+    // 已存在 admin.json：配置了 ADMIN_PASSWORD 时以环境变量为准，强制同步
+    let changed = false;
+    if (password && !security.verifyPassword(password, admin.password)) {
+        admin.password = security.hashPassword(password);
+        delete admin.mustChangePassword;
+        changed = true;
+        console.log('[管理员] 检测到 ADMIN_PASSWORD 环境变量与已存凭据不一致，已按环境变量更新管理员密码');
+    }
+    if (admin.username !== username) {
+        admin.username = username;
+        changed = true;
+        console.log(`[管理员] 已按 ADMIN_USERNAME 环境变量更新管理员用户名为 ${username}`);
+    }
+    if (changed) saveAdmin();
+
     return admin;
 }
 

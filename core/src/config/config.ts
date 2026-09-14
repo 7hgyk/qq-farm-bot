@@ -35,6 +35,7 @@ interface RuntimeConfig extends SystemConfig {
     friendCheckIntervalMin: number;
     friendCheckIntervalMax: number;
     adminPort: number;
+    adminUsername: string | undefined;
     adminPassword: string | undefined;
 }
 
@@ -207,6 +208,7 @@ const CONFIG: RuntimeConfig = {
     friendCheckIntervalMin: 12000,
     friendCheckIntervalMax: 15000,
     adminPort: Number(process.env.ADMIN_PORT),
+    adminUsername: process.env.ADMIN_USERNAME,
     adminPassword: process.env.ADMIN_PASSWORD,
 };
 
