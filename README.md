@@ -5,7 +5,7 @@
 [![CI](https://github.com/7hgyk/qq-farm-bot/actions/workflows/ci.yml/badge.svg?branch=feat/yyb-wx-auto-reconnect)](https://github.com/7hgyk/qq-farm-bot/actions/workflows/ci.yml)
 
 > [!IMPORTANT]
-> 首次启动会创建默认管理员 `admin` / `admin`，Web 面板默认端口为 `3007`。对外部署后请立即修改密码，并避免将未加防护的管理端口直接暴露到公网。
+> 首次启动会创建默认管理员 `ikun`（默认密码见 `core/src/models/admin-store.ts` 的 `DEFAULT_ADMIN_PASSWORD`），Web 面板默认端口为 `3007`。对外部署后请立即修改密码，并避免将未加防护的管理端口直接暴露到公网。
 
 ## 项目截图
 |  |  |
@@ -215,7 +215,7 @@ chmod +x ./qq-farm-bot
 
 ## 首次使用
 
-1. 打开 Web 面板，使用 `admin` / `admin` 登录。
+1. 打开 Web 面板，使用默认管理员账号 `ikun` 登录。
 2. 进入“设置 → 系统设置”修改管理员密码。
 3. 如需使用 QQ 扫码登录，先部署并启动 [qq-miniapp-auth](https://github.com/liyangpengs/qq-miniapp-auth) 服务，再在“设置 → 系统设置 → 登录设置”开启 QQ 扫码登录，并填写 NapCat 接口地址和接口签名。
 4. 在设置页添加游戏账号，可使用有效 Code、微信扫码或 QQ扫码登录。
@@ -238,7 +238,7 @@ QQ 扫码登录依赖外部 [qq-miniapp-auth](https://github.com/liyangpengs/qq-
 | `NODE_ENV` | `production` | Docker | Compose 当前固定为生产环境 |
 | `LOG_LEVEL` | `info` | 后端 | 服务端日志级别 |
 
-管理员账号不通过环境变量初始化。首次运行会自动创建 `admin` / `admin`，之后的管理员凭据保存在数据目录的 `admin.json` 中。项目不提供注册或新增管理员功能。
+管理员账号不通过环境变量初始化。首次运行会自动创建默认管理员 `ikun`，之后的管理员凭据保存在数据目录的 `admin.json` 中。项目不提供注册或新增管理员功能。
 
 ### 种植策略
 
