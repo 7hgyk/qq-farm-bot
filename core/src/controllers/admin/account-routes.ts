@@ -310,7 +310,11 @@ function mountAccountRoutes(app: Application, ctx: AdminContext): void {
         try {
             const saved = store.getOfflineReminder ? store.getOfflineReminder() : {};
             const body = (req.body && typeof req.body === 'object') ? req.body : {};
-            const cfg = { ...(saved || {}), ...body };
+            // 面板可能把 token 留空提交；先套用 PUSHPLUS_* 环境变量，避免测试时报
+            // 「需要填写 Token」，也让用户能验证环境变量里的 token 是否生效。
+            const cfg = typeof store.applyPushplusEnvToReminder === 'function'
+                ? store.applyPushplusEnvToReminder({ ...(saved || {}), ...body })
+                : { ...(saved || {}), ...body };
 
             const channel = String(cfg.channel || '').trim().toLowerCase();
             const endpoint = String(cfg.endpoint || '').trim();

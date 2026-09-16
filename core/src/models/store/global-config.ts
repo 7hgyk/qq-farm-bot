@@ -4,6 +4,20 @@ export {};
 const { readTextFile, writeJsonFileAtomic } = require('../../services/json-db');
 const { CONFIG, DEFAULT_CLIENT_VERSION, DEFAULT_TIME_ZONE, DEFAULT_DEVICE_INFO: DEFAULT_DEVICE_INFO_DEFAULT, DEFAULT_PLATFORM, normalizeTimeZone, resolveClientVersionUpdatedAt } = require('../../config/config');
 
+/**
+ * 把 PUSHPLUS_TOKEN / PUSHPLUS_CHANNEL 环境变量套用到下线提醒配置上。
+ * 环境变量存在时视为权威值：留空不会清掉 token，渠道也以环境变量为准。
+ */
+function applyPushplusEnvToReminder<T extends Record<string, any>>(cfg: T): T {
+    const envToken = String(CONFIG.pushplusToken || '').trim();
+    const envChannel = String(CONFIG.pushplusChannel || '').trim().toLowerCase();
+    if (!envToken && !envChannel) return cfg;
+    const next: Record<string, any> = { ...cfg };
+    if (envToken && !String(next.token || '').trim()) next.token = envToken;
+    if (envChannel && PUSHOO_CHANNELS.has(envChannel)) next.channel = envChannel;
+    return next as T;
+}
+
 const sharedState = require('./shared-state');
 
 const {
@@ -150,11 +164,8 @@ function setOfflineReminder(cfg: Partial<OfflineReminder> | undefined): OfflineR
     const next = normalizeOfflineReminder({ ...current, ...(cfg || {}) });
     // PUSHPLUS_TOKEN / PUSHPLUS_CHANNEL 设置了就是权威值：面板里留空保存时
     // 不能被清掉，避免把 Render 上的环境变量 token 覆盖成空。
-    const envToken = String(CONFIG.pushplusToken || '').trim();
-    const envChannel = String(CONFIG.pushplusChannel || '').trim().toLowerCase();
-    if (envToken && !next.token) next.token = envToken;
-    if (envChannel && PUSHOO_CHANNELS.has(envChannel)) next.channel = envChannel;
-    globalConfig.offlineReminder = next;
+    const envApplied = applyPushplusEnvToReminder(next);
+    globalConfig.offlineReminder = normalizeOfflineReminder(envApplied);
     globalConfig.offlineReminderCustomized = true;
     saveGlobalConfig();
     return getOfflineReminder();
@@ -248,6 +259,7 @@ module.exports = {
     setLoginSettings,
     getOfflineReminder,
     setOfflineReminder,
+    applyPushplusEnvToReminder,
     getSystemConfig,
     setSystemConfig,
 };

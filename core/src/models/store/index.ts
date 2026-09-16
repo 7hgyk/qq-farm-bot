@@ -53,6 +53,7 @@ module.exports = {
     setLoginSettings: globalConfig.setLoginSettings,
     getOfflineReminder: globalConfig.getOfflineReminder,
     setOfflineReminder: globalConfig.setOfflineReminder,
+    applyPushplusEnvToReminder: globalConfig.applyPushplusEnvToReminder,
 
     // Accounts
     getAccounts: accounts.getAccounts,
