@@ -145,6 +145,8 @@ export interface SystemConfig {
 export interface GlobalConfig {
   accountConfigs: Record<string, AccountConfig>;
   defaultAccountConfig: AccountConfig;
+  /** 用户是否显式"设为全局默认策略"过。为 false 时以代码内置默认值为准。 */
+  defaultAccountConfigCustomized?: boolean;
   ui: UIConfig;
   loginSettings: LoginSettings;
   offlineReminder: OfflineReminder;

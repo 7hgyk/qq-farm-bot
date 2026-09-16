@@ -53,20 +53,20 @@ const DEFAULT_ACCOUNT_CONFIG: AccountConfig = {
         farm_push: true,
         land_upgrade: true,
         friend: true,
-        friend_auto_accept: true,
+        friend_auto_accept: false,
         friend_help_exp_limit: true,
         friend_steal: true,
         friend_help: true,
         friend_bad: true,
         friend_help_protect_dog_ignore_exp_limit: true,
         task: true,
-        fertilizer_gift: false,
-        fertilizer_buy_organic: false,
-        fertilizer_buy_normal: false,
-        mystery_shop_auto_buy: false,
+        fertilizer_gift: true,
+        fertilizer_buy_organic: true,
+        fertilizer_buy_normal: true,
+        mystery_shop_auto_buy: true,
         mystery_shop_allow_gold: true,
-        mystery_shop_allow_coupon: false,
-        mystery_shop_allow_gold_bean: false,
+        mystery_shop_allow_coupon: true,
+        mystery_shop_allow_gold_bean: true,
         mystery_shop_allow_diamond: false,
         mystery_shop_arrival_notify: false,
         mystery_shop_purchase_notify: false,
@@ -75,10 +75,10 @@ const DEFAULT_ACCOUNT_CONFIG: AccountConfig = {
         fertilizer_multi_season: true,
         fertilizer_land_types: [...DEFAULT_FERTILIZER_LAND_TYPES],
         fertilizer_smart_seconds: 300,
-        skip_own_weed_bug: true,
+        skip_own_weed_bug: false,
         show_manual_fertilizer: true,
     },
-    plantingStrategy: 'max_exp',
+    plantingStrategy: 'bag_priority',
     preferredSeedId: 0,
     intervals: {
         farm: 2,
@@ -121,7 +121,7 @@ const DEFAULT_ACCOUNT_CONFIG: AccountConfig = {
     bagSeedPriority: [],
     bagSeedMultiLandReservationEnabled: false,
     bagSeedLandTypes: {},
-    bagSeedFallbackStrategy: 'level',
+    bagSeedFallbackStrategy: 'max_profit',
     autoAcceptFriendMinLevel: 0,
     autoAcceptRequireOwnLevel: false,
     autoAcceptHarvestStealEnabled: true,
@@ -495,6 +495,7 @@ accountFallbackConfig = {
 const globalConfig: GlobalConfig = {
     accountConfigs: {},
     defaultAccountConfig: cloneAccountConfig(DEFAULT_ACCOUNT_CONFIG),
+    defaultAccountConfigCustomized: false,
     ui: {
         theme: 'light',
     },
@@ -515,7 +516,11 @@ function loadGlobalConfig(): void {
     try {
         const data: any = readJsonFile(STORE_FILE, () => ({}));
         if (data && typeof data === 'object') {
-            accountFallbackConfig = cloneAccountConfig(DEFAULT_ACCOUNT_CONFIG);
+            // 只有当用户显式"设为全局默认策略"过（defaultAccountConfigCustomized）时才恢复保存值；
+            // 否则一律使用代码内置默认值，这样升级代码里的默认策略能直接对存量部署生效。
+            accountFallbackConfig = (data.defaultAccountConfigCustomized === true && data.defaultAccountConfig && typeof data.defaultAccountConfig === 'object')
+                ? normalizeAccountConfig(data.defaultAccountConfig, DEFAULT_ACCOUNT_CONFIG)
+                : cloneAccountConfig(DEFAULT_ACCOUNT_CONFIG);
             globalConfig.defaultAccountConfig = cloneAccountConfig(accountFallbackConfig);
 
             const cfgMap = (data.accountConfigs && typeof data.accountConfigs === 'object')

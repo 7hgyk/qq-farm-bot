@@ -479,6 +479,8 @@ function setDefaultAccountConfigFromAccount(accountId: unknown): AccountConfig |
     if (!id) return null;
     const current = getAccountConfigSnapshot(id);
     setAccountConfigSnapshot(undefined, current, true);
+    sharedState.globalConfig.defaultAccountConfigCustomized = true;
+    require('./global-config').saveGlobalConfig();
     return cloneAccountConfig(sharedState.accountFallbackConfig);
 }
 
