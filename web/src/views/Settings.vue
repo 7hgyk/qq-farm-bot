@@ -1076,7 +1076,7 @@ const passwordForm = ref({
 })
 
 const localOffline = ref({
-  channel: 'webhook',
+  channel: 'pushplus',
   endpoint: '',
   token: '',
   secret: '',
@@ -1156,7 +1156,7 @@ function syncLocalOfflineSettings() {
   if (settings.value?.offlineReminder) {
     const saved = JSON.parse(JSON.stringify(settings.value.offlineReminder))
     const next = {
-      channel: 'webhook',
+      channel: 'pushplus',
       endpoint: '',
       token: '',
       secret: '',

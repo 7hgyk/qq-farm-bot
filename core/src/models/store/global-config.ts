@@ -147,7 +147,14 @@ function setLoginSettings(cfg: Partial<LoginSettings> | undefined): LoginSetting
 
 function setOfflineReminder(cfg: Partial<OfflineReminder> | undefined): OfflineReminder {
     const current = normalizeOfflineReminder(globalConfig.offlineReminder);
-    globalConfig.offlineReminder = normalizeOfflineReminder({ ...current, ...(cfg || {}) });
+    const next = normalizeOfflineReminder({ ...current, ...(cfg || {}) });
+    // PUSHPLUS_TOKEN / PUSHPLUS_CHANNEL 设置了就是权威值：面板里留空保存时
+    // 不能被清掉，避免把 Render 上的环境变量 token 覆盖成空。
+    const envToken = String(CONFIG.pushplusToken || '').trim();
+    const envChannel = String(CONFIG.pushplusChannel || '').trim().toLowerCase();
+    if (envToken && !next.token) next.token = envToken;
+    if (envChannel && PUSHOO_CHANNELS.has(envChannel)) next.channel = envChannel;
+    globalConfig.offlineReminder = next;
     globalConfig.offlineReminderCustomized = true;
     saveGlobalConfig();
     return getOfflineReminder();
