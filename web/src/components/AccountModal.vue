@@ -8,6 +8,7 @@ import api, { getApiErrorMessage } from '@/api'
 import BaseButton from '@/components/ui/BaseButton.vue'
 import BaseInput from '@/components/ui/BaseInput.vue'
 import BaseTextarea from '@/components/ui/BaseTextarea.vue'
+import { pickAvailableLoginTab as pickAvailableLoginTabFrom } from '@/components/account-login-tabs'
 import { runWxLoginStatusPoll } from '@/utils/wx-login-poll'
 
 const props = defineProps<{
@@ -19,10 +20,11 @@ const emit = defineEmits(['close', 'saved'])
 
 const loading = ref(false)
 const errorMessage = ref('')
-const activeLoginTab = ref<'code' | 'wx_qr' | 'qq_qr' | 'yyb_qr'>('code')
+const activeLoginTab = ref<LoginTab>('yyb_qr')
 const loginSettingsLoaded = ref(false)
 const loginSettings = ref({
-  wechatQrLogin: true,
+  codeLogin: false,
+  wechatQrLogin: false,
   qqQrLogin: false,
   yybQrLogin: true,
   yybAutoReconnect: true,
@@ -55,9 +57,22 @@ let qqPollKey = ''
 let qqPendingCode = ''
 let qrNameSubmitTimer: ReturnType<typeof setTimeout> | undefined
 
+const codeLoginEnabled = computed(() => loginSettingsLoaded.value && loginSettings.value.codeLogin)
 const wechatQrLoginEnabled = computed(() => loginSettingsLoaded.value && loginSettings.value.wechatQrLogin)
 const qqQrLoginEnabled = computed(() => loginSettingsLoaded.value && loginSettings.value.qqQrLogin)
 const yybQrLoginEnabled = computed(() => loginSettingsLoaded.value && loginSettings.value.yybQrLogin)
+
+type LoginTab = 'code' | 'wx_qr' | 'qq_qr' | 'yyb_qr'
+
+// 当前登录方式被关闭时，切换到第一个仍可用的页签
+function pickAvailableLoginTab(): LoginTab {
+  return pickAvailableLoginTabFrom({
+    codeLogin: codeLoginEnabled.value,
+    wechatQrLogin: wechatQrLoginEnabled.value,
+    qqQrLogin: qqQrLoginEnabled.value,
+    yybQrLogin: yybQrLoginEnabled.value,
+  })
+}
 
 // 表单数据
 const form = reactive({
@@ -162,7 +177,8 @@ async function loadLoginSettings() {
       return
     const data = response.data?.data
     loginSettings.value = {
-      wechatQrLogin: typeof data?.wechatQrLogin === 'boolean' ? data.wechatQrLogin : true,
+      codeLogin: typeof data?.codeLogin === 'boolean' ? data.codeLogin : false,
+      wechatQrLogin: typeof data?.wechatQrLogin === 'boolean' ? data.wechatQrLogin : false,
       qqQrLogin: typeof data?.qqQrLogin === 'boolean' ? data.qqQrLogin : false,
       yybQrLogin: typeof data?.yybQrLogin === 'boolean' ? data.yybQrLogin : true,
       yybAutoReconnect: typeof data?.yybAutoReconnect === 'boolean' ? data.yybAutoReconnect : true,
@@ -173,9 +189,10 @@ async function loadLoginSettings() {
   catch {
     if (requestVersion !== loginSettingsRequestVersion)
       return
-    // Keep the existing login entries available when an older server has no endpoint yet.
+    // 服务端不可用时回退到默认：仅保留应用宝登录
     loginSettings.value = {
-      wechatQrLogin: true,
+      codeLogin: false,
+      wechatQrLogin: false,
       qqQrLogin: false,
       yybQrLogin: true,
       yybAutoReconnect: true,
@@ -186,12 +203,14 @@ async function loadLoginSettings() {
   finally {
     if (requestVersion === loginSettingsRequestVersion) {
       loginSettingsLoaded.value = true
+      if (activeLoginTab.value === 'code' && !loginSettings.value.codeLogin)
+        activeLoginTab.value = pickAvailableLoginTab()
       if (activeLoginTab.value === 'wx_qr' && !loginSettings.value.wechatQrLogin)
-        activeLoginTab.value = 'code'
+        activeLoginTab.value = pickAvailableLoginTab()
       if (activeLoginTab.value === 'qq_qr' && !loginSettings.value.qqQrLogin)
-        activeLoginTab.value = 'code'
+        activeLoginTab.value = pickAvailableLoginTab()
       if (activeLoginTab.value === 'yyb_qr' && !loginSettings.value.yybQrLogin)
-        activeLoginTab.value = 'code'
+        activeLoginTab.value = pickAvailableLoginTab()
       if (activeLoginTab.value === 'qq_qr' && loginSettings.value.qqQrLogin && !qqTaskId.value)
         void startQqLogin()
     }
@@ -405,7 +424,7 @@ async function pollWxLogin(taskId: string, flowVersion: number) {
 async function startWxLogin() {
   const isYyb = activeLoginTab.value === 'yyb_qr'
   if ((isYyb && !yybQrLoginEnabled.value) || (!isYyb && !wechatQrLoginEnabled.value)) {
-    activeLoginTab.value = 'code'
+    activeLoginTab.value = pickAvailableLoginTab()
     return
   }
   resetWxLogin()
@@ -601,7 +620,7 @@ async function pollQqLogin(taskId: string, flowVersion: number) {
 
 async function startQqLogin() {
   if (!qqQrLoginEnabled.value) {
-    activeLoginTab.value = 'code'
+    activeLoginTab.value = pickAvailableLoginTab()
     return
   }
   resetQqLogin()
@@ -641,7 +660,7 @@ function close() {
 watch(() => props.show, (newVal) => {
   if (newVal) {
     errorMessage.value = ''
-    activeLoginTab.value = 'code'
+    activeLoginTab.value = pickAvailableLoginTab()
     resetWxLogin()
     if (!props.editData)
       void loadLoginSettings()
@@ -662,15 +681,15 @@ watch(activeLoginTab, (tab) => {
   if (tab === 'wx_qr' && wechatQrLoginEnabled.value && !wxTaskId.value)
     void startWxLogin()
   else if (tab === 'wx_qr' && !wechatQrLoginEnabled.value)
-    activeLoginTab.value = 'code'
+    activeLoginTab.value = pickAvailableLoginTab()
   else if (tab === 'yyb_qr' && yybQrLoginEnabled.value && !wxTaskId.value)
     void startWxLogin()
   else if (tab === 'yyb_qr' && !yybQrLoginEnabled.value)
-    activeLoginTab.value = 'code'
+    activeLoginTab.value = pickAvailableLoginTab()
   else if (tab === 'qq_qr' && qqQrLoginEnabled.value && !qqTaskId.value)
     void startQqLogin()
   else if (tab === 'qq_qr' && !qqQrLoginEnabled.value)
-    activeLoginTab.value = 'code'
+    activeLoginTab.value = pickAvailableLoginTab()
   if (tab !== 'wx_qr' && tab !== 'yyb_qr')
     resetWxLogin()
   if (tab !== 'qq_qr')
@@ -716,7 +735,7 @@ onBeforeUnmount(() => {
         </div>
 
         <NTabs v-if="!editData && loginSettingsLoaded" v-model:value="activeLoginTab" class="mb-4" type="line">
-          <NTab name="code">
+          <NTab v-if="codeLoginEnabled" name="code">
             输入 Code 登录
           </NTab>
           <NTab v-if="wechatQrLoginEnabled" name="wx_qr">
@@ -730,7 +749,7 @@ onBeforeUnmount(() => {
           </NTab>
         </NTabs>
 
-        <div v-if="editData || activeLoginTab === 'code'" class="space-y-4">
+        <div v-if="editData || activeLoginTab === 'code'" v-show="editData || codeLoginEnabled" class="space-y-4">
           <BaseInput
             v-model="form.name"
             label="账号备注（必填）"

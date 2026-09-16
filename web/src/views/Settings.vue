@@ -1297,33 +1297,34 @@ const systemConfigLoading = ref(false)
 const loginSettingsSaving = ref(false)
 
 const defaultDeviceInfo = {
-  os: 'Windows',
+  os: 'Android',
   clientVersion: '',
-  sysSoftware: 'Windows 10',
+  sysSoftware: 'Android 14',
   network: 'wifi',
-  memory: '16384',
-  deviceId: 'DESKTOP-PC<WPC>',
+  memory: '8192',
+  deviceId: 'Xiaomi 14',
   userAgent: '',
 }
 
 const localSystemConfig = ref({
   serverUrl: '',
   clientVersion: '',
-  platform: 'qq',
-  os: 'Windows',
+  platform: 'wx',
+  os: 'Android',
   timeZone: 'Asia/Shanghai',
   deviceInfo: { ...defaultDeviceInfo },
 })
 const defaultSystemConfig = ref({
   serverUrl: '',
   clientVersion: '',
-  platform: 'qq',
-  os: 'Windows',
+  platform: 'wx',
+  os: 'Android',
   timeZone: 'Asia/Shanghai',
   deviceInfo: { ...defaultDeviceInfo },
 })
 const localLoginSettings = ref({
-  wechatQrLogin: true,
+  codeLogin: false,
+  wechatQrLogin: false,
   qqQrLogin: false,
   yybQrLogin: true,
   yybAutoReconnect: true,
@@ -1351,8 +1352,8 @@ function normalizeSystemConfig(source: any, fallback: any) {
   return {
     serverUrl: source?.serverUrl || '',
     clientVersion: source?.clientVersion || '',
-    platform: source?.platform || 'qq',
-    os: source?.os || 'Windows',
+    platform: source?.platform || 'wx',
+    os: source?.os || 'Android',
     timeZone: source?.timeZone || fallback.timeZone || 'Asia/Shanghai',
     deviceInfo: source?.deviceInfo ? { ...fallback.deviceInfo, ...source.deviceInfo } : { ...fallback.deviceInfo },
   }
@@ -1360,7 +1361,8 @@ function normalizeSystemConfig(source: any, fallback: any) {
 
 function normalizeLoginSettings(source: any) {
   return {
-    wechatQrLogin: typeof source?.wechatQrLogin === 'boolean' ? source.wechatQrLogin : true,
+    codeLogin: typeof source?.codeLogin === 'boolean' ? source.codeLogin : false,
+    wechatQrLogin: typeof source?.wechatQrLogin === 'boolean' ? source.wechatQrLogin : false,
     qqQrLogin: typeof source?.qqQrLogin === 'boolean' ? source.qqQrLogin : false,
     yybQrLogin: typeof source?.yybQrLogin === 'boolean' ? source.yybQrLogin : true,
     yybAutoReconnect: typeof source?.yybAutoReconnect === 'boolean' ? source.yybAutoReconnect : true,
@@ -1389,7 +1391,7 @@ function applyDevicePreset(presetId: string) {
   const deviceInfo = { ...defaultDeviceInfo, ...(preset.deviceInfo || {}) }
   localSystemConfig.value = {
     ...localSystemConfig.value,
-    os: deviceInfo.os || 'Windows',
+    os: deviceInfo.os || 'Android',
     clientVersion: deviceInfo.clientVersion || '',
     deviceInfo,
   }
@@ -2126,12 +2128,15 @@ async function handleResetSystemConfig() {
                       登录设置
                     </h4>
                     <p class="mt-0.5 text-xs text-gray-500 dark:text-gray-400">
-                      控制添加账号时可用的扫码登录方式
+                      控制添加账号时可用的登录方式
                     </p>
                   </div>
                 </div>
 
                 <div class="grid grid-cols-1 gap-2 sm:grid-cols-2">
+                  <div class="border border-gray-200 rounded-lg bg-gray-50/70 p-3 dark:border-gray-700 dark:bg-gray-900/30">
+                    <BaseSwitch v-model="localLoginSettings.codeLogin" label="输入 Code 登录" />
+                  </div>
                   <div class="border border-gray-200 rounded-lg bg-gray-50/70 p-3 dark:border-gray-700 dark:bg-gray-900/30">
                     <BaseSwitch v-model="localLoginSettings.wechatQrLogin" label="微信扫码登录" />
                   </div>

@@ -27,7 +27,7 @@ let systemConfigMigrated: boolean = false;
 let accountFallbackConfig: AccountConfig;
 
 const DEFAULT_OFFLINE_REMINDER: OfflineReminder = {
-    channel: 'webhook',
+    channel: 'pushplus',
     endpoint: '',
     token: '',
     secret: '',
@@ -37,7 +37,8 @@ const DEFAULT_OFFLINE_REMINDER: OfflineReminder = {
 };
 
 const DEFAULT_LOGIN_SETTINGS: LoginSettings = {
-    wechatQrLogin: true,
+    codeLogin: false,
+    wechatQrLogin: false,
     qqQrLogin: false,
     yybQrLogin: true,
     yybAutoReconnect: true,
@@ -500,7 +501,9 @@ const globalConfig: GlobalConfig = {
         theme: 'light',
     },
     loginSettings: { ...DEFAULT_LOGIN_SETTINGS },
+    loginSettingsCustomized: false,
     offlineReminder: { ...DEFAULT_OFFLINE_REMINDER },
+    offlineReminderCustomized: false,
     systemConfig: null,
 };
 
@@ -540,12 +543,19 @@ function loadGlobalConfig(): void {
             globalConfig.ui.theme = theme === 'light' ? 'light' : 'dark';
 
             // offlineReminder normalization done in global-config
-            if (data.offlineReminder && typeof data.offlineReminder === 'object') {
+            // 同理：只有用户显式保存过下线提醒（offlineReminderCustomized）时才恢复保存值，
+            // 否则以代码内置默认值为准（默认渠道 pushplus）。
+            if (data.offlineReminder && typeof data.offlineReminder === 'object' && data.offlineReminderCustomized === true) {
                 globalConfig.offlineReminder = data.offlineReminder;
             }
 
-            if (data.loginSettings && typeof data.loginSettings === 'object') {
+            // 只有当用户显式保存过登录设置（loginSettingsCustomized）时才恢复保存值；
+            // 否则以代码内置默认值为准，保证升级默认登录方式能直接对存量部署生效。
+            if (data.loginSettings && typeof data.loginSettings === 'object' && data.loginSettingsCustomized === true) {
                 globalConfig.loginSettings = {
+                    codeLogin: typeof data.loginSettings.codeLogin === 'boolean'
+                        ? data.loginSettings.codeLogin
+                        : DEFAULT_LOGIN_SETTINGS.codeLogin,
                     wechatQrLogin: typeof data.loginSettings.wechatQrLogin === 'boolean'
                         ? data.loginSettings.wechatQrLogin
                         : DEFAULT_LOGIN_SETTINGS.wechatQrLogin,

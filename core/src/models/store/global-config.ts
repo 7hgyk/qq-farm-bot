@@ -118,6 +118,7 @@ function normalizeLoginSettings(input: unknown): LoginSettings {
     const delayRaw = Number.parseInt(src.yybReconnectDelayMin, 10);
     const attemptsRaw = Number.parseInt(src.yybReconnectMaxAttempts, 10);
     return {
+        codeLogin: typeof src.codeLogin === 'boolean' ? src.codeLogin : DEFAULT_LOGIN_SETTINGS.codeLogin,
         wechatQrLogin: typeof src.wechatQrLogin === 'boolean' ? src.wechatQrLogin : DEFAULT_LOGIN_SETTINGS.wechatQrLogin,
         qqQrLogin: typeof src.qqQrLogin === 'boolean' ? src.qqQrLogin : DEFAULT_LOGIN_SETTINGS.qqQrLogin,
         yybQrLogin: typeof src.yybQrLogin === 'boolean' ? src.yybQrLogin : DEFAULT_LOGIN_SETTINGS.yybQrLogin,
@@ -139,6 +140,7 @@ function setLoginSettings(cfg: Partial<LoginSettings> | undefined): LoginSetting
         throw new Error('开启 QQ 扫码登录前，请配置 NapCat 接口地址和接口签名');
     }
     globalConfig.loginSettings = next;
+    globalConfig.loginSettingsCustomized = true;
     saveGlobalConfig();
     return getLoginSettings();
 }
@@ -146,6 +148,7 @@ function setLoginSettings(cfg: Partial<LoginSettings> | undefined): LoginSetting
 function setOfflineReminder(cfg: Partial<OfflineReminder> | undefined): OfflineReminder {
     const current = normalizeOfflineReminder(globalConfig.offlineReminder);
     globalConfig.offlineReminder = normalizeOfflineReminder({ ...current, ...(cfg || {}) });
+    globalConfig.offlineReminderCustomized = true;
     saveGlobalConfig();
     return getOfflineReminder();
 }
@@ -220,6 +223,7 @@ function applyPushplusEnvOverrides(): boolean {
     }
     if (!changed) return false;
     globalConfig.offlineReminder = current;
+    globalConfig.offlineReminderCustomized = true;
     console.log(`[系统] 已按 PUSHPLUS_* 环境变量更新下线提醒渠道: channel=${current.channel}, token=${token ? '已设置' : '未变更'}`);
     return true;
 }
