@@ -4,6 +4,7 @@ const assert = require('node:assert/strict');
 const {
     DEFAULT_CLIENT_VERSION,
     DEFAULT_CLIENT_VERSION_UPDATED_AT,
+    CONFIG,
     resolveClientVersion,
     resolveClientVersionUpdatedAt,
 } = require('../dist/config/config');
@@ -26,6 +27,7 @@ const { loadProto } = require('../dist/utils/proto');
 const { buildHeartbeatBody, buildLoginBody } = require('../dist/utils/network');
 
 // 官方抓包 ws_00001_SEND.bin（会话版本 1.14.0.4_20260911）解密后的 Login 请求体。
+// 该抓包来自 Windows 客户端，断言时需显式指定当时的设备信息，避免受默认设备调整影响。
 const OFFICIAL_LOGIN_BODY =
     '180022002a1c0a11312e31342e302e345f3230323630393131120757696e646f777330003a0731323334353637'
     + '42180a0012001a0022002a086f746865722d717130023a0042004a00';
@@ -35,7 +37,24 @@ const OFFICIAL_HEARTBEAT_GID = 1220537209;
 
 test('login request body reproduces the official capture byte for byte', async () => {
     await loadProto();
-    assert.equal(buildLoginBody().toString('hex'), OFFICIAL_LOGIN_BODY);
+    const originalDeviceInfo = CONFIG.deviceInfo;
+    CONFIG.deviceInfo = {
+        ...originalDeviceInfo,
+        clientVersion: DEFAULT_CLIENT_VERSION,
+        sysSoftware: 'Windows',
+    };
+    try {
+        assert.equal(buildLoginBody().toString('hex'), OFFICIAL_LOGIN_BODY);
+    } finally {
+        CONFIG.deviceInfo = originalDeviceInfo;
+    }
+});
+
+test('default device is the Xiaomi Android preset on the WeChat platform', () => {
+    assert.equal(CONFIG.platform, 'wx');
+    assert.equal(CONFIG.deviceInfo.os, 'Android');
+    assert.equal(CONFIG.deviceInfo.sysSoftware, 'Android 14');
+    assert.equal(CONFIG.deviceInfo.deviceId, 'Xiaomi 14');
 });
 
 test('heartbeat request body reproduces the official capture byte for byte', async () => {

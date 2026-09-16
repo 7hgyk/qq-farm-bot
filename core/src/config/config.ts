@@ -37,6 +37,8 @@ interface RuntimeConfig extends SystemConfig {
     adminPort: number;
     adminUsername: string | undefined;
     adminPassword: string | undefined;
+    pushplusToken: string | undefined;
+    pushplusChannel: string | undefined;
 }
 
 // ============ 设备预设 ============
@@ -180,13 +182,20 @@ const DEVICE_PRESETS: DevicePreset[] = [
     },
 ];
 
-const DEFAULT_DEVICE_INFO: DeviceInfo = { ...DEVICE_PRESETS[0].deviceInfo, clientVersion: DEFAULT_CLIENT_VERSION };
+// 默认设备预设：小米手机（Android），配合微信平台
+const DEFAULT_DEVICE_PRESET_ID = 'android_xiaomi';
+const DEFAULT_PLATFORM = 'wx';
+
+const DEFAULT_DEVICE_INFO: DeviceInfo = {
+    ...(DEVICE_PRESETS.find(p => p.id === DEFAULT_DEVICE_PRESET_ID) || DEVICE_PRESETS[0]).deviceInfo,
+    clientVersion: DEFAULT_CLIENT_VERSION,
+};
 
 const DEFAULT_SYSTEM_CONFIG: SystemConfig = {
     serverUrl: 'wss://gate-obt.nqf.qq.com/prod/ws',
     clientVersion: DEFAULT_CLIENT_VERSION,
     clientVersionUpdatedAt: DEFAULT_CLIENT_VERSION_UPDATED_AT,
-    platform: 'qq',
+    platform: DEFAULT_PLATFORM,
     os: DEFAULT_DEVICE_INFO.os,
     timeZone: DEFAULT_TIME_ZONE,
     deviceInfo: { ...DEFAULT_DEVICE_INFO },
@@ -210,6 +219,8 @@ const CONFIG: RuntimeConfig = {
     adminPort: Number(process.env.ADMIN_PORT),
     adminUsername: process.env.ADMIN_USERNAME,
     adminPassword: process.env.ADMIN_PASSWORD,
+    pushplusToken: process.env.PUSHPLUS_TOKEN,
+    pushplusChannel: process.env.PUSHPLUS_CHANNEL,
 };
 
 function normalizeDeviceInfo(input: any): DeviceInfo {
@@ -302,6 +313,10 @@ module.exports = {
     DEFAULT_CLIENT_VERSION,
     DEFAULT_CLIENT_VERSION_UPDATED_AT,
     DEFAULT_TIME_ZONE,
+    DEFAULT_DEVICE_INFO,
+    DEFAULT_SYSTEM_CONFIG,
+    DEFAULT_DEVICE_PRESET_ID,
+    DEFAULT_PLATFORM,
     PlantPhase,
     PHASE_NAMES,
     updateRuntimeConfig,

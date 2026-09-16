@@ -235,6 +235,8 @@ QQ 扫码登录依赖外部 [qq-miniapp-auth](https://github.com/liyangpengs/qq-
 | `ADMIN_PORT` | `3007` | 源码、二进制 | Web 面板监听端口；Compose 容器内固定为 `3007` |
 | `ADMIN_USERNAME` | `ikun` | 源码、二进制 | 管理员用户名；每次启动以该变量为准 |
 | `ADMIN_PASSWORD` | 随机生成 | 源码、二进制 | 管理员密码；设置后每次启动都以该变量为准，未设置时首次启动随机生成并打印到日志 |
+| `PUSHPLUS_TOKEN` | 空 | 源码、二进制 | pushplus 的 Token；设置后每次启动都会写入「下线提醒」渠道，避免每次部署后手动重填 |
+| `PUSHPLUS_CHANNEL` | `pushplus` | 源码、二进制 | pushplus 渠道，可选 `pushplus` 或 `pushplushxtrip` |
 | `PORT` | `3007` | Docker Compose | 宿主机映射端口，从根目录 `.env` 读取 |
 | `TZ` | `Asia/Shanghai` | Docker Compose | 容器时区 |
 | `NODE_ENV` | `production` | Docker | Compose 当前固定为生产环境 |

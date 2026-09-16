@@ -1,7 +1,7 @@
 import type { AccountConfig, AutomationConfig, BagSeedFallbackStrategy, FertilizerLandType, GlobalConfig, IntervalConfig, LoginSettings, OfflineReminder, PlantingStrategy, QuietHoursConfig } from '../../types/config';
 export {};
 
-const { DEFAULT_TIME_ZONE, normalizeTimeZone, resolveClientVersion } = require('../../config/config');
+const { DEFAULT_TIME_ZONE, DEFAULT_DEVICE_INFO: DEFAULT_DEVICE_INFO_DEFAULT, DEFAULT_PLATFORM, normalizeTimeZone, resolveClientVersion } = require('../../config/config');
 const { getDataFile, ensureDataDir } = require('../../config/runtime-paths');
 const { readJsonFile } = require('../../services/json-db');
 
@@ -572,7 +572,7 @@ function loadGlobalConfig(): void {
             if (data.systemConfig && typeof data.systemConfig === 'object') {
                 const srcDevice = (data.systemConfig.deviceInfo && typeof data.systemConfig.deviceInfo === 'object')
                     ? data.systemConfig.deviceInfo : {};
-                const deviceOs = String(srcDevice.os || data.systemConfig.os || 'Windows').trim();
+                const deviceOs = String(srcDevice.os || data.systemConfig.os || DEFAULT_DEVICE_INFO_DEFAULT.os).trim();
                 const savedTopVersion = String(data.systemConfig.clientVersion || '').trim();
                 const savedDeviceVersion = String(srcDevice.clientVersion || '').trim();
                 const savedVersion = savedDeviceVersion || savedTopVersion;
@@ -585,17 +585,17 @@ function loadGlobalConfig(): void {
                     serverUrl: String(data.systemConfig.serverUrl || '').trim(),
                     clientVersion: deviceClientVersion,
                     clientVersionUpdatedAt: deviceClientVersionUpdatedAt,
-                    platform: String(data.systemConfig.platform || 'qq').trim(),
+                    platform: String(data.systemConfig.platform || DEFAULT_PLATFORM).trim(),
                     os: deviceOs,
                     timeZone: normalizeTimeZone(data.systemConfig.timeZone || DEFAULT_TIME_ZONE),
                     deviceInfo: {
                         os: deviceOs,
                         clientVersion: deviceClientVersion,
-                        sysSoftware: String(srcDevice.sysSoftware || 'Windows').trim(),
-                        network: String(srcDevice.network || 'wifi').trim(),
-                        memory: String(srcDevice.memory || '16384').trim(),
-                        deviceId: String(srcDevice.deviceId || 'DESKTOP-PC<WPC>').trim(),
-                        userAgent: String(srcDevice.userAgent || '').trim(),
+                        sysSoftware: String(srcDevice.sysSoftware || DEFAULT_DEVICE_INFO_DEFAULT.sysSoftware).trim(),
+                        network: String(srcDevice.network || DEFAULT_DEVICE_INFO_DEFAULT.network).trim(),
+                        memory: String(srcDevice.memory || DEFAULT_DEVICE_INFO_DEFAULT.memory).trim(),
+                        deviceId: String(srcDevice.deviceId || DEFAULT_DEVICE_INFO_DEFAULT.deviceId).trim(),
+                        userAgent: String(srcDevice.userAgent || DEFAULT_DEVICE_INFO_DEFAULT.userAgent).trim(),
                     },
                 };
                 systemConfigMigrated = savedTopVersion !== deviceClientVersion

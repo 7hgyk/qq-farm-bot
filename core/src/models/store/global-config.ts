@@ -2,7 +2,7 @@ import type { AccountConfig, LoginSettings, OfflineReminder, SystemConfig, UICon
 export {};
 
 const { readTextFile, writeJsonFileAtomic } = require('../../services/json-db');
-const { DEFAULT_CLIENT_VERSION, DEFAULT_TIME_ZONE, normalizeTimeZone, resolveClientVersionUpdatedAt } = require('../../config/config');
+const { CONFIG, DEFAULT_CLIENT_VERSION, DEFAULT_TIME_ZONE, DEFAULT_DEVICE_INFO: DEFAULT_DEVICE_INFO_DEFAULT, DEFAULT_PLATFORM, normalizeTimeZone, resolveClientVersionUpdatedAt } = require('../../config/config');
 
 const sharedState = require('./shared-state');
 
@@ -156,15 +156,7 @@ function getSystemConfig(): SystemConfig | null {
 
 function setSystemConfig(config: Partial<SystemConfig> | undefined): SystemConfig | null {
     if (!config || typeof config !== 'object') return null;
-    const DEFAULT_DEVICE_INFO = {
-        os: 'Windows',
-        clientVersion: DEFAULT_CLIENT_VERSION,
-        sysSoftware: 'Windows',
-        network: 'wifi',
-        memory: '16384',
-        deviceId: 'DESKTOP-PC<WPC>',
-        userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 MicroMessenger/7.0.20.1781(0x6700143B) NetType/WIFI MiniProgramEnv/Windows WindowsWechat/WMPF WindowsWechat(0x63090a13)',
-    };
+    const DEFAULT_DEVICE_INFO = { clientVersion: DEFAULT_CLIENT_VERSION, ...DEFAULT_DEVICE_INFO_DEFAULT };
     const srcDevice = (config.deviceInfo && typeof config.deviceInfo === 'object') ? config.deviceInfo : {};
     const topVersion = String(config.clientVersion || '').trim();
     const deviceVersion = String((srcDevice as any).clientVersion || '').trim();
@@ -191,7 +183,7 @@ function setSystemConfig(config: Partial<SystemConfig> | undefined): SystemConfi
         serverUrl: String(config.serverUrl || '').trim(),
         clientVersion: deviceInfo.clientVersion,
         clientVersionUpdatedAt,
-        platform: String(config.platform || 'qq').trim(),
+        platform: String(config.platform || DEFAULT_PLATFORM).trim(),
         os: deviceInfo.os,
         timeZone: normalizeTimeZone(config.timeZone || DEFAULT_TIME_ZONE),
         deviceInfo,
@@ -206,7 +198,33 @@ loadGlobalConfig();
 // Apply offlineReminder normalization after load
 globalConfig.offlineReminder = normalizeOfflineReminder(globalConfig.offlineReminder);
 globalConfig.loginSettings = normalizeLoginSettings(globalConfig.loginSettings);
-if (sharedState.systemConfigMigrated) {
+
+// 环境变量覆盖：PUSHPLUS_TOKEN / PUSHPLUS_CHANNEL。
+// 每次启动都以环境变量为准，避免每次部署后还要在面板里手动重填 Token。
+function applyPushplusEnvOverrides(): boolean {
+    const token = String(CONFIG.pushplusToken || '').trim();
+    const channel = String(CONFIG.pushplusChannel || '').trim().toLowerCase();
+    if (!token && !channel) return false;
+    const current = normalizeOfflineReminder(globalConfig.offlineReminder);
+    let changed = false;
+    if (channel && PUSHOO_CHANNELS.has(channel) && channel !== current.channel) {
+        current.channel = channel;
+        changed = true;
+    }
+    if (token && token !== current.token) {
+        current.token = token;
+        if (!channel && current.channel === DEFAULT_OFFLINE_REMINDER.channel) {
+            current.channel = 'pushplus';
+        }
+        changed = true;
+    }
+    if (!changed) return false;
+    globalConfig.offlineReminder = current;
+    console.log(`[系统] 已按 PUSHPLUS_* 环境变量更新下线提醒渠道: channel=${current.channel}, token=${token ? '已设置' : '未变更'}`);
+    return true;
+}
+
+if (applyPushplusEnvOverrides() || sharedState.systemConfigMigrated) {
     saveGlobalConfig();
     sharedState.systemConfigMigrated = false;
 }
